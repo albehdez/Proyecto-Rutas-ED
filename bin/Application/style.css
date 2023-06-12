@@ -1,0 +1,47 @@
+#OpcionesPanel {
+    -fx-background-color: rgba(243, 243, 243, 0.6);
+
+}
+
+#scenePane2 {
+    -fx-background-color: white;
+}
+
+#canva {
+    -fx-background-color: blue;
+}
+
+#tituloscene2 {
+    -fx-alignment: center;
+    -fx-font-family: "verdana";
+
+}
+
+#logoCujae {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 3);
+    -fx-background-color: white;
+    /* -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-border-color: black;
+    -fx-border-width: 2px; */
+}
+
+#title {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 3);
+}
+
+#gestionarRutasButton :hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 3);
+}
+
+#GestionarOmnibusButton :hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 3);
+}
+
+#VBoxSalir :hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 3);
+}
+
+#panelMapa {
+    -fx-background-color: #E3E1D2;
+}

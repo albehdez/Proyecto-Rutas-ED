@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="scenePane1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller">
+   <children>
+      <ScrollPane fx:id="scrollPane" layoutX="1.0" layoutY="-1.0" onScroll="#zoom" pannable="true" prefHeight="658.0" prefWidth="1100.0">
+         <content>
+            <Pane fx:id="panelMapa" prefHeight="650.0" prefWidth="1098.0" stylesheets="@style.css">
+               <children>
+                  <Line endX="92.0" layoutX="360.0" layoutY="265.0" startX="62.0" strokeWidth="3.0" />
+                  <Line endX="300.5" endY="38.0" layoutX="152.0" layoutY="227.0" startX="300.5" startY="78.0" strokeWidth="3.0" />
+                  <Line endX="-33.5" endY="-77.0" layoutX="419.0" layoutY="344.0" startX="-33.5" startY="-42.0" strokeWidth="3.0" />
+                  <Line endX="60.0" endY="73.5" layoutX="359.0" layoutY="193.0" startX="60.0" startY="112.0" strokeWidth="3.0" />
+                  <Line endX="100.0" layoutX="318.0" layoutY="265.0" startX="68.0" strokeWidth="3.0" />
+                  <Line endX="33.0" endY="3.5" layoutX="418.0" layoutY="303.0" startX="1.5" startY="3.5" strokeWidth="3.0" />
+                  <Line endX="100.0" layoutX="285.0" layoutY="303.0" startX="60.0" strokeWidth="3.0" />
+               </children></Pane>
+         </content>
+      </ScrollPane>
+      <Pane fx:id="OpcionesPanel" layoutY="553.0" prefHeight="97.0" prefWidth="1100.0" stylesheets="@style.css">
+         <children>
+            <Button fx:id="GestionarButton1" layoutX="345.0" layoutY="21.0" mnemonicParsing="false" onAction="#loadScene2" style="-fx-background-color: white;" stylesheets="@style.css" text="Gestionar omnibus" textAlignment="CENTER" visible="false">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button disable="true" layoutX="226.0" layoutY="34.0" mnemonicParsing="false" text="Gestionar paradas" visible="false">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="GestionarButton" disable="true" layoutX="372.0" layoutY="36.0" mnemonicParsing="false" onAction="#loadScene2" text="Gestionar omnibus" visible="false">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="logoCujae" fitHeight="85.0" fitWidth="106.0" layoutX="18.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" styleClass="style.css">
+               <image>
+                  <Image url="@../images/logo%200.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="title" layoutX="112.0" layoutY="39.0" text="CUJAE-Trans">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <GridPane layoutX="737.0" layoutY="13.0" prefHeight="72.0" prefWidth="307.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.0" minWidth="10.0" prefWidth="63.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="119.0" minWidth="10.0" prefWidth="64.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="53.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.0" minWidth="10.0" prefWidth="64.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="49.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <VBox fx:id="gestionarRutasButton" prefHeight="72.0" prefWidth="44.0">
+                     <children>
+                        <ImageView fx:id="icon" fitHeight="48.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/route%20button.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="51.0" text="Rutas">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="GestionarOmnibusButton" onMouseClicked="#loadScene2" prefHeight="72.0" prefWidth="77.0" GridPane.columnIndex="2">
+                     <children>
+                        <ImageView fx:id="icon" fitHeight="48.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/bus%20button.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="76.0" text="Omnibus" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="VBoxSalir" onMouseClicked="#closeWindow1" prefHeight="65.0" prefWidth="49.0" GridPane.columnIndex="4">
+                     <children>
+                        <ImageView fx:id="icon" fitHeight="48.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/exit%20button.png" />
+                           </image>
+                        </ImageView>
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="54.0" text="Salir">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Label>
+                     </children>
+                  </VBox>
+               </children>
+            </GridPane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
