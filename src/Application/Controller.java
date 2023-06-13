@@ -6,7 +6,7 @@ import java.util.Iterator;
 import javax.swing.JOptionPane;
 
 import Logic.Bus;
-import Logic.LocationT;
+import Logic.Location;
 import Logic.Terminal;
 import Logic.University;
 import javafx.event.ActionEvent;
@@ -108,17 +108,21 @@ public class Controller {
         String terminal = TermianlTextField.getText();
         String bus = MatriculaTextField.getText();
         University.getInstance().insert(localidad, terminal, bus, 123);
-        JOptionPane.showMessageDialog(null, "Hola");
+
         Iterator<Object> it = University.getInstance().getTree().inDepthIterator();
 
         while (it.hasNext()) {
             Object nod = it.next();
             if (nod instanceof Terminal)
                 System.out.println(((Terminal) nod).getId());
-            else if (nod instanceof LocationT)
-                System.out.println(((LocationT) nod).getName());
+            else if (nod instanceof Location)
+                System.out.println(((Location) nod).getName());
             else
                 System.out.println(((Bus) nod).getTuition());
         }
+
+        LocalidadTextField.setText("");
+        TermianlTextField.setText("");
+        MatriculaTextField.setText("");
     }
 }

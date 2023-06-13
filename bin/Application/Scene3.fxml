@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="544.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button layoutX="127.0" layoutY="123.0" mnemonicParsing="false" text="Insertar" />
       <Button layoutX="343.0" layoutY="123.0" mnemonicParsing="false" text="Eliminar" />
@@ -31,7 +31,7 @@
           <RowConstraints vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Ruta:" />
+            <Label text="Omnibus:" />
             <ComboBox prefWidth="155.0" GridPane.columnIndex="2" />
          </children>
       </GridPane>

@@ -11,43 +11,37 @@ public class Main {
 		University.getInstance().insert("L3", "T4", "b4", 123);
 		University.getInstance().insert("L3", "T5", "b5", 132);
 
-		Iterator<Object> it = University.getInstance().getTree().inDepthIterator();
+		// Iterator<Object> it = University.getInstance().getTree().inDepthIterator();
 
-		while (it.hasNext()) {
-			Object nod = it.next();
-			if (nod instanceof Terminal)
-				System.out.println(((Terminal) nod).getId());
-			else if (nod instanceof LocationT)
-				System.out.println(((LocationT) nod).getName());
-			else
-				System.out.println(((Bus) nod).getTuition());
-		}
+		// while (it.hasNext()) {
+		// Object nod = it.next();
+		// if (nod instanceof Terminal)
+		// System.out.println(((Terminal) nod).getId());
+		// else if (nod instanceof LocationT)
+		// System.out.println(((LocationT) nod).getName());
+		// else
+		// System.out.println(((Bus) nod).getTuition());
+		// }
 
-		// University.getInstance().deleteBus("L3", "T4", "b4");
-		// University.getInstance().deleteBus("L3", "T5", "b5");
-		System.out.println();
+		// University.getInstance().deleteBus("L1", "T1", "b1");
+		// University.getInstance().deleteBus("L1", "T2", "b2");
+		// System.out.println();
 
-		Iterator<Object> it1 = University.getInstance().getTree().inDepthIterator();
+		// it = University.getInstance().getTree().inDepthIterator();
 
-		while (it1.hasNext()) {
-			Object nod = it1.next();
-			if (nod instanceof Terminal)
-				System.out.println(((Terminal) nod).getId());
-			else if (nod instanceof LocationT)
-				System.out.println(((LocationT) nod).getName());
-			else
-				System.out.println(((Bus) nod).getTuition());
-		}
-		// University.getInstance().getMap().insertVertex("A");
-		// University.getInstance().getMap().insertVertex("B");
-		// University.getInstance().getMap().insertVertex("C");
+		// while (it.hasNext()) {
+		// Object nod = it.next();
+		// if (nod instanceof Terminal)
+		// System.out.println(((Terminal) nod).getId());
+		// else if (nod instanceof LocationT)
+		// System.out.println(((LocationT) nod).getName());
+		// else
+		// System.out.println(((Bus) nod).getTuition());
 
-		// University.getInstance().getMap().insertEdgeNDG(0, 1);
-		// University.getInstance().getMap().insertEdgeNDG(1, 2);
-		// University.getInstance().getMap().insertEdgeNDG(0, 2);
+		// }
 
-		// University.getInstance().getMap().insertWEdgeNDG(0, 1, 1);
-		// University.getInstance().getMap().insertWEdgeNDG(1, 2, 67);
-		// University.getInstance().getMap().insertWEdgeNDG(0, 2, 10);
+		University.getInstance().getMap().insertVertex("D");
+		University.getInstance().getMap().insertVertex(3);
+
 	}
 }

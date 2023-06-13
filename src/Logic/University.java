@@ -6,15 +6,16 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Stack;
-
 import cu.edu.cujae.ceis.graph.LinkedGraph;
 import cu.edu.cujae.ceis.graph.edge.Edge;
 import cu.edu.cujae.ceis.graph.edge.WeightedEdge;
 import cu.edu.cujae.ceis.graph.interfaces.ILinkedDirectedGraph;
 import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeNotDirectedGraph;
+import cu.edu.cujae.ceis.graph.vertex.Vertex;
 import cu.edu.cujae.ceis.tree.binary.BinaryTreeNode;
 import cu.edu.cujae.ceis.tree.general.GeneralTree;
 import cu.edu.cujae.ceis.tree.iterators.general.InDepthIterator;
+import util.Dijktra_node_path;
 
 public class University {
 
@@ -41,75 +42,17 @@ public class University {
 		return tree;
 	}
 
-	// // metodo iniciado por Alberto
-	// public void addBus(String location, String tuition, String terminal) {
-	// Terminal t = new Terminal(terminal);
-	// Bus b = new Bus(tuition);
-	// TerminalLocation l = new TerminalLocation(location);
-	// BinaryTreeNode<TreeNode> bt = new BinaryTreeNode<Object>(t);
-	// BinaryTreeNode<TreeNode> bb = new BinaryTreeNode<TreeNode>(b);
-	// BinaryTreeNode<TreeNode> bl = new BinaryTreeNode<TreeNode>(l);
-
-	// if (tree.isEmpty()) {
-
-	// tree.insertNode(bl, null);
-	// tree.insertNode(bt, bl);
-	// tree.insertNode(bb, bt);
-	// } else {
-	// boolean value = true;
-	// BinaryTreeNode<Object> aux = (BinaryTreeNode) tree.getRoot();
-	// while (aux != null && value) {
-	// if (((TerminalLocation) aux.getInfo()).getName().equals(location))
-	// value = false;
-	// aux = aux.getRight();
-	// }
-	// if (value) {
-
-	// }
-	// }
-
-	// }
-
-	// private BinaryTreeNode<Object> searchNode(String id) {
-	// BinaryTreeNode<Object> rNode = null;
-	// if (!this.tree.isEmpty()) {
-	// InDepthIterator<Object> iterator = inDepthIterator();
-	// boolean stop = false;
-	// while (iterator.hasNext() && !stop) {
-	// BinaryTreeNode<Object> iterNode = iterator.nextNode();
-	// if (iterNode.getInfo() instanceof LocationT) {
-	// if (((LocationT) iterNode.getInfo()).getName().equals(id)) {
-	// stop = true;
-	// rNode = iterNode;
-
-	// }
-	// } else if (iterNode.getInfo() instanceof Terminal) {
-	// if (((Terminal) iterNode.getInfo()).getId().equals(id)) {
-	// stop = true;
-	// rNode = iterNode;
-
-	// }
-	// }
-	// }
-	// }
-	// return rNode;
-	// }
-
-	private InDepthIterator<Object> inDepthIterator() {
-		return new InDepthIterator<Object>(this.tree);
-	}
-
 	// public Stack<Vertex> Shortest_Path(Vertex start, Vertex end) {
 	// if (start.getEdgeList().size() == 0 || end.getEdgeList().size() == 0) {
 	// return null;
 	// }
 	// // creando y llenado listas
 	// ArrayList<Vertex> noVisitados = new
-	// ArrayList<>(grafo.getVerticesList().size());
+	// ArrayList<>(map.getVerticesList().size());
 	// Stack<Vertex> result = new Stack<Vertex>();
 	// ArrayList<Dijktra_node_path> registro = new
-	// ArrayList<>(grafo.getVerticesList().size());
-	// Iterator<Vertex> verIter = grafo.getVerticesList().iterator();
+	// ArrayList<>(map.getVerticesList().size());
+	// Iterator<Vertex> verIter = map.getVerticesList().iterator();
 	// Map<String, Dijktra_node_path> mapaReg = new HashMap<>();
 	// Dijktra_node_path temp2 = null;
 
@@ -121,7 +64,7 @@ public class University {
 	// if (temp.getInfo().equals(start.getInfo()))// si es el nodo inicial
 	// {
 	// temp2 = new Dijktra_node_path(temp, 0, null);// la 1era fila se llena con los
-	// valores nodo/distancia = 0
+	// // valores nodo/distancia = 0
 	// // xq estoy en el inicio y nodo anterior null,pues no
 	// // hay anterior
 	// } else {
@@ -129,7 +72,7 @@ public class University {
 	// }
 	// mapaReg.put(((Parada) temp2.getVertice().getInfo()).getID(), temp2);
 	// registro.add(temp2);// se agrega en cada posicion una fila y se conforma la
-	// tabla como tal
+	// // tabla como tal
 	// }
 
 	// // comienza la logica
@@ -153,11 +96,11 @@ public class University {
 	// nodoAnalizandose.getInfo()).getID());
 
 	// // si el arco es correcto, hay q buscar en el arreglo de paradas,cada vertice
-	// es
+	// // es
 	// // una parada
 	// if (SonSucesivos(nodoAnalizandose, vertex)) {
 	// // llenar la 2da columna con el peso del camino y la 3era con el nodo
-	// anterior
+	// // anterior
 	// // para cada fila
 	// // hay que buscar el indice en el que esta el vertice q estoy analizando
 	// if (regNodoAnalizandose.getCosto() != Integer.MAX_VALUE && regNodoAdyacente
@@ -192,12 +135,11 @@ public class University {
 
 	// } else {
 	// result.push(end);
-	// Vertex otroTemp = mapaReg.get(((Parada)
-	// end.getInfo()).getID()).getAnterior();
-	// while (mapaReg.get(((Parada) otroTemp.getInfo()).getID()).getAnterior() !=
+	// Vertex otroTemp = mapaReg.get(((Route) end.getInfo()).getId()).getAnterior();
+	// while (mapaReg.get(((Route) otroTemp.getInfo()).getId()).getAnterior() !=
 	// null) {
 	// result.push(otroTemp);
-	// otroTemp = mapaReg.get(((Parada) otroTemp.getInfo()).getID()).getAnterior();
+	// otroTemp = mapaReg.get(((Route) otroTemp.getInfo()).getId()).getAnterior();
 	// }
 	// result.push(otroTemp);
 	// }
@@ -205,12 +147,24 @@ public class University {
 	// return result;
 	// }
 
+	private Vertex BuscarMenor(ArrayList<Vertex> noVisitados, Map<String, Dijktra_node_path> mapaReg) {
+		Vertex result = noVisitados.get(0);
+		int menor = mapaReg.get(((Route) result.getInfo()).getId()).getCosto();
+		for (int k = 1; k < noVisitados.size(); k++) {
+			if (mapaReg.get(((Route) noVisitados.get(k).getInfo()).getId()).getCosto() < menor) {
+				menor = mapaReg.get(((Route) noVisitados.get(k).getInfo()).getId()).getCosto();
+				result = mapaReg.get(((Route) noVisitados.get(k).getInfo()).getId()).getVertice();
+			}
+		}
+		return result;
+	}
+
 	public boolean insert(String Location, String Terminal, String Bus, int seating) {
 
 		boolean retB = false;
 		if (this.tree.isEmpty()) {
 
-			LocationT location = new LocationT(Location);
+			Location location = new Location(Location);
 			BinaryTreeNode<Object> nodeLocation = new BinaryTreeNode<Object>(location);
 			this.tree.insertNode(nodeLocation, null);
 
@@ -250,7 +204,7 @@ public class University {
 					retB = true;
 				}
 			} else {
-				LocationT location = new LocationT(Location);
+				Location location = new Location(Location);
 				BinaryTreeNode<Object> nodeLocation = new BinaryTreeNode<Object>(location);
 				this.tree.insertNode(nodeLocation, null);
 
@@ -269,6 +223,41 @@ public class University {
 
 	}
 
+	private ArrayList<Bus> listadoBus() {
+		ArrayList<Bus> list = new ArrayList<Bus>();
+		Iterator<Object> it = tree.inDepthIterator();
+		while (it.hasNext()) {
+			Object o = it.next();
+			if (o instanceof Bus)
+				list.add((Bus) o);
+		}
+		return list;
+	}
+
+	// private boolean SonSucesivos(Vertex start, Vertex vertex) {
+	// ArrayList<Bus> listaGuagua = listadoBus();
+	// boolean result = false;
+	// int l = 0;
+	// while (l < listaGuagua.size() && !result) {
+	// int index = listaGuagua.get(l).getParadas().indexOf((Parada)
+	// start.getInfo());
+
+	// if (index != -1) {
+	// if (index - 1 >= 0
+	// && listaGuagua.get(l).getParadas().get(index - 1).equals((Parada)
+	// vertex.getInfo())) {
+	// result = true;
+	// } else if (index + 1 < listaGuagua.get(l).getParadas().size()
+	// && listaGuagua.get(l).getParadas().get(index + 1).equals((Parada)
+	// vertex.getInfo())) {
+	// result = true;
+	// }
+	// }
+	// l++;
+	// }
+	// return result;
+	// }
+
 	private BinaryTreeNode<Object> searchLocalidad(String name) {
 		BinaryTreeNode<Object> rNode = null;
 
@@ -276,7 +265,7 @@ public class University {
 			BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) this.tree.getRoot();
 			boolean stop = false;
 			while (!stop && aux != null) {
-				if (((LocationT) aux.getInfo()).getName().equalsIgnoreCase(name)) {
+				if (((Location) aux.getInfo()).getName().equalsIgnoreCase(name)) {
 					rNode = aux;
 					stop = true;
 				}
@@ -294,7 +283,7 @@ public class University {
 			BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) this.tree.getRoot();
 			boolean stop = false;
 			while (!stop && aux != null) {
-				if (((LocationT) aux.getInfo()).getName().equalsIgnoreCase(localidad)) {
+				if (((Location) aux.getInfo()).getName().equalsIgnoreCase(localidad)) {
 					stop = true;
 					boolean stop2 = false;
 					BinaryTreeNode<Object> aux2 = aux.getLeft();
@@ -321,7 +310,7 @@ public class University {
 			BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) this.tree.getRoot();
 			boolean stop = false;
 			while (!stop && aux != null) {
-				if (((LocationT) aux.getInfo()).getName().equalsIgnoreCase(localidad)) {
+				if (((Location) aux.getInfo()).getName().equalsIgnoreCase(localidad)) {
 					stop = true;
 					boolean stop2 = false;
 					BinaryTreeNode<Object> aux2 = aux.getLeft();
@@ -367,8 +356,8 @@ public class University {
 
 								boolean stop = false;
 								while (!stop && aux != null) {
-									if (((LocationT) aux.getRight().getInfo()).getName()
-											.equalsIgnoreCase(((LocationT) nodeLocalidad.getInfo()).getName())) {
+									if (((Location) aux.getRight().getInfo()).getName()
+											.equalsIgnoreCase(((Location) nodeLocalidad.getInfo()).getName())) {
 										aux.setRight(aux.getRight().getRight());
 										stop = true;
 									}
@@ -389,7 +378,17 @@ public class University {
 		} else {
 			throw new IllegalArgumentException("El árbol esta vació");
 		}
-
 		return deleted;
+	}
+
+	public LinkedList<Bus> getBusList() {
+		LinkedList<Bus> list = new LinkedList<Bus>();
+		Iterator<Object> it = tree.inDepthIterator();
+		while (it.hasNext()) {
+			Object o = it.next();
+			if (o instanceof Bus)
+				list.add((Bus) o);
+		}
+		return list;
 	}
 }
