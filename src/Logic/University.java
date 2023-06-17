@@ -366,14 +366,20 @@ public class University {
 								BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) this.tree.getRoot();
 
 								boolean stop = false;
-								while (!stop && aux != null) {
-									if (((LocationT) aux.getRight().getInfo()).getName()
-											.equalsIgnoreCase(((LocationT) nodeLocalidad.getInfo()).getName())) {
-										aux.setRight(aux.getRight().getRight());
-										stop = true;
-									}
-									aux = aux.getRight();
+								if(((Location)aux.getInfo()).getName().equalsIgnoreCase(((Location)nodeLocalidad.getInfo()).getName())){
+									this.tree.setRoot(aux.getRight());
 								}
+								else{
+									while (!stop && aux != null) {
+										if (((LocationT) aux.getRight().getInfo()).getName()
+												.equalsIgnoreCase(((LocationT) nodeLocalidad.getInfo()).getName())) {
+											aux.setRight(aux.getRight().getRight());
+											stop = true;
+										}
+										aux = aux.getRight();
+									}
+								}
+								
 							}
 						}
 					} else {
