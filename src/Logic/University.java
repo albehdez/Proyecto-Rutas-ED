@@ -355,35 +355,49 @@ public class University {
 										stop = true;
 									}
 									aux = aux.getRight();
+									if (((Location) aux.getInfo()).getName()
+											.equalsIgnoreCase(((Location) nodeLocalidad.getInfo()).getName())) {
+										this.tree.setRoot(aux.getRight());
+									} else {
+										while (!stop && aux != null) {
+											if (((Location) aux.getRight().getInfo()).getName()
+													.equalsIgnoreCase(((Location) nodeLocalidad.getInfo()).getName())) {
+												aux.setRight(aux.getRight().getRight());
+												stop = true;
+											}
+											aux = aux.getRight();
+										}
+									}
+
 								}
 							}
+						} else {
+							throw new IllegalArgumentException("El bus que desea eliminar no existe");
 						}
 					} else {
-						throw new IllegalArgumentException("El bus que desea eliminar no existe");
+						throw new IllegalArgumentException("La terminal insertada no existe");
 					}
 				} else {
-					throw new IllegalArgumentException("La terminal insertada no existe");
+					throw new IllegalArgumentException("La localidad insertada no existe");
 				}
-			} else {
-				throw new IllegalArgumentException("La localidad insertada no existe");
-			}
 
-		} else {
-			throw new IllegalArgumentException("El árbol esta vació");
+			} else {
+				throw new IllegalArgumentException("El árbol esta vació");
+			}
 		}
 		return deleted;
+
+		// public LinkedList<TableAuxClass> getBusList() {
+		// LinkedList<TableAuxClass> list = new LinkedList<Bus>();
+		// Iterator<Object> it = tree.inDepthIterator();
+		// while (it.hasNext()) {
+		// Object o = it.next();
+
+		// if()
+		// if (o instanceof Bus)
+		// list.add((Bus) o);
+		// }
+		// return list;
+		// }
 	}
-
-	// public LinkedList<TableAuxClass> getBusList() {
-	// LinkedList<TableAuxClass> list = new LinkedList<Bus>();
-	// Iterator<Object> it = tree.inDepthIterator();
-	// while (it.hasNext()) {
-	// Object o = it.next();
-
-	// if()
-	// if (o instanceof Bus)
-	// list.add((Bus) o);
-	// }
-	// return list;
-	// }
 }
