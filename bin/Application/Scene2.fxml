@@ -4,9 +4,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -15,15 +16,19 @@
 
 <AnchorPane fx:id="scenePane2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="544.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller">
    <children>
-      <Label fx:id="tituloscene2" layoutY="21.0" prefHeight="17.0" prefWidth="544.0" stylesheets="@style.css" text="Registro de Omnibus." />
-      <GridPane layoutX="19.0" layoutY="74.0" prefHeight="90.0" prefWidth="462.0">
+      <Label fx:id="tituloscene2" layoutY="21.0" prefHeight="17.0" prefWidth="544.0" stylesheets="@style.css" text="Registro de Omnibus.">
+         <font>
+            <Font name="Niagara Engraved" size="14.0" />
+         </font>
+      </Label>
+      <GridPane layoutX="37.0" layoutY="74.0" prefHeight="90.0" prefWidth="462.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="143.0" minWidth="10.0" prefWidth="70.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="20.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.0" minWidth="10.0" prefWidth="105.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="37.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="131.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.0" minWidth="10.0" prefWidth="99.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="133.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.0" minWidth="10.0" prefWidth="97.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -32,25 +37,22 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="LocalidadTextField" GridPane.columnIndex="2" />
+            <TextField fx:id="LocalidadTextField" onKeyTyped="#checkEmpty" GridPane.columnIndex="2" />
             <Label fx:id="LocalidadLabel" text="Localidad:" />
             <Label fx:id="TerminalLabel" text="Terminal:" GridPane.columnIndex="4" />
             <Label fx:id="MatriculaLabel" text="Matricula:" GridPane.rowIndex="2" />
-            <TextField fx:id="TermianlTextField" prefHeight="25.0" prefWidth="129.0" GridPane.columnIndex="5" />
-            <TextField fx:id="MatriculaTextField" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Label text="Cantidad de Asientos" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <Spinner fx:id="asientosSpinner" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <TextField fx:id="TermianlTextField" onKeyTyped="#checkEmpty" prefHeight="25.0" prefWidth="129.0" GridPane.columnIndex="5" />
+            <TextField fx:id="MatriculaTextField" onKeyTyped="#checkEmpty" onMouseMoved="#sugerencia" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label text="Cantidad de Asientos:" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Spinner fx:id="asientosSpinner" initialValue="15" max="30" min="15" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <ImageView fx:id="icoInfoMat" fitHeight="23.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../images/info-solid.png" />
+               </image>
+            </ImageView>
          </children>
       </GridPane>
-      <TableView fx:id="RegistroTabla" layoutX="19.0" layoutY="225.0" prefHeight="200.0" prefWidth="507.0">
-        <columns>
-          <TableColumn fx:id="LocalidadColumn" prefWidth="101.0" text="Localidad" />
-          <TableColumn fx:id="TerminalColumn" prefWidth="113.0" text="Terminal" />
-            <TableColumn fx:id="MatricuaColumn" minWidth="0.0" prefWidth="132.0" text="Matricula" />
-            <TableColumn prefWidth="159.0" text="Cantidad de Asientos" />
-        </columns>
-      </TableView>
-      <Button fx:id="SalirButton" layoutX="479.0" layoutY="449.0" mnemonicParsing="false" onAction="#closeWindow2" text="Salir">
+      <Button fx:id="SalirButton" layoutX="467.0" layoutY="449.0" mnemonicParsing="false" onAction="#closeWindow2" text="Cerrar">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -64,7 +66,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="InsertarButton" mnemonicParsing="false" onAction="#insertBus" style="-fx-background-color: #25d366;" text="Insertar" textFill="WHITE">
+            <Button fx:id="InsertarButton" disable="true" mnemonicParsing="false" onAction="#insertBus" style="-fx-background-color: #25d366;" text="Insertar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -82,5 +84,6 @@
             </Button>
          </children>
       </GridPane>
+      <TreeView fx:id="treeView" layoutX="29.0" layoutY="235.0" prefHeight="200.0" prefWidth="489.0" />
    </children>
 </AnchorPane>

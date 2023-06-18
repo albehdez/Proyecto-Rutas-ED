@@ -11,37 +11,37 @@ public class Main {
 		University.getInstance().insert("L3", "T4", "b4", 123);
 		University.getInstance().insert("L3", "T5", "b5", 132);
 
-		// Iterator<Object> it = University.getInstance().getTree().inDepthIterator();
+		Iterator<Object> it = University.getInstance().getTree().inDepthIterator();
 
-		// while (it.hasNext()) {
-		// Object nod = it.next();
-		// if (nod instanceof Terminal)
-		// System.out.println(((Terminal) nod).getId());
-		// else if (nod instanceof LocationT)
-		// System.out.println(((LocationT) nod).getName());
-		// else
-		// System.out.println(((Bus) nod).getTuition());
-		// }
+		while (it.hasNext()) {
+			Object nod = it.next();
+			if (nod instanceof Terminal)
+				System.out.println(((Terminal) nod).getId());
+			else if (nod instanceof Location)
+				System.out.println(((Location) nod).getName());
+			else
+				System.out.println(((Bus) nod).getTuition());
+		}
 
-		// University.getInstance().deleteBus("L1", "T1", "b1");
-		// University.getInstance().deleteBus("L1", "T2", "b2");
-		// System.out.println();
+		University.getInstance().deleteBus("L1", "T1", "b1");
+		University.getInstance().deleteBus("L1", "T2", "b2");
 
-		// it = University.getInstance().getTree().inDepthIterator();
+		System.out.println();
 
-		// while (it.hasNext()) {
-		// Object nod = it.next();
-		// if (nod instanceof Terminal)
-		// System.out.println(((Terminal) nod).getId());
-		// else if (nod instanceof LocationT)
-		// System.out.println(((LocationT) nod).getName());
-		// else
-		// System.out.println(((Bus) nod).getTuition());
+		it = University.getInstance().getTree().inDepthIterator();
 
-		// }
+		while (it.hasNext()) {
+			Object nod = it.next();
+			if (nod instanceof Terminal)
+				System.out.println(((Terminal) nod).getId());
+			else if (nod instanceof Location)
+				System.out.println(((Location) nod).getName());
+			else
+				System.out.println(((Bus) nod).getTuition());
+		}
 
-		University.getInstance().getMap().insertVertex("D");
-		University.getInstance().getMap().insertVertex(3);
+		// University.getInstance().getMap().insertVertex("D");
+		// University.getInstance().getMap().insertVertex(3);
 
 	}
 }
