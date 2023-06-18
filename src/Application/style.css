@@ -1,10 +1,25 @@
 #OpcionesPanel {
     -fx-background-color: rgba(243, 243, 243, 0.6);
-
+    -fx-background-radius: 20px;
 }
 
 #scenePane2 {
-    -fx-background-color: white;
+    -fx-background-color: rgba(243, 243, 243, 0.6);
+    -fx-background-radius: 20px;
+}
+
+#scenePane3 {
+    -fx-background-color: rgba(243, 243, 243, 0.6);
+    -fx-background-radius: 20px;
+}
+
+#rectangleStreet {
+    -fx-fill: #E3E1D2;
+}
+
+#panelMapa {
+    -fx-background-color: rgba(22, 201, 76, 0.6);
+    -fx-font-family: Verdana;
 }
 
 #canva {
@@ -14,7 +29,6 @@
 #tituloscene2 {
     -fx-alignment: center;
     -fx-font-family: "verdana";
-
 }
 
 #logoCujae {
@@ -42,6 +56,6 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 3);
 }
 
-#panelMapa {
-    -fx-background-color: #E3E1D2;
+.line {
+    -fx-border-radius: 5;
 }

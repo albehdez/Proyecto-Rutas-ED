@@ -24,37 +24,31 @@ public class Main {
 			Object nod = it.next();
 			if (nod instanceof Terminal)
 				System.out.println(((Terminal) nod).getId());
-			else if (nod instanceof LocationT)
-				System.out.println(((LocationT) nod).getName());
+			else if (nod instanceof Location)
+				System.out.println(((Location) nod).getName());
 			else
 				System.out.println(((Bus) nod).getTuition());
 		}
 
-		// University.getInstance().deleteBus("L3", "T4", "b4");
-		// University.getInstance().deleteBus("L3", "T5", "b5");
+		University.getInstance().deleteBus("L1", "T1", "b1");
+		University.getInstance().deleteBus("L1", "T2", "b2");
+
 		System.out.println();
 
-		Iterator<Object> it1 = University.getInstance().getTree().inDepthIterator();
+		it = University.getInstance().getTree().inDepthIterator();
 
-		while (it1.hasNext()) {
-			Object nod = it1.next();
+		while (it.hasNext()) {
+			Object nod = it.next();
 			if (nod instanceof Terminal)
 				System.out.println(((Terminal) nod).getId());
-			else if (nod instanceof LocationT)
-				System.out.println(((LocationT) nod).getName());
+			else if (nod instanceof Location)
+				System.out.println(((Location) nod).getName());
 			else
 				System.out.println(((Bus) nod).getTuition());
 		}
-		// University.getInstance().getMap().insertVertex("A");
-		// University.getInstance().getMap().insertVertex("B");
-		// University.getInstance().getMap().insertVertex("C");
 
-		// University.getInstance().getMap().insertEdgeNDG(0, 1);
-		// University.getInstance().getMap().insertEdgeNDG(1, 2);
-		// University.getInstance().getMap().insertEdgeNDG(0, 2);
+		// University.getInstance().getMap().insertVertex("D");
+		// University.getInstance().getMap().insertVertex(3);
 
-		// University.getInstance().getMap().insertWEdgeNDG(0, 1, 1);
-		// University.getInstance().getMap().insertWEdgeNDG(1, 2, 67);
-		// University.getInstance().getMap().insertWEdgeNDG(0, 2, 10);
 	}
 }
