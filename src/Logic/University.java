@@ -12,9 +12,11 @@ import cu.edu.cujae.ceis.graph.edge.Edge;
 import cu.edu.cujae.ceis.graph.edge.WeightedEdge;
 import cu.edu.cujae.ceis.graph.interfaces.ILinkedDirectedGraph;
 import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeNotDirectedGraph;
+import cu.edu.cujae.ceis.tree.TreeNode;
 import cu.edu.cujae.ceis.tree.binary.BinaryTreeNode;
 import cu.edu.cujae.ceis.tree.general.GeneralTree;
 import cu.edu.cujae.ceis.tree.iterators.general.InDepthIterator;
+import util.AuxC4Table;
 
 public class University {
 
@@ -397,5 +399,54 @@ public class University {
 		}
 
 		return deleted;
+	}
+	
+	
+	public LinkedList<AuxC4Table> getNodesInfo(){
+		LinkedList<AuxC4Table> list = new LinkedList<AuxC4Table>();
+		LocationT currentLocation=null;
+		Terminal currentTerminal=null;
+		Object current=null;
+
+		if(!this.tree.isEmpty()){
+			InDepthIterator<Object> iter = inDepthIterator();
+			while(iter.hasNext()){
+					current=iter.next();
+				if(current instanceof LocationT){
+					LocationT aux =((LocationT) current);
+					
+					if(currentLocation==null){						
+						currentLocation=aux;
+
+					}else if(aux!=currentLocation){
+						currentLocation=aux;
+					}
+
+				}
+				else if(current instanceof Terminal){
+					Terminal aux =(Terminal) current;
+
+					if(currentTerminal==null){
+						currentTerminal=aux;
+					}
+					else if(aux!=currentTerminal){
+						currentTerminal=aux;
+					}
+				}
+				else if(current instanceof Bus){
+					Bus aux =(Bus) current;
+					AuxC4Table info = new AuxC4Table();
+					info.setLocation(currentLocation);
+					info.setTerminal(currentTerminal);
+					info.setBus(aux);
+
+					list.add(info);
+				}
+			}
+		}
+
+
+
+		return list;
 	}
 }

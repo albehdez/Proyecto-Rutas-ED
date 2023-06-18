@@ -1,6 +1,9 @@
 package Logic;
 
 import java.util.Iterator;
+import java.util.LinkedList;
+
+import util.AuxC4Table;
 
 public class Main {
 
@@ -12,6 +15,7 @@ public class Main {
 		University.getInstance().insert("L3", "T4", "b4", 123);
 		University.getInstance().insert("L3", "T5", "b5", 132);
 		
+		LinkedList<AuxC4Table> list = University.getInstance().getNodesInfo();
 		//University.getInstance().deleteBus("L1", "T1", "b1");	
 		//University.getInstance().deleteBus("L1", "T2", "b2");
 		//University.getInstance().deleteBus("L2", "T3", "b3");
