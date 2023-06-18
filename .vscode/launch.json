@@ -44,6 +44,13 @@
       "name": "Main",
       "request": "launch",
       "mainClass": "Logic.Main",
+      "projectName": "Proyecto-Rutas-ED-_d1388cea"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "Logic.Main",
       "projectName": "ProyectoRutas_4a0378e"
     },
     {
