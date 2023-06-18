@@ -366,7 +366,7 @@ public class University {
 								BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) this.tree.getRoot();
 
 								boolean stop = false;
-								if(((Location)aux.getInfo()).getName().equalsIgnoreCase(((Location)nodeLocalidad.getInfo()).getName())){
+								if(((LocationT)aux.getInfo()).getName().equalsIgnoreCase(((LocationT)nodeLocalidad.getInfo()).getName())){
 									this.tree.setRoot(aux.getRight());
 								}
 								else{

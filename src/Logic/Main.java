@@ -5,11 +5,18 @@ import java.util.Iterator;
 public class Main {
 
 	public static void main(String[] args) {
+		
 		University.getInstance().insert("L1", "T1", "b1", 1);
 		University.getInstance().insert("L1", "T2", "b2", 43);
 		University.getInstance().insert("L2", "T3", "b3", 780);
 		University.getInstance().insert("L3", "T4", "b4", 123);
 		University.getInstance().insert("L3", "T5", "b5", 132);
+		
+		//University.getInstance().deleteBus("L1", "T1", "b1");	
+		//University.getInstance().deleteBus("L1", "T2", "b2");
+		//University.getInstance().deleteBus("L2", "T3", "b3");
+		//University.getInstance().deleteBus("L3", "T4", "b4");
+		//University.getInstance().deleteBus("L3", "T5", "b5");
 
 		Iterator<Object> it = University.getInstance().getTree().inDepthIterator();
 
