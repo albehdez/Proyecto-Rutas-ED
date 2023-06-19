@@ -28,8 +28,8 @@ public class Main {
 			Object nod = it.next();
 			if (nod instanceof Terminal)
 				System.out.println(((Terminal) nod).getId());
-			else if (nod instanceof LocationT)
-				System.out.println(((LocationT) nod).getName());
+			else if (nod instanceof Location)
+				System.out.println(((Location) nod).getName());
 			else
 				System.out.println(((Bus) nod).getTuition());
 		}
@@ -44,8 +44,8 @@ public class Main {
 			Object nod = it1.next();
 			if (nod instanceof Terminal)
 				System.out.println(((Terminal) nod).getId());
-			else if (nod instanceof LocationT)
-				System.out.println(((LocationT) nod).getName());
+			else if (nod instanceof Location)
+				System.out.println(((Location) nod).getName());
 			else
 				System.out.println(((Bus) nod).getTuition());
 		}

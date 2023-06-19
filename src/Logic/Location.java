@@ -1,10 +1,10 @@
 package Logic;
 
-public class LocationT {
+public class Location {
 
 	private String name;
 
-	public LocationT(String name) {
+	public Location(String name) {
 		setName(name);
 	}
 

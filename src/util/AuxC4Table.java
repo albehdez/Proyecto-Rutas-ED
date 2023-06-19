@@ -2,15 +2,15 @@ package util;
 
 
 
-import javax.tools.JavaFileManager.Location;
-import Logic.LocationT;
+
+import Logic.Location;
 import Logic.Terminal;
 import Logic.Bus;
 
 
 
 public class AuxC4Table {
-    LocationT location;
+    Location location;
     Terminal terminal;
     Bus bus;
 
@@ -20,7 +20,7 @@ public class AuxC4Table {
         bus=null;
     }
 
-    public void setLocation(LocationT location){
+    public void setLocation(Location location){
         this.location=location;
     }
     public void setTerminal(Terminal terminal){

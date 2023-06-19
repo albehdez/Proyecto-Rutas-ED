@@ -212,7 +212,7 @@ public class University {
 		boolean retB = false;
 		if (this.tree.isEmpty()) {
 
-			LocationT location = new LocationT(Location);
+			Location location = new Location(Location);
 			BinaryTreeNode<Object> nodeLocation = new BinaryTreeNode<Object>(location);
 			this.tree.insertNode(nodeLocation, null);
 
@@ -252,7 +252,7 @@ public class University {
 					retB = true;
 				}
 			} else {
-				LocationT location = new LocationT(Location);
+				Location location = new Location(Location);
 				BinaryTreeNode<Object> nodeLocation = new BinaryTreeNode<Object>(location);
 				this.tree.insertNode(nodeLocation, null);
 
@@ -278,7 +278,7 @@ public class University {
 			BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) this.tree.getRoot();
 			boolean stop = false;
 			while (!stop && aux != null) {
-				if (((LocationT) aux.getInfo()).getName().equalsIgnoreCase(name)) {
+				if (((Location) aux.getInfo()).getName().equalsIgnoreCase(name)) {
 					rNode = aux;
 					stop = true;
 				}
@@ -296,7 +296,7 @@ public class University {
 			BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) this.tree.getRoot();
 			boolean stop = false;
 			while (!stop && aux != null) {
-				if (((LocationT) aux.getInfo()).getName().equalsIgnoreCase(localidad)) {
+				if (((Location) aux.getInfo()).getName().equalsIgnoreCase(localidad)) {
 					stop = true;
 					boolean stop2 = false;
 					BinaryTreeNode<Object> aux2 = aux.getLeft();
@@ -323,7 +323,7 @@ public class University {
 			BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) this.tree.getRoot();
 			boolean stop = false;
 			while (!stop && aux != null) {
-				if (((LocationT) aux.getInfo()).getName().equalsIgnoreCase(localidad)) {
+				if (((Location) aux.getInfo()).getName().equalsIgnoreCase(localidad)) {
 					stop = true;
 					boolean stop2 = false;
 					BinaryTreeNode<Object> aux2 = aux.getLeft();
@@ -368,13 +368,13 @@ public class University {
 								BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) this.tree.getRoot();
 
 								boolean stop = false;
-								if(((LocationT)aux.getInfo()).getName().equalsIgnoreCase(((LocationT)nodeLocalidad.getInfo()).getName())){
+								if(((Location)aux.getInfo()).getName().equalsIgnoreCase(((Location)nodeLocalidad.getInfo()).getName())){
 									this.tree.setRoot(aux.getRight());
 								}
 								else{
 									while (!stop && aux != null) {
-										if (((LocationT) aux.getRight().getInfo()).getName()
-												.equalsIgnoreCase(((LocationT) nodeLocalidad.getInfo()).getName())) {
+										if (((Location) aux.getRight().getInfo()).getName()
+												.equalsIgnoreCase(((Location) nodeLocalidad.getInfo()).getName())) {
 											aux.setRight(aux.getRight().getRight());
 											stop = true;
 										}
@@ -404,7 +404,7 @@ public class University {
 	
 	public LinkedList<AuxC4Table> getNodesInfo(){
 		LinkedList<AuxC4Table> list = new LinkedList<AuxC4Table>();
-		LocationT currentLocation=null;
+		Location currentLocation=null;
 		Terminal currentTerminal=null;
 		Object current=null;
 
@@ -412,8 +412,8 @@ public class University {
 			InDepthIterator<Object> iter = inDepthIterator();
 			while(iter.hasNext()){
 					current=iter.next();
-				if(current instanceof LocationT){
-					LocationT aux =((LocationT) current);
+				if(current instanceof Location){
+					Location aux =((Location) current);
 					
 					if(currentLocation==null){						
 						currentLocation=aux;
