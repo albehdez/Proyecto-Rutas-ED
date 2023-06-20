@@ -2,6 +2,7 @@ package Logic;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Map;
 import cu.edu.cujae.ceis.graph.LinkedGraph;
 import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeNotDirectedGraph;
@@ -387,17 +388,16 @@ public class University {
 		}
 		return deleted;
 
-		// public LinkedList<TableAuxClass> getBusList() {
-		// LinkedList<TableAuxClass> list = new LinkedList<Bus>();
-		// Iterator<Object> it = tree.inDepthIterator();
-		// while (it.hasNext()) {
-		// Object o = it.next();
+	}
 
-		// if()
-		// if (o instanceof Bus)
-		// list.add((Bus) o);
-		// }
-		// return list;
-		// }
+	public LinkedList<Bus> getBusList() {
+		LinkedList<Bus> list = new LinkedList<>();
+		Iterator<Object> it = tree.inDepthIterator();
+		while (it.hasNext()) {
+			Object o = it.next();
+			if (o instanceof Bus)
+				list.add((Bus) o);
+		}
+		return list;
 	}
 }

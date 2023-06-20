@@ -57,7 +57,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <VBox fx:id="gestionarRutasButton" prefHeight="72.0" prefWidth="44.0">
+                  <VBox fx:id="gestionarRutasButton" onMouseClicked="#loadScene3" prefHeight="72.0" prefWidth="44.0">
                      <children>
                         <ImageView fx:id="icon" fitHeight="48.0" fitWidth="67.0" onMouseClicked="#loadScene3" pickOnBounds="true" preserveRatio="true">
                            <image>

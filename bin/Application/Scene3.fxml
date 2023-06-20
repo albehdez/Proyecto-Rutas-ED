@@ -9,12 +9,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane fx:id="scenePane3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="scenePane3" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller">
    <children>
       <Button layoutX="315.0" layoutY="454.0" mnemonicParsing="false" text="Insertar" />
       <Button layoutX="398.0" layoutY="454.0" mnemonicParsing="false" text="Eliminar" />
-      <TableView layoutX="30.0" layoutY="118.0" prefHeight="321.0" prefWidth="490.0" />
-      <Button layoutX="480.0" layoutY="454.0" mnemonicParsing="false" text="Salir" />
+      <TableView fx:id="tableRoute" layoutX="30.0" layoutY="118.0" prefHeight="321.0" prefWidth="490.0" />
+      <Button layoutX="480.0" layoutY="454.0" mnemonicParsing="false" onAction="#closeWindow3" text="Salir" />
       <GridPane layoutX="127.0" layoutY="69.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.0" minWidth="10.0" prefWidth="117.0" />
@@ -26,9 +26,9 @@
         </rowConstraints>
          <children>
             <Label text="Omnibus:" />
-            <ComboBox prefWidth="155.0" GridPane.columnIndex="2" />
+            <ComboBox fx:id="comboBoxBus" prefWidth="155.0" GridPane.columnIndex="2" />
          </children>
       </GridPane>
-      <Label alignment="CENTER" layoutX="-4.0" layoutY="23.0" prefHeight="17.0" prefWidth="544.0" text="Registro de rutas" />
+      <Label fx:id="scenePane3" alignment="CENTER" layoutX="-4.0" layoutY="23.0" prefHeight="17.0" prefWidth="544.0" text="Registro de rutas" />
    </children>
 </AnchorPane>

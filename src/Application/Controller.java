@@ -34,9 +34,10 @@ public class Controller {
     private Button salirButton;
     @FXML
     private AnchorPane scenePane2;
+    @FXML
     private AnchorPane scenePane3;
     @FXML
-    Stage stage;
+    private Stage stage;
     @FXML
     private VBox VBoxSalir;
     @FXML
@@ -50,7 +51,7 @@ public class Controller {
     @FXML
     private TextField MatriculaTextField;
     @FXML
-    private Spinner asientosSpinner;
+    private Spinner<Integer> asientosSpinner;
     @FXML
     private ScrollPane scrollPane;
     @FXML
@@ -61,6 +62,8 @@ public class Controller {
     private ImageView icoInfoMat;
     @FXML
     private TreeView treeView;
+    @FXML
+    private TableView tableRoute;
 
     public void drawMap() throws IOException {
         FXMLLoader root1 = FXMLLoader.load(getClass().getResource("map.fxml"));
@@ -69,7 +72,6 @@ public class Controller {
     }
 
     public void loadScene2(MouseEvent e) throws IOException {
-
         Stage secondStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("Scene2.fxml"));
         secondStage.initModality(Modality.APPLICATION_MODAL);
@@ -94,8 +96,6 @@ public class Controller {
         scene.setFill(Color.rgb(243, 243, 243, 0.6));
         thirdStage.setAlwaysOnTop(true);
         thirdStage.setScene(scene);
-        thirdStage.setX(100);
-        // thirdStage.setY(0);
         thirdStage.show();
     }
 
@@ -106,6 +106,11 @@ public class Controller {
 
     public void closeWindow1(MouseEvent e) {
         stage = (Stage) scenePane1.getScene().getWindow();
+        stage.close();
+    }
+
+    public void closeWindow3(MouseEvent e) {
+        // stage = (Stage) scenePane3.getScene().getWindow();
         stage.close();
     }
 
