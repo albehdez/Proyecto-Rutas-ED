@@ -4,8 +4,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="scenePane2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="544.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller">
+<AnchorPane fx:id="scenePane2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="544.0" styleClass="rounded-window" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Scene2">
    <children>
       <Label fx:id="tituloscene2" layoutY="21.0" prefHeight="17.0" prefWidth="544.0" stylesheets="@style.css" text="Registro de Omnibus.">
          <font>
@@ -52,7 +53,7 @@
             </ImageView>
          </children>
       </GridPane>
-      <Button fx:id="SalirButton" layoutX="467.0" layoutY="449.0" mnemonicParsing="false" onAction="#closeWindow2" text="Cerrar">
+      <Button fx:id="SalirButton" layoutX="467.0" layoutY="449.0" mnemonicParsing="false" onAction="#closeWindow2" styleClass="rounded-window" text="Cerrar">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -84,6 +85,12 @@
             </Button>
          </children>
       </GridPane>
-      <TreeView fx:id="treeView" layoutX="29.0" layoutY="235.0" prefHeight="200.0" prefWidth="489.0" />
+      <TableView fx:id="tableBus" layoutX="22.0" layoutY="235.0" prefHeight="200.0" prefWidth="502.0">
+         <columns>
+            <TableColumn fx:id="localidadColumn" prefWidth="120.0" text="Localidad" />
+            <TableColumn fx:id="terminalColumn" prefWidth="128.0" text="Terminal" />
+            <TableColumn fx:id="matriuculaColumn" prefWidth="132.0" text="Matricula" />
+            <TableColumn fx:id="cantAsientosColumn" prefWidth="120.0" text="Cantidad de asientos" />
+         </columns></TableView>
    </children>
 </AnchorPane>

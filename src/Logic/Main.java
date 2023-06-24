@@ -8,48 +8,57 @@ import util.AuxC4Table;
 public class Main {
 
 	public static void main(String[] args) {
-		
-		University.getInstance().insert("L1", "T1", "b1", 1);
-		University.getInstance().insert("L1", "T2", "b2", 43);
-		University.getInstance().insert("L2", "T3", "b3", 780);
-		University.getInstance().insert("L3", "T4", "b4", 123);
-		University.getInstance().insert("L3", "T5", "b5", 132);
-		
-		LinkedList<AuxC4Table> list = University.getInstance().getNodesInfo();
-		University.getInstance().deleteBus("L1", "T1", "b1");	
-		University.getInstance().deleteBus("L1", "T2", "b2");
-		//University.getInstance().deleteBus("L2", "T3", "b3");
-		//University.getInstance().deleteBus("L3", "T4", "b4");
-		//University.getInstance().deleteBus("L3", "T5", "b5");
 
-		Iterator<Object> it = University.getInstance().getTree().inDepthIterator();
+		// University.getInstance().insert("L1", "T1", "b1", 1);
+		// University.getInstance().insert("L1", "T2", "b2", 43);
+		// University.getInstance().insert("L2", "T3", "b3", 780);
+		// University.getInstance().insert("L3", "T4", "b4", 123);
+		// University.getInstance().insert("L3", "T5", "b5", 132);
 
-		while (it.hasNext()) {
-			Object nod = it.next();
-			if (nod instanceof Terminal)
-				System.out.println(((Terminal) nod).getId());
-			else if (nod instanceof Location)
-				System.out.println(((Location) nod).getName());
-			else
-				System.out.println(((Bus) nod).getTuition());
-		}
+		// LinkedList<AuxC4Table> list = University.getInstance().getNodesInfo();
+		// System.out.println(list);
+		// Iterator<AuxC4Table> it = list.iterator();
+		// while (it.hasNext()) {
+		// AuxC4Table a = it.next();
+		// System.out.println(
+		// a.getLocation().getName() + ", " + a.getTerminal().getId() + "," +
+		// a.getBus().getTuition() + ", "
+		// + a.getBus().getSeating());
+		// }
+		// University.getInstance().deleteBus("L1", "T1", "b1");
+		// University.getInstance().deleteBus("L1", "T2", "b2");
+		// University.getInstance().deleteBus("L2", "T3", "b3");
+		// University.getInstance().deleteBus("L3", "T4", "b4");
+		// University.getInstance().deleteBus("L3", "T5", "b5");
 
-		University.getInstance().deleteBus("L1", "T1", "b1");
-		University.getInstance().deleteBus("L1", "T2", "b2");
+		// Iterator<Object> it = University.getInstance().getTree().inDepthIterator();
 
-		System.out.println();
+		// while (it.hasNext()) {
+		// Object nod = it.next();
+		// if (nod instanceof Terminal)
+		// System.out.println(((Terminal) nod).getId());
+		// else if (nod instanceof Location)
+		// System.out.println(((Location) nod).getName());
+		// else
+		// System.out.println(((Bus) nod).getTuition());
+		// }
 
-		it = University.getInstance().getTree().inDepthIterator();
+		// University.getInstance().deleteBus("L1", "T1", "b1");
+		// University.getInstance().deleteBus("L1", "T2", "b2");
 
-		while (it.hasNext()) {
-			Object nod = it.next();
-			if (nod instanceof Terminal)
-				System.out.println(((Terminal) nod).getId());
-			else if (nod instanceof Location)
-				System.out.println(((Location) nod).getName());
-			else
-				System.out.println(((Bus) nod).getTuition());
-		}
+		// System.out.println();
+
+		// it = University.getInstance().getTree().inDepthIterator();
+
+		// while (it.hasNext()) {
+		// Object nod = it.next();
+		// if (nod instanceof Terminal)
+		// System.out.println(((Terminal) nod).getId());
+		// else if (nod instanceof Location)
+		// System.out.println(((Location) nod).getName());
+		// else
+		// System.out.println(((Bus) nod).getTuition());
+		// }
 
 		// University.getInstance().getMap().insertVertex("D");
 		// University.getInstance().getMap().insertVertex(3);

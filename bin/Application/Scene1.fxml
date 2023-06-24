@@ -13,11 +13,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="scenePane1" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller">
+<AnchorPane fx:id="scenePane1" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Scene1">
    <children>
-      <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutY="-1.0" maxWidth="-Infinity" onScroll="#zoom" pannable="true" prefHeight="670.0" prefWidth="1350.0" vbarPolicy="NEVER">
+      <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutY="-1.0" maxWidth="-Infinity" onScroll="#zoom" pannable="true" prefHeight="670.0" prefWidth="1350.0" scaleShape="false" vbarPolicy="NEVER">
          <content>
-         <fx:include fx:id="panelMapa" source="map.fxml" />
+         <fx:include fx:id="panelMapa" source="Map.fxml" />
             <!-- <Pane fx:id="scrollpanepane" prefHeight="353.0" prefWidth="1147.0" /> -->
          </content></ScrollPane>
       <Pane fx:id="OpcionesPanel" layoutX="15.0" layoutY="557.0" maxWidth="-Infinity" prefHeight="97.0" prefWidth="1318.0" stylesheets="@style.css">
@@ -41,7 +41,7 @@
                   <Image url="@../images/logo%200.png" />
                </image>
             </ImageView>
-            <Label fx:id="title" layoutX="112.0" layoutY="39.0" text="CUJAE-Trans">
+            <Label fx:id="title" layoutX="112.0" layoutY="39.0" text="CUJAE-Rutas">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></Label>

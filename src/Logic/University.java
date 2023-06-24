@@ -1,18 +1,8 @@
 package Logic;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Map;
-import java.util.Stack;
-
 import cu.edu.cujae.ceis.graph.LinkedGraph;
-import cu.edu.cujae.ceis.graph.edge.Edge;
-import cu.edu.cujae.ceis.graph.edge.WeightedEdge;
-import cu.edu.cujae.ceis.graph.interfaces.ILinkedDirectedGraph;
 import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeNotDirectedGraph;
-import cu.edu.cujae.ceis.tree.TreeNode;
 import cu.edu.cujae.ceis.tree.binary.BinaryTreeNode;
 import cu.edu.cujae.ceis.tree.general.GeneralTree;
 import cu.edu.cujae.ceis.tree.iterators.general.InDepthIterator;
@@ -43,169 +33,9 @@ public class University {
 		return tree;
 	}
 
-	// // metodo iniciado por Alberto
-	// public void addBus(String location, String tuition, String terminal) {
-	// Terminal t = new Terminal(terminal);
-	// Bus b = new Bus(tuition);
-	// TerminalLocation l = new TerminalLocation(location);
-	// BinaryTreeNode<TreeNode> bt = new BinaryTreeNode<Object>(t);
-	// BinaryTreeNode<TreeNode> bb = new BinaryTreeNode<TreeNode>(b);
-	// BinaryTreeNode<TreeNode> bl = new BinaryTreeNode<TreeNode>(l);
-
-	// if (tree.isEmpty()) {
-
-	// tree.insertNode(bl, null);
-	// tree.insertNode(bt, bl);
-	// tree.insertNode(bb, bt);
-	// } else {
-	// boolean value = true;
-	// BinaryTreeNode<Object> aux = (BinaryTreeNode) tree.getRoot();
-	// while (aux != null && value) {
-	// if (((TerminalLocation) aux.getInfo()).getName().equals(location))
-	// value = false;
-	// aux = aux.getRight();
-	// }
-	// if (value) {
-
-	// }
-	// }
-
-	// }
-
-	// private BinaryTreeNode<Object> searchNode(String id) {
-	// BinaryTreeNode<Object> rNode = null;
-	// if (!this.tree.isEmpty()) {
-	// InDepthIterator<Object> iterator = inDepthIterator();
-	// boolean stop = false;
-	// while (iterator.hasNext() && !stop) {
-	// BinaryTreeNode<Object> iterNode = iterator.nextNode();
-	// if (iterNode.getInfo() instanceof LocationT) {
-	// if (((LocationT) iterNode.getInfo()).getName().equals(id)) {
-	// stop = true;
-	// rNode = iterNode;
-
-	// }
-	// } else if (iterNode.getInfo() instanceof Terminal) {
-	// if (((Terminal) iterNode.getInfo()).getId().equals(id)) {
-	// stop = true;
-	// rNode = iterNode;
-
-	// }
-	// }
-	// }
-	// }
-	// return rNode;
-	// }
-
 	private InDepthIterator<Object> inDepthIterator() {
 		return new InDepthIterator<Object>(this.tree);
 	}
-
-	// public Stack<Vertex> Shortest_Path(Vertex start, Vertex end) {
-	// if (start.getEdgeList().size() == 0 || end.getEdgeList().size() == 0) {
-	// return null;
-	// }
-	// // creando y llenado listas
-	// ArrayList<Vertex> noVisitados = new
-	// ArrayList<>(grafo.getVerticesList().size());
-	// Stack<Vertex> result = new Stack<Vertex>();
-	// ArrayList<Dijktra_node_path> registro = new
-	// ArrayList<>(grafo.getVerticesList().size());
-	// Iterator<Vertex> verIter = grafo.getVerticesList().iterator();
-	// Map<String, Dijktra_node_path> mapaReg = new HashMap<>();
-	// Dijktra_node_path temp2 = null;
-
-	// while (verIter.hasNext()) {
-	// Vertex temp = verIter.next();
-
-	// noVisitados.add(temp);
-
-	// if (temp.getInfo().equals(start.getInfo()))// si es el nodo inicial
-	// {
-	// temp2 = new Dijktra_node_path(temp, 0, null);// la 1era fila se llena con los
-	// valores nodo/distancia = 0
-	// // xq estoy en el inicio y nodo anterior null,pues no
-	// // hay anterior
-	// } else {
-	// temp2 = new Dijktra_node_path(temp);
-	// }
-	// mapaReg.put(((Parada) temp2.getVertice().getInfo()).getID(), temp2);
-	// registro.add(temp2);// se agrega en cada posicion una fila y se conforma la
-	// tabla como tal
-	// }
-
-	// // comienza la logica
-	// int cont = 500;
-	// LinkedList<Edge> adj = null;
-	// Iterator<Edge> ite = null;
-	// WeightedEdge arco;
-	// Vertex nodoAnalizandose = null;
-	// Vertex vertex = null;
-
-	// while (noVisitados.size() != 0) {
-	// nodoAnalizandose = BuscarMenor(noVisitados, mapaReg);
-	// adj = nodoAnalizandose.getEdgeList();
-	// ite = adj.iterator();
-	// while (ite.hasNext()) {
-	// arco = (WeightedEdge) ite.next();
-	// vertex = arco.getVertex();
-	// Dijktra_node_path regNodoAdyacente = mapaReg.get(((Parada)
-	// vertex.getInfo()).getID());
-	// Dijktra_node_path regNodoAnalizandose = mapaReg.get(((Parada)
-	// nodoAnalizandose.getInfo()).getID());
-
-	// // si el arco es correcto, hay q buscar en el arreglo de paradas,cada vertice
-	// es
-	// // una parada
-	// if (SonSucesivos(nodoAnalizandose, vertex)) {
-	// // llenar la 2da columna con el peso del camino y la 3era con el nodo
-	// anterior
-	// // para cada fila
-	// // hay que buscar el indice en el que esta el vertice q estoy analizando
-	// if (regNodoAnalizandose.getCosto() != Integer.MAX_VALUE && regNodoAdyacente
-	// .getCosto() > regNodoAnalizandose.getCosto() + (Integer) arco.getWeight()) {
-	// regNodoAdyacente.setCosto(regNodoAnalizandose.getCosto() + (Integer)
-	// arco.getWeight());
-	// regNodoAdyacente.setAnterior(nodoAnalizandose);
-	// mapaReg.put(((Parada) regNodoAdyacente.getVertice().getInfo()).getID(),
-	// regNodoAdyacente);
-	// cont = 500;
-	// }
-	// } else if ((Integer) arco.getWeight() <= cont) {
-	// if (regNodoAnalizandose.getCosto() != Integer.MAX_VALUE && regNodoAdyacente
-	// .getCosto() > regNodoAnalizandose.getCosto() + (Integer) arco.getWeight()) {
-	// regNodoAdyacente.setCosto(regNodoAnalizandose.getCosto() + (Integer)
-	// arco.getWeight());
-	// regNodoAdyacente.setAnterior(nodoAnalizandose);
-	// mapaReg.put(((Parada) regNodoAdyacente.getVertice().getInfo()).getID(),
-	// regNodoAdyacente);
-	// cont -= (Integer) arco.getWeight();
-	// }
-	// }
-	// }
-	// noVisitados.remove(nodoAnalizandose);
-	// // nodoAnalizandose = BuscarMenor(noVisitados,mapaReg);
-	// // adj = nodoAnalizandose.getEdgeList();
-	// }
-
-	// if (mapaReg.get(((Parada) end.getInfo()).getID()).getCosto() ==
-	// Integer.MAX_VALUE) {
-	// result = null;
-
-	// } else {
-	// result.push(end);
-	// Vertex otroTemp = mapaReg.get(((Parada)
-	// end.getInfo()).getID()).getAnterior();
-	// while (mapaReg.get(((Parada) otroTemp.getInfo()).getID()).getAnterior() !=
-	// null) {
-	// result.push(otroTemp);
-	// otroTemp = mapaReg.get(((Parada) otroTemp.getInfo()).getID()).getAnterior();
-	// }
-	// result.push(otroTemp);
-	// }
-
-	// return result;
-	// }
 
 	public boolean insert(String Location, String Terminal, String Bus, int seating) {
 
@@ -366,12 +196,11 @@ public class University {
 							tree.deleteNode(nodeTerminal);
 							if (nodeLocalidad.getLeft() == null) {
 								BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) this.tree.getRoot();
-
 								boolean stop = false;
-								if(((Location)aux.getInfo()).getName().equalsIgnoreCase(((Location)nodeLocalidad.getInfo()).getName())){
+								if (((Location) aux.getInfo()).getName()
+										.equalsIgnoreCase(((Location) nodeLocalidad.getInfo()).getName())) {
 									this.tree.setRoot(aux.getRight());
-								}
-								else{
+								} else {
 									while (!stop && aux != null) {
 										if (((Location) aux.getRight().getInfo()).getName()
 												.equalsIgnoreCase(((Location) nodeLocalidad.getInfo()).getName())) {
@@ -381,7 +210,6 @@ public class University {
 										aux = aux.getRight();
 									}
 								}
-								
 							}
 						}
 					} else {
@@ -400,41 +228,37 @@ public class University {
 
 		return deleted;
 	}
-	
-	
-	public LinkedList<AuxC4Table> getNodesInfo(){
+
+	public LinkedList<AuxC4Table> getNodesInfo() {
 		LinkedList<AuxC4Table> list = new LinkedList<AuxC4Table>();
-		Location currentLocation=null;
-		Terminal currentTerminal=null;
-		Object current=null;
+		Location currentLocation = null;
+		Terminal currentTerminal = null;
+		Object current = null;
 
-		if(!this.tree.isEmpty()){
+		if (!this.tree.isEmpty()) {
 			InDepthIterator<Object> iter = inDepthIterator();
-			while(iter.hasNext()){
-					current=iter.next();
-				if(current instanceof Location){
-					Location aux =((Location) current);
-					
-					if(currentLocation==null){						
-						currentLocation=aux;
+			while (iter.hasNext()) {
+				current = iter.next();
+				if (current instanceof Location) {
+					Location aux = ((Location) current);
 
-					}else if(aux!=currentLocation){
-						currentLocation=aux;
+					if (currentLocation == null) {
+						currentLocation = aux;
+
+					} else if (aux != currentLocation) {
+						currentLocation = aux;
 					}
 
-				}
-				else if(current instanceof Terminal){
-					Terminal aux =(Terminal) current;
+				} else if (current instanceof Terminal) {
+					Terminal aux = (Terminal) current;
 
-					if(currentTerminal==null){
-						currentTerminal=aux;
+					if (currentTerminal == null) {
+						currentTerminal = aux;
+					} else if (aux != currentTerminal) {
+						currentTerminal = aux;
 					}
-					else if(aux!=currentTerminal){
-						currentTerminal=aux;
-					}
-				}
-				else if(current instanceof Bus){
-					Bus aux =(Bus) current;
+				} else if (current instanceof Bus) {
+					Bus aux = (Bus) current;
 					AuxC4Table info = new AuxC4Table();
 					info.setLocation(currentLocation);
 					info.setTerminal(currentTerminal);
@@ -444,9 +268,6 @@ public class University {
 				}
 			}
 		}
-
-
-
 		return list;
 	}
 }

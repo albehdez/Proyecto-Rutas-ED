@@ -1,20 +1,16 @@
 #OpcionesPanel {
-    -fx-background-color: rgba(243, 243, 243, 0.6);
+    -fx-background-color: rgba(243, 243, 243, 0.7);
     -fx-background-radius: 20px;
 }
 
 #scenePane2 {
-    -fx-background-color: rgba(243, 243, 243, 0.6);
-    -fx-background-radius: 20px;
+    -fx-background-color: rgba(243, 243, 243, 0.7);
+    -fx-background-radius: 8px;
 }
 
 #scenePane3 {
-    -fx-background-color: rgba(243, 243, 243, 0.6);
-    -fx-background-radius: 20px;
-}
-
-#rectangleStreet {
-    -fx-fill: #E3E1D2;
+    -fx-background-color: rgba(243, 243, 243, 0.7);
+    -fx-background-radius: 8px;
 }
 
 #panelMapa {
@@ -22,9 +18,6 @@
     -fx-font-family: Verdana;
 }
 
-#canva {
-    -fx-background-color: blue;
-}
 
 #tituloscene2 {
     -fx-alignment: center;
