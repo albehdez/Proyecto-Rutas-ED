@@ -5,6 +5,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
@@ -13,6 +14,7 @@ import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -44,6 +46,7 @@ public class Scene1 {
     public void loadScene3(MouseEvent e) throws IOException {
         Stage thirdStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("Scene3.fxml"));
+        // thirdStage.initModality(Modality.APPLICATION_MODAL);
         thirdStage.initStyle(StageStyle.TRANSPARENT);
         Scene scene = new Scene(root);
         String css = "style.css";
@@ -51,6 +54,8 @@ public class Scene1 {
         scene.setFill(Color.rgb(243, 243, 243, 0.0));
         thirdStage.setAlwaysOnTop(true);
         thirdStage.setScene(scene);
+        thirdStage.setY(100);
+        thirdStage.setX(25);
         thirdStage.show();
     }
 

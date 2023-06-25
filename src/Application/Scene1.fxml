@@ -20,7 +20,7 @@
          <fx:include fx:id="panelMapa" source="Map.fxml" />
             <!-- <Pane fx:id="scrollpanepane" prefHeight="353.0" prefWidth="1147.0" /> -->
          </content></ScrollPane>
-      <Pane fx:id="OpcionesPanel" layoutX="15.0" layoutY="557.0" maxWidth="-Infinity" prefHeight="97.0" prefWidth="1318.0" stylesheets="@style.css">
+      <Pane fx:id="OpcionesPanel" layoutX="15.0" layoutY="563.0" maxWidth="-Infinity" prefHeight="97.0" prefWidth="1318.0" stylesheets="@style.css">
          <children>
             <Button fx:id="GestionarButton1" layoutX="345.0" layoutY="21.0" mnemonicParsing="false" onAction="#loadScene2" style="-fx-background-color: white;" stylesheets="@style.css" text="Gestionar omnibus" textAlignment="CENTER" visible="false">
                <font>
@@ -59,7 +59,7 @@
                <children>
                   <VBox fx:id="gestionarRutasButton" onMouseClicked="#loadScene3" prefHeight="72.0" prefWidth="44.0">
                      <children>
-                        <ImageView fx:id="icon" fitHeight="48.0" fitWidth="67.0" onMouseClicked="#loadScene3" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="icon" fitHeight="48.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/route%20button.png" />
                            </image>

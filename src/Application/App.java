@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import util.Init;
 
 public class App extends Application {
 
@@ -22,5 +23,6 @@ public class App extends Application {
         stage.setTitle("CUJAE-Rutas");
         stage.setScene(scene);
         stage.show();
+        Init.data();
     }
 }

@@ -15,9 +15,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="scenePane2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="493.0" prefWidth="544.0" styleClass="rounded-window" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Scene2">
+<AnchorPane fx:id="scenePane2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="523.0" prefWidth="544.0" styleClass="rounded-window" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Scene2">
    <children>
-      <Label fx:id="tituloscene2" layoutY="21.0" prefHeight="17.0" prefWidth="544.0" stylesheets="@style.css" text="Registro de Omnibus.">
+      <Label fx:id="tituloscene2" layoutY="21.0" prefHeight="17.0" prefWidth="544.0" styleClass="tituloScene" stylesheets="@style.css" text="Registro de Omnibus." textAlignment="CENTER">
          <font>
             <Font name="Niagara Engraved" size="14.0" />
          </font>
@@ -38,14 +38,14 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="LocalidadTextField" onKeyTyped="#checkEmpty" GridPane.columnIndex="2" />
+            <TextField fx:id="LocalidadTextField" disable="true" onKeyTyped="#checkEmpty" GridPane.columnIndex="2" />
             <Label fx:id="LocalidadLabel" text="Localidad:" />
             <Label fx:id="TerminalLabel" text="Terminal:" GridPane.columnIndex="4" />
             <Label fx:id="MatriculaLabel" text="Matricula:" GridPane.rowIndex="2" />
-            <TextField fx:id="TermianlTextField" onKeyTyped="#checkEmpty" prefHeight="25.0" prefWidth="129.0" GridPane.columnIndex="5" />
-            <TextField fx:id="MatriculaTextField" onKeyTyped="#checkEmpty" onMouseMoved="#sugerencia" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField fx:id="TermianlTextField" disable="true" onKeyTyped="#checkEmpty" prefHeight="25.0" prefWidth="129.0" GridPane.columnIndex="5" />
+            <TextField fx:id="MatriculaTextField" disable="true" onKeyTyped="#checkEmpty" onMouseMoved="#sugerencia" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Label text="Cantidad de Asientos:" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <Spinner fx:id="asientosSpinner" initialValue="15" max="30" min="15" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <Spinner fx:id="asientosSpinner" disable="true" initialValue="15" max="30" min="15" GridPane.columnIndex="5" GridPane.rowIndex="2" />
             <ImageView fx:id="icoInfoMat" fitHeight="23.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <image>
                   <Image url="@../images/info-solid.png" />
@@ -53,11 +53,6 @@
             </ImageView>
          </children>
       </GridPane>
-      <Button fx:id="SalirButton" layoutX="467.0" layoutY="449.0" mnemonicParsing="false" onAction="#closeWindow2" styleClass="rounded-window" text="Cerrar">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Button>
       <GridPane layoutX="123.0" layoutY="178.0" prefHeight="30.0" prefWidth="300.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -67,7 +62,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="InsertarButton" disable="true" mnemonicParsing="false" onAction="#insertBus" style="-fx-background-color: #25d366;" text="Insertar" textFill="WHITE">
+            <Button fx:id="InsertarButton" disable="true" mnemonicParsing="false" onAction="#insertBus" style="-fx-background-color: #25d366;" text="Aceptar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -75,7 +70,7 @@
                   <Insets left="30.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="EliminarButton" disable="true" mnemonicParsing="false" style="-fx-background-color: #FF0000;" text="Eliminar" textFill="WHITE" GridPane.columnIndex="1">
+            <Button fx:id="EliminarButton" disable="true" mnemonicParsing="false" onAction="#cancelButton" style="-fx-background-color: #FF0000;" text="Cancelar" textFill="WHITE" GridPane.columnIndex="1">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -85,12 +80,42 @@
             </Button>
          </children>
       </GridPane>
-      <TableView fx:id="tableBus" layoutX="22.0" layoutY="235.0" prefHeight="200.0" prefWidth="502.0">
+      <TableView fx:id="tableBus" layoutX="22.0" layoutY="235.0" prefHeight="219.0" prefWidth="502.0">
          <columns>
             <TableColumn fx:id="localidadColumn" prefWidth="120.0" text="Localidad" />
             <TableColumn fx:id="terminalColumn" prefWidth="128.0" text="Terminal" />
             <TableColumn fx:id="matriuculaColumn" prefWidth="132.0" text="Matricula" />
             <TableColumn fx:id="cantAsientosColumn" prefWidth="120.0" text="Cantidad de asientos" />
          </columns></TableView>
+      <GridPane layoutX="166.0" layoutY="475.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false" text="Agregar">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button disable="true" mnemonicParsing="false" text="Modificar" GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button disable="true" mnemonicParsing="false" text="Eliminar" GridPane.columnIndex="2">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button fx:id="SalirButton" mnemonicParsing="false" onAction="#closeWindow" styleClass="rounded-window" text="Cerrar" GridPane.columnIndex="3">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

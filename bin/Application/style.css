@@ -1,25 +1,26 @@
 #OpcionesPanel {
-    -fx-background-color: rgba(243, 243, 243, 0.7);
+    -fx-background-color: rgba(243, 243, 243, 0.8);
     -fx-background-radius: 20px;
 }
 
 #scenePane2 {
-    -fx-background-color: rgba(243, 243, 243, 0.7);
+    -fx-background-color: rgba(243, 243, 243, 0.8);
     -fx-background-radius: 8px;
 }
 
 #scenePane3 {
-    -fx-background-color: rgba(243, 243, 243, 0.7);
+    -fx-background-color: rgba(243, 243, 243, 0.8);
     -fx-background-radius: 8px;
 }
 
 #panelMapa {
     -fx-background-color: rgba(22, 201, 76, 0.6);
     -fx-font-family: Verdana;
+    -fx-font-size: 14;
 }
 
 
-#tituloscene2 {
+.tituloScene {
     -fx-alignment: center;
     -fx-font-family: "verdana";
 }
