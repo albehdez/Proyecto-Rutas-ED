@@ -31,16 +31,16 @@ public class Init {
         University.getInstance().getMap().insertVertex(g);
         University.getInstance().getMap().insertVertex(h);
 
-        University.getInstance().getMap().insertWEdgeNDG(0, 1, 1);
-        University.getInstance().getMap().insertWEdgeNDG(1, 2, 3);
-        University.getInstance().getMap().insertWEdgeNDG(0, 3, 5);
-        University.getInstance().getMap().insertWEdgeNDG(0, 4, 2);
-        University.getInstance().getMap().insertWEdgeNDG(3, 4, 3);
-        University.getInstance().getMap().insertWEdgeNDG(4, 5, 3);
-        University.getInstance().getMap().insertWEdgeNDG(2, 5, 5);
-        University.getInstance().getMap().insertWEdgeNDG(3, 6, 8);
-        University.getInstance().getMap().insertWEdgeNDG(6, 7, 9);
-        University.getInstance().getMap().insertWEdgeNDG(4, 7, 1);
+        University.getInstance().getMap().insertWEdgeNDG(0, 1, 1.0);
+        University.getInstance().getMap().insertWEdgeNDG(1, 2, 3.0);
+        University.getInstance().getMap().insertWEdgeNDG(0, 3, 5.0);
+        University.getInstance().getMap().insertWEdgeNDG(1, 4, 2.0);
+        University.getInstance().getMap().insertWEdgeNDG(3, 4, 3.0);
+        University.getInstance().getMap().insertWEdgeNDG(4, 5, 3.0);
+        University.getInstance().getMap().insertWEdgeNDG(2, 5, 5.0);
+        University.getInstance().getMap().insertWEdgeNDG(3, 6, 8.0);
+        University.getInstance().getMap().insertWEdgeNDG(6, 7, 9.0);
+        University.getInstance().getMap().insertWEdgeNDG(4, 7, 1.0);
 
     }
 

@@ -1,13 +1,15 @@
-// import java.util.Comparator;
+package util;
 
-// import javafx.util.Pair;
+import java.util.Comparator;
 
-// public class MyComparator<V, T> implements Comparator<Pair<Double, T>> {
+import javafx.util.Pair;
 
-// @Override
-// public int compare(Pair<Double, T> o1, Pair<Double, T> o2) {
-// Double a = o1.getKey(), b = o2.getKey();
-// return a.compareTo(b);
-// }
+public class MyComparator<V, T> implements Comparator<Label<Double, T>> {
 
-// }
+    @Override
+    public int compare(Label<Double, T> o1, Label<Double, T> o2) {
+        Double a = o1.getWeigth(), b = o2.getWeigth();
+        return a.compareTo(b);
+    }
+
+}

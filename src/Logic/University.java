@@ -1,12 +1,29 @@
 package Logic;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.PriorityQueue;
+
+import javax.swing.text.html.HTMLDocument.Iterator;
+
 import cu.edu.cujae.ceis.graph.LinkedGraph;
+import cu.edu.cujae.ceis.graph.edge.Edge;
+import cu.edu.cujae.ceis.graph.edge.WeightedEdge;
 import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeNotDirectedGraph;
+import cu.edu.cujae.ceis.graph.vertex.Vertex;
 import cu.edu.cujae.ceis.tree.binary.BinaryTreeNode;
 import cu.edu.cujae.ceis.tree.general.GeneralTree;
 import cu.edu.cujae.ceis.tree.iterators.general.InDepthIterator;
+import javafx.scene.layout.Priority;
+import javafx.util.Pair;
 import util.AuxC4Table;
+import util.AuxClassPath;
+import util.Label;
+import util.MyComparator;
 
 public class University {
 
@@ -269,5 +286,76 @@ public class University {
 			}
 		}
 		return list;
+	}
+
+	public ArrayList<Label<Double, Object>> dijkstra(Object a, Object b) {
+		ArrayList<Label<Double, Object>> labels = new ArrayList<Label<Double, Object>>(map.getVerticesList().size());
+
+		for (Vertex v : map.getVerticesList()) {
+			labels.add(new Label<>(Double.MAX_VALUE, null));
+		}
+
+		PriorityQueue<Label<Double, Object>> queue = new PriorityQueue<Label<Double, Object>>(new MyComparator());
+
+		int posInitial = map.getVerticesList().indexOf(a);
+		labels.set(posInitial, new Label<Double, Object>(0, a));
+		queue.add(new Label<Double, Object>(0, a));
+		Object minValue = null;
+		while (!queue.isEmpty() && !b.equals(minValue)) {
+			minValue = queue.peek().getNode();
+			// int postFinal = map.getVerticesList().indexOf(b);
+			int posMinLabel = map.getVerticesList().indexOf(queue.peek().getNode());
+			for (Object i : map.adjacentsG(posMinLabel)) {
+				double cost = getEdgeWeigth(map.getVerticesList().get(posMinLabel), (Vertex) i);
+				int auxpos = map.getVerticesList().lastIndexOf(i);
+				if (labels.get(auxpos).getWeigth() > labels.get(posMinLabel).getWeigth() + cost) {
+					labels.set(auxpos, new Label<>(labels.get(posMinLabel).getWeigth() + cost, minValue));
+					queue.add(new Label<Double, Object>(labels.get(posMinLabel).getWeigth() + cost, i));
+				}
+			}
+			queue.poll();
+		}
+
+		return labels;
+	}
+
+	private void dijkstraPath(Object nodoInicial, Object nodoFinal, ArrayList<Label<Double, Object>> labels,
+			Deque<Object> path) {
+		path.push(nodoFinal);
+		if (!nodoInicial.equals(nodoFinal)) {
+			int posNodoFinal = map.getVerticesList().indexOf(nodoFinal);
+			dijkstraPath(nodoInicial, labels.get(posNodoFinal).getNode(), labels, path);
+		}
+	}
+
+	public AuxClassPath dijkstraQuery(Object a, Object b) {
+		AuxClassPath data = new AuxClassPath();
+
+		int posNodoFinal = map.getVerticesList().indexOf(b);
+		ArrayList<Label<Double, Object>> dist = dijkstra(a, b);
+		Deque<Object> path = new ArrayDeque<Object>();
+		dijkstraPath(a, b, dist, path);
+		double cant = 0;
+		cant = cant + dist.get(posNodoFinal).getWeigth();
+		data.setWeigth(cant);
+		while (!path.isEmpty()) {
+			data.getList().add(path.pop());
+		}
+		return data;
+	}
+
+	public double getEdgeWeigth(Vertex a, Vertex b) {
+		double weight = -1;
+		boolean value = false;
+		LinkedList<Edge> list = a.getEdgeList();
+		ListIterator<Edge> it = list.listIterator();
+		while (!value && it.hasNext()) {
+			WeightedEdge eaux = (WeightedEdge) it.next();
+			if (b.equals(eaux.getVertex())) {
+				weight = (double) eaux.getWeight();
+				value = true;
+			}
+		}
+		return weight;
 	}
 }
