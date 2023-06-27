@@ -12,6 +12,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Screen;

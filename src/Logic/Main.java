@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 import cu.edu.cujae.ceis.graph.vertex.Vertex;
-import util.AuxC4Table;
+import util.AuxClassBusTable;
 import util.AuxClassPath;
 import util.Init;
 
@@ -18,21 +18,21 @@ public class Main {
 		// University.getInstance().insert("L3", "T4", "b4", 123);
 		// University.getInstance().insert("L3", "T5", "b5", 132);
 
-		// // LinkedList<AuxC4Table> list = University.getInstance().getNodesInfo();
-		// // System.out.println(list);
-		// // Iterator<AuxC4Table> it = list.iterator();
-		// // while (it.hasNext()) {
-		// // AuxC4Table a = it.next();
-		// // System.out.println(
-		// // a.getLocation().getName() + ", " + a.getTerminal().getId() + "," +
-		// // a.getBus().getTuition() + ", "
-		// // + a.getBus().getSeating());
-		// // }
-		// // University.getInstance().deleteBus("L1", "T1", "b1");
-		// // University.getInstance().deleteBus("L1", "T2", "b2");
-		// // University.getInstance().deleteBus("L2", "T3", "b3");
-		// // University.getInstance().deleteBus("L3", "T4", "b4");
-		// // University.getInstance().deleteBus("L3", "T5", "b5");
+		// LinkedList<AuxC4Table> list = University.getInstance().getNodesInfo();
+		// System.out.println(list);
+		// Iterator<AuxC4Table> it = list.iterator();
+		// while (it.hasNext()) {
+		// AuxC4Table a = it.next();
+		// System.out.println(
+		// a.getLocation().getName() + ", " + a.getTerminal().getId() + "," +
+		// a.getBus().getTuition() + ", "
+		// + a.getBus().getSeating());
+		// }
+		// University.getInstance().deleteBus("L1", "T1", "b1");
+		// University.getInstance().deleteBus("L1", "T2", "b2");
+		// University.getInstance().deleteBus("L2", "T3", "b3");
+		// University.getInstance().deleteBus("L3", "T4", "b4");
+		// University.getInstance().deleteBus("L3", "T5", "b5");
 
 		// Iterator<Object> it = University.getInstance().getTree().inDepthIterator();
 
@@ -75,14 +75,14 @@ public class Main {
 		// University.getInstance().getMap().insertWEdgeNDG(1, 2, 6.0);
 		// University.getInstance().getMap().insertWEdgeNDG(0, 2, 1.0);
 
-		AuxClassPath aux = University.getInstance().dijkstraQuery(
+		AuxClassPath aux = University.getInstance().shortestPath(
 				University.getInstance().getMap().getVerticesList().get(0),
-				University.getInstance().getMap().getVerticesList().get(7));
+				University.getInstance().getMap().getVerticesList().get(6));
 		Iterator<Object> it = aux.getList().iterator();
 		System.out.println("Peso: " + aux.getWeigth());
 		while (it.hasNext()) {
 			Vertex o = (Vertex) it.next();
-			System.out.println(((Conner) o.getInfo()).getId());
+			System.out.println(((Corner) o.getInfo()).getId());
 		}
 	}
 }

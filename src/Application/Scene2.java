@@ -1,33 +1,23 @@
 package Application;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import Logic.University;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.geometry.Bounds;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import util.AuxC4Table;
+import util.AuxClassBusTable;
 
 public class Scene2 {
     @FXML
@@ -41,7 +31,7 @@ public class Scene2 {
     @FXML
     private Spinner<Integer> asientosSpinner;
     @FXML
-    private TableView<AuxC4Table> tableBus;
+    private TableView<AuxClassBusTable> tableBus;
     @FXML
     private TableColumn localidadColumn;
     @FXML
@@ -50,7 +40,7 @@ public class Scene2 {
     private TableColumn matriculaColumn;
     @FXML
     private TableColumn cantAsientosColumn;
-    private ObservableList<AuxC4Table> bus;
+    private ObservableList<AuxClassBusTable> bus;
     @FXML
     private Button InsertarButton;
     @FXML
@@ -88,7 +78,7 @@ public class Scene2 {
         String bus = MatriculaTextField.getText();
         int seatsNum = (int) asientosSpinner.getValue();
 
-        University.getInstance().insert(localidad, terminal, bus, seatsNum);
+        University.getInstance().insertBus(localidad, terminal, bus, seatsNum);
 
         LocalidadTextField.setText("");
         TermianlTextField.setText("");
@@ -105,6 +95,10 @@ public class Scene2 {
         alert.setHeaderText(null);
         alert.setContentText("La información se ha enviado correctamente.");
         alert.showAndWait();
+    }
+
+    public void buttonInsertar() {
+
     }
 
     // @FXML

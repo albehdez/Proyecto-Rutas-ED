@@ -1,20 +1,20 @@
 #OpcionesPanel {
-    -fx-background-color: rgba(243, 243, 243, 0.8);
+    -fx-background-color: rgba(227, 225, 210, 0.5);
     -fx-background-radius: 20px;
 }
 
 #scenePane2 {
-    -fx-background-color: rgba(243, 243, 243, 0.8);
+    -fx-background-color: rgba(227, 225, 210, 0.5);
     -fx-background-radius: 8px;
 }
 
 #scenePane3 {
-    -fx-background-color: rgba(243, 243, 243, 0.8);
+    -fx-background-color: rgba(227, 225, 210, 0.5);
     -fx-background-radius: 8px;
 }
 
 #panelMapa {
-    -fx-background-color: rgba(22, 201, 76, 0.6);
+    -fx-background-color: #47ad32;
     -fx-font-family: Verdana;
     -fx-font-size: 14;
 }
@@ -50,6 +50,12 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 3);
 }
 
-.line {
-    -fx-border-radius: 5;
+#street {
+    -fx-border-radius: 5px;
+    -fx-background-color: white;
+}
+
+#circleButton {
+    -fx-background-color: rgba(253, 243, 243, 0.5);
+    -fx-border-style: none;
 }

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+
+<Pane fx:id="panelMapa" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#markRoute" prefHeight="973.0" prefWidth="2218.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Map">
+   <children>
+      <Line endX="100.0" endY="-3.0" layoutX="1013.0" layoutY="455.0" startX="100.0" startY="182.0" strokeLineCap="ROUND" strokeWidth="11.0">
+         <stroke>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.3019607961177826" green="0.32156863808631897" blue="0.35686275362968445" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </stroke>
+      </Line>
+      <Line id="line" endX="-115.0" endY="324.0" layoutX="1403.0" layoutY="128.0" startX="-115.0" startY="98.5" stroke="#4d525b" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="22.5" endY="19.0" layoutX="1095.0" layoutY="205.0" startX="18.5" startY="251.0" stroke="#4d525b" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="-208.0" endY="346.0" layoutX="980.0" layoutY="292.0" startX="128.5" startY="346.0" stroke="#4d525b" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="91.0" endY="90.0" layoutX="680.0" layoutY="367.0" startX="91.0" startY="267.5" stroke="#4d525b" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="-296.0" endY="41.5" layoutX="1583.0" layoutY="414.0" startX="-467.5" startY="41.5" stroke="#4d525b" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="131.0" endY="-97.0" layoutX="985.0" layoutY="321.0" startX="303.0" startY="-97.0" stroke="#4d525b" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="-22.0" endY="-120.5" layoutX="793.0" layoutY="345.0" startX="-22.0" startY="109.5" stroke="#4d525b" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="-219.5" endY="109.5" layoutX="991.0" layoutY="346.0" startX="119.0" startY="109.5" stroke="#4d525b" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="172.5" endY="-324.0" layoutX="599.0" layoutY="548.0" startX="513.0" startY="-324.0" stroke="#4d525b" strokeLineCap="ROUND" strokeWidth="11.0" />
+   </children>
+</Pane>

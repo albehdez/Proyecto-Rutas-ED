@@ -1,10 +1,10 @@
 package Logic;
 
+import java.lang.module.ResolutionException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.ListIterator;
 import java.util.PriorityQueue;
 
@@ -18,11 +18,11 @@ import cu.edu.cujae.ceis.graph.vertex.Vertex;
 import cu.edu.cujae.ceis.tree.binary.BinaryTreeNode;
 import cu.edu.cujae.ceis.tree.general.GeneralTree;
 import cu.edu.cujae.ceis.tree.iterators.general.InDepthIterator;
-import javafx.scene.layout.Priority;
-import javafx.util.Pair;
-import util.AuxC4Table;
+import util.AuxClassBusTable;
 import util.AuxClassPath;
+import util.EdgeAux;
 import util.Label;
+import util.LinePosAux;
 import util.MyComparator;
 
 public class University {
@@ -54,7 +54,15 @@ public class University {
 		return new InDepthIterator<Object>(this.tree);
 	}
 
-	public boolean insert(String Location, String Terminal, String Bus, int seating) {
+	/**
+	 * @param Location
+	 * @param Terminal
+	 * @param Bus
+	 * @param seating
+	 * @return un boolean que representa true si la insercion se pudo realizar
+	 *         correctamente y en caso contrario false
+	 */
+	public boolean insertBus(String Location, String Terminal, String Bus, int seating) {
 
 		boolean retB = false;
 		if (this.tree.isEmpty()) {
@@ -118,6 +126,10 @@ public class University {
 
 	}
 
+	/**
+	 * @param name
+	 * @return
+	 */
 	private BinaryTreeNode<Object> searchLocalidad(String name) {
 		BinaryTreeNode<Object> rNode = null;
 
@@ -136,6 +148,11 @@ public class University {
 		return rNode;
 	}
 
+	/**
+	 * @param localidad
+	 * @param ID
+	 * @return
+	 */
 	private BinaryTreeNode<Object> searchTerminal(String localidad, String ID) {
 		BinaryTreeNode<Object> rNode = null;
 
@@ -163,6 +180,12 @@ public class University {
 		return rNode;
 	}
 
+	/**
+	 * @param localidad localiad donde se encuentra el omnibus
+	 * @param terminal  terminal a la cual pertenece el omnibus
+	 * @param tuition   matricula del omnibus
+	 * @return un objecto de tipo BinaryTreeNode que contiene el omnibus eliminado
+	 */
 	private BinaryTreeNode<Object> searchBus(String localidad, String terminal, String tuition) {
 		BinaryTreeNode<Object> rNode = null;
 
@@ -198,6 +221,12 @@ public class University {
 		return rNode;
 	}
 
+	/**
+	 * @param localidad localidad donde se encuantra el omnibus
+	 * @param terminal  terminal a la cual pertence el omnibus
+	 * @param bus       maticula del omnibus que se desea eliminar
+	 * @return
+	 */
 	public boolean deleteBus(String localidad, String terminal, String bus) {
 		boolean deleted = false;
 		if (!tree.isEmpty()) {
@@ -246,8 +275,11 @@ public class University {
 		return deleted;
 	}
 
-	public LinkedList<AuxC4Table> getNodesInfo() {
-		LinkedList<AuxC4Table> list = new LinkedList<AuxC4Table>();
+	/**
+	 * @return una lista con todos los datos de los omnibus almacenados en el arbol
+	 */
+	public LinkedList<AuxClassBusTable> getTreeInfo() {
+		LinkedList<AuxClassBusTable> list = new LinkedList<AuxClassBusTable>();
 		Location currentLocation = null;
 		Terminal currentTerminal = null;
 		Object current = null;
@@ -276,7 +308,7 @@ public class University {
 					}
 				} else if (current instanceof Bus) {
 					Bus aux = (Bus) current;
-					AuxC4Table info = new AuxC4Table();
+					AuxClassBusTable info = new AuxClassBusTable();
 					info.setLocation(currentLocation);
 					info.setTerminal(currentTerminal);
 					info.setBus(aux);
@@ -288,10 +320,17 @@ public class University {
 		return list;
 	}
 
+	/**
+	 * @param a vertice de inicio
+	 * @param b vetice final
+	 * @return una lista con las etiquetas de los nodos para determinar el camino
+	 *         mas corto
+	 */
 	public ArrayList<Label<Double, Object>> dijkstra(Object a, Object b) {
-		ArrayList<Label<Double, Object>> labels = new ArrayList<Label<Double, Object>>(map.getVerticesList().size());
+		int cant = map.getVerticesList().size();
+		ArrayList<Label<Double, Object>> labels = new ArrayList<Label<Double, Object>>(cant);
 
-		for (Vertex v : map.getVerticesList()) {
+		for (int k = 0; k < cant; k++) {
 			labels.add(new Label<>(Double.MAX_VALUE, null));
 		}
 
@@ -319,6 +358,12 @@ public class University {
 		return labels;
 	}
 
+	/**
+	 * @param nodoInicial nodo inicial del camino
+	 * @param nodoFinal   nodo final del camino
+	 * @param labels      lista de etiquetas
+	 * @param path        pila que contiene el camino que va guardando
+	 */
 	private void dijkstraPath(Object nodoInicial, Object nodoFinal, ArrayList<Label<Double, Object>> labels,
 			Deque<Object> path) {
 		path.push(nodoFinal);
@@ -328,7 +373,15 @@ public class University {
 		}
 	}
 
-	public AuxClassPath dijkstraQuery(Object a, Object b) {
+	/**
+	 * @param a nodo inicial
+	 * @param b nodo final
+	 * @return un objeto de tipo AuxClassPath, que es una clase auxiliar, la cual
+	 *         contiene una lista con
+	 *         el camino mas corto entre los dos nodos que se pasaron por parametros
+	 *         y un valor real que contiene el peso de dicho camino.
+	 */
+	public AuxClassPath shortestPath(Object a, Object b) {
 		AuxClassPath data = new AuxClassPath();
 
 		int posNodoFinal = map.getVerticesList().indexOf(b);
@@ -344,18 +397,119 @@ public class University {
 		return data;
 	}
 
+	/**
+	 * @param a nodo de inicio
+	 * @param b nodo de destino
+	 * @return un valor real que representa el peso entre los dos nodos que se
+	 *         pasaron por parametros.
+	 */
 	public double getEdgeWeigth(Vertex a, Vertex b) {
-		double weight = -1;
+		double weight = 0.0;
 		boolean value = false;
 		LinkedList<Edge> list = a.getEdgeList();
 		ListIterator<Edge> it = list.listIterator();
 		while (!value && it.hasNext()) {
 			WeightedEdge eaux = (WeightedEdge) it.next();
 			if (b.equals(eaux.getVertex())) {
-				weight = (double) eaux.getWeight();
+				EdgeAux aux = (EdgeAux) eaux.getWeight();
+				weight = aux.getWeigth();
 				value = true;
 			}
 		}
 		return weight;
+	}
+
+	public EdgeAux getEdgeObject(Vertex a, Vertex b) {
+		EdgeAux auxEdge = null;
+		// double weight = 0.0;
+		boolean value = false;
+		LinkedList<Edge> list = a.getEdgeList();
+		ListIterator<Edge> it = list.listIterator();
+		while (!value && it.hasNext()) {
+			WeightedEdge eaux = (WeightedEdge) it.next();
+			if (b.equals(eaux.getVertex())) {
+				auxEdge = (EdgeAux) eaux.getWeight();
+				value = true;
+			}
+		}
+		return auxEdge;
+	}
+
+	/**
+	 * @param name   nombre de la parada
+	 * @param x      coordenada x de la parada
+	 * @param y      coordenada y de la parada
+	 * @param inicio vertice inicial de la calle donde se piensa introducir un
+	 *               parada
+	 * @param fin    vertice final de la calle donde se piensa introducir un parada
+	 */
+	public void insertStopBus(String name, double x, double y, Vertex inicio, Vertex fin) {
+		StopBus route = new StopBus(name, x, y);
+		int posInicio = map.getVerticesList().indexOf(inicio);
+		int posFin = map.getVerticesList().indexOf(fin);
+		double valueEdge = getEdgeWeigth(inicio, fin);
+		map.insertVertex(route);
+		int newNode = map.getVerticesList().indexOf(route);
+		map.deleteEdgeND(posInicio, posFin);
+		map.insertEdgeNDG(posInicio, posFin);
+		map.insertEdgeNDG(posInicio, newNode);
+		map.insertWEdgeNDG(posInicio, newNode, valueEdge / 2);
+		map.insertEdgeNDG(newNode, posFin);
+		map.insertWEdgeNDG(newNode, posFin, valueEdge / 2);
+	}
+
+	public Vertex searchVertex(double x, double y) {
+		Vertex vaux = null;
+		ListIterator<Vertex> it = map.getVerticesList().listIterator();
+		boolean value = false;
+		while (it.hasNext() && !value) {
+			vaux = it.next();
+			if (vaux.getInfo() instanceof Corner) {
+				if (((Corner) vaux.getInfo()).getX() == x && ((Corner) vaux.getInfo()).getY() == y)
+					value = true;
+			} else {
+				if (((StopBus) vaux.getInfo()).getX() == x && ((StopBus) vaux.getInfo()).getY() == y)
+					value = true;
+			}
+
+		}
+		return value ? vaux : null;
+	}
+
+	public LinkedList<AuxClassPath> findsRoutes(Vertex v) {
+		LinkedList<AuxClassPath> list = new LinkedList<AuxClassPath>();
+		ListIterator<Vertex> it = map.getVerticesList().listIterator();
+		while (it.hasNext()) {
+			double comp = -1;
+			Vertex aux = it.next();
+			AuxClassPath auxClass = null;
+			if (aux.getInfo() instanceof StopBus) {
+				auxClass = shortestPath(v, aux);
+				if (comp == -1) {
+					list.add(auxClass);
+					comp = auxClass.getWeigth();
+				} else if (auxClass.getWeigth() < comp) {
+					list.add(auxClass);
+					comp = auxClass.getWeigth();
+				} else if (auxClass.getWeigth() == comp) {
+					list.add(auxClass);
+				}
+			}
+		}
+		return list;
+	}
+
+	public LinkedList<LinePosAux> findWay(LinkedList<Object> wayList) {
+		LinkedList<LinePosAux> list = new LinkedList<LinePosAux>();
+		ListIterator<Object> it = wayList.listIterator();
+		Vertex aux1 = (Vertex) it.next();
+		while (it.hasNext()) {
+			Vertex aux2 = (Vertex) it.next();
+			EdgeAux eaux = getEdgeObject(aux1, aux2);
+			list.add(new LinePosAux(eaux.getPosX(), eaux.getPosY()));
+			aux1 = aux2;
+			// aux2 = (Vertex) it.next();
+		}
+		return list;
 	}
 }

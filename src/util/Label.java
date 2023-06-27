@@ -1,6 +1,6 @@
 package util;
 
-public class Label<Double, T> {
+public class Label<Double, Object> {
     private double weigth;
     private Object node;
 

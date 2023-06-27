@@ -5,7 +5,7 @@ import java.util.LinkedList;
 public class Bus {
 
 	private String tuition;
-	private LinkedList<Route> route;
+	private LinkedList<StopBus> route;
 	private int seating;
 
 	public int getSeating() {
@@ -18,7 +18,7 @@ public class Bus {
 
 	public Bus(String tuition, int seating) {
 		setTuition(tuition);
-		route = new LinkedList<Route>();
+		route = new LinkedList<StopBus>();
 		setSeating(seating);
 	}
 

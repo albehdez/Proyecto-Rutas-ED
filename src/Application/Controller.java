@@ -36,7 +36,7 @@ import javafx.scene.transform.Scale;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import util.AuxC4Table;
+import util.AuxClassBusTable;
 
 public class Controller {
 
@@ -71,7 +71,7 @@ public class Controller {
     @FXML
     private ImageView icoInfoMat;
     @FXML
-    private TableView<AuxC4Table> tableBus;
+    private TableView<AuxClassBusTable> tableBus;
     @FXML
     private TableColumn localidadColumn;
     @FXML
@@ -80,7 +80,7 @@ public class Controller {
     private TableColumn matriculaColumn;
     @FXML
     private TableColumn cantAsientosColumn;
-    private ObservableList<AuxC4Table> bus;
+    private ObservableList<AuxClassBusTable> bus;
 
     public void drawMap() throws IOException {
         FXMLLoader root1 = FXMLLoader.load(getClass().getResource("map.fxml"));
@@ -174,7 +174,7 @@ public class Controller {
         String bus = MatriculaTextField.getText();
         int seatsNum = (int) asientosSpinner.getValue();
 
-        University.getInstance().insert(localidad, terminal, bus, seatsNum);
+        University.getInstance().insertBus(localidad, terminal, bus, seatsNum);
 
         LocalidadTextField.setText("");
         TermianlTextField.setText("");

@@ -2,8 +2,6 @@ package util;
 
 import java.util.Comparator;
 
-import javafx.util.Pair;
-
 public class MyComparator<V, T> implements Comparator<Label<Double, T>> {
 
     @Override

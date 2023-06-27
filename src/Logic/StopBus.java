@@ -2,7 +2,7 @@ package Logic;
 
 import java.util.LinkedList;
 
-public class Route {
+public class StopBus {
 
 	private String id;
 	private double x;
@@ -30,7 +30,7 @@ public class Route {
 		return id;
 	}
 
-	public Route(String name, double x, double y) {
+	public StopBus(String name, double x, double y) {
 		setName(name);
 		setX(x);
 		setY(y);

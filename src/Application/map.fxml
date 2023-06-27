@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.RadialGradient?>
-<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 
-<Pane fx:id="panelMapa" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="973.0" prefWidth="2218.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controller">
+<Pane fx:id="panelMapa" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#pintar" prefHeight="1140.0" prefWidth="2218.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Map">
    <children>
-      <Line endX="100.0" endY="-3.0" layoutX="1013.0" layoutY="455.0" startX="100.0" startY="182.0" strokeLineCap="ROUND" strokeWidth="11.0">
-         <stroke>
-            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.3019607961177826" green="0.32156863808631897" blue="0.35686275362968445" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </RadialGradient>
-         </stroke>
-      </Line>
-      <Line endX="-115.0" endY="324.0" layoutX="1402.0" layoutY="126.0" startX="-115.0" startY="98.5" stroke="#4d525b" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line endX="22.5" endY="19.0" layoutX="1095.0" layoutY="205.0" startX="18.5" startY="251.0" stroke="#4d525b" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line endX="-208.0" endY="346.0" layoutX="979.0" layoutY="291.0" startX="128.5" startY="346.0" stroke="#4d525b" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line endX="91.0" endY="90.0" layoutX="680.0" layoutY="365.0" startX="91.0" startY="267.0" stroke="#4d525b" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line endX="-296.0" endY="41.5" layoutX="1583.0" layoutY="414.0" startX="-467.5" startY="41.5" stroke="#4d525b" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line endX="131.0" endY="-97.0" layoutX="985.0" layoutY="321.0" startX="303.0" startY="-97.0" stroke="#4d525b" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line endX="-22.0" endY="-120.5" layoutX="793.0" layoutY="345.0" startX="-22.0" startY="109.5" stroke="#4d525b" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line endX="-219.5" endY="109.5" layoutX="991.0" layoutY="346.0" startX="119.0" startY="109.5" stroke="#4d525b" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line endX="172.5" endY="-324.0" layoutX="599.0" layoutY="548.0" startX="513.0" startY="-324.0" stroke="#4d525b" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="street" endX="100.0" layoutX="660.0" layoutY="587.0" startX="54.0" startY="30.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="10.0" />
+      <Line fx:id="street1" endX="100.0" layoutX="661.0" layoutY="587.0" startX="202.0" startY="106.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="10.0" />
+      <Line fx:id="street2" endX="100.0" layoutX="761.0" layoutY="694.0" startX="54.0" startY="30.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="10.0" />
+      <Line fx:id="street11" endX="100.5" endY="2.5" layoutX="612.0" layoutY="617.0" startX="202.0" startY="106.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="10.0" />
+      <Line fx:id="street12" endX="100.0" layoutX="763.0" layoutY="694.0" startX="193.0" startY="99.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="10.0" />
+      <Circle fill="DODGERBLUE" layoutX="760.0" layoutY="588.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="862.0" layoutY="694.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="714.0" layoutY="619.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="955.0" layoutY="792.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="816.0" layoutY="723.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="909.0" layoutY="821.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label layoutX="806.0" layoutY="615.0" text="258" />
+      <Label layoutX="811.0" layoutY="689.0" text="269" />
+      <Label layoutX="724.0" layoutY="671.0" text="260" />
+      <Label layoutX="711.0" layoutY="583.0" text="243" />
+      <Label layoutX="910.0" layoutY="714.0" text="258" />
+      <Line fx:id="street21" endX="100.0" layoutX="855.0" layoutY="792.0" startX="54.0" startY="30.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="10.0" />
+      <Line fx:id="street121" endX="100.0" layoutX="714.0" layoutY="722.0" startX="193.0" startY="99.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="10.0" />
+      <Label layoutX="938.0" layoutY="808.0" text="283" />
+      <Line fx:id="street3" endX="98.0" layoutX="612.0" layoutY="619.0" startX="54.0" startY="30.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="10.0" />
+      <Circle fill="DODGERBLUE" layoutX="667.0" layoutY="648.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label layoutX="677.0" layoutY="690.0" text="262" />
+      <Line fx:id="street31" endX="100.0" layoutX="714.0" layoutY="724.0" startX="54.0" startY="30.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="10.0" />
+      <Circle fill="DODGERBLUE" layoutX="769.0" layoutY="753.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line fx:id="street311" endX="100.0" layoutX="807.0" layoutY="824.0" startX="54.0" startY="30.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="10.0" />
+      <Circle fill="DODGERBLUE" layoutX="862.0" layoutY="853.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line fx:id="street111" endX="100.5" endY="2.5" layoutX="567.0" layoutY="646.0" startX="202.0" startY="106.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="10.0" />
+      <Line fx:id="street1111" endX="101.0" layoutX="668.0" layoutY="753.0" startX="194.0" startY="100.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="10.0" />
    </children>
 </Pane>

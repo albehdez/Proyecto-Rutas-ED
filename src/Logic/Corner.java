@@ -1,11 +1,11 @@
 package Logic;
 
-public class Conner {
+public class Corner {
     private double x;
     private double y;
     private String id;
 
-    public Conner(double x, double y, String id) {
+    public Corner(double x, double y, String id) {
         setX(x);
         setY(y);
         setId(id);
