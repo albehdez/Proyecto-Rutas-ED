@@ -1,6 +1,8 @@
 package Logic;
 
-public class Corner {
+import java.io.Serializable;
+
+public class Corner implements Serializable {
     private double x;
     private double y;
     private String id;

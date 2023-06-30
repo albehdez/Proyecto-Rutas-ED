@@ -4,11 +4,21 @@ public class EdgeAux {
     private double weigth;
     private double posX;
     private double posY;
+    private String address;
 
-    public EdgeAux(double weigth, double posX, double posY) {
-        this.weigth = weigth;
-        this.posX = posX;
-        this.posY = posY;
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public EdgeAux(double weigth, double posX, double posY, String address) {
+        setWeigth(weigth);
+        setPosX(posX);
+        setPosY(posY);
+        setAddress(address);
     }
 
     public double getWeigth() {

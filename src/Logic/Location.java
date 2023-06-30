@@ -16,4 +16,8 @@ public class Location {
 		this.name = name;
 	}
 
+	public String toString() {
+		return name;
+	}
+
 }

@@ -1,20 +1,39 @@
 #OpcionesPanel {
-    -fx-background-color: rgba(227, 225, 210, 0.5);
+    -fx-background-color: rgba(231, 231, 226, 0.7);
     -fx-background-radius: 20px;
 }
 
 #scenePane2 {
-    -fx-background-color: rgba(227, 225, 210, 0.5);
+    -fx-background-color: rgba(231, 231, 226, 0.9);
     -fx-background-radius: 8px;
+    -fx-translate-x: 400;
+    -fx-translate-y: 40;
+}
+
+#puente {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 3);
+}
+
+/* #lago {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 3);
+
+} */
+
+#panelRecorrido {
+    -fx-background-radius: 8px;
+    -fx-background-color: rgba(231, 231, 226, 0.7);
 }
 
 #scenePane3 {
-    -fx-background-color: rgba(227, 225, 210, 0.5);
+    -fx-background-color: rgba(231, 231, 226, 0.9);
     -fx-background-radius: 8px;
+    -fx-translate-x: 20;
+    -fx-translate-y: 10;
 }
 
+/* #47ad32  */
 #panelMapa {
-    -fx-background-color: #47ad32;
+    -fx-background-color: #E3E1D2;
     -fx-font-family: Verdana;
     -fx-font-size: 14;
 }
@@ -58,4 +77,12 @@
 #circleButton {
     -fx-background-color: rgba(253, 243, 243, 0.5);
     -fx-border-style: none;
+}
+
+#pathValueLabel {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 3);
+}
+
+#iconPathValue {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 3);
 }

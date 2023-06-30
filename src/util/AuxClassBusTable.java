@@ -8,11 +8,21 @@ public class AuxClassBusTable {
     Location location;
     Terminal terminal;
     Bus bus;
+    int cantSeats;
 
-    public AuxClassBusTable() {
-        location = null;
-        terminal = null;
-        bus = null;
+    public int getCantSeats() {
+        return cantSeats;
+    }
+
+    public void setCantSeats(int cantAsientos) {
+        this.cantSeats = cantAsientos;
+    }
+
+    public AuxClassBusTable(Location location, Terminal terminal, Bus bus, int cantAsientos) {
+        setLocation(location);
+        setCantSeats(cantAsientos);
+        setTerminal(terminal);
+        setBus(bus);
     }
 
     public void setLocation(Location location) {

@@ -77,7 +77,7 @@ public class Main {
 
 		AuxClassPath aux = University.getInstance().shortestPath(
 				University.getInstance().getMap().getVerticesList().get(0),
-				University.getInstance().getMap().getVerticesList().get(6));
+				University.getInstance().getMap().getVerticesList().get(6), University.getInstance().getMap());
 		Iterator<Object> it = aux.getList().iterator();
 		System.out.println("Peso: " + aux.getWeigth());
 		while (it.hasNext()) {

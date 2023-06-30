@@ -31,4 +31,8 @@ public class Bus {
 			this.tuition = tuition;
 	}
 
+	public String toString() {
+		return tuition;
+	}
+
 }

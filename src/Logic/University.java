@@ -13,6 +13,7 @@ import javax.swing.text.html.HTMLDocument.Iterator;
 import cu.edu.cujae.ceis.graph.LinkedGraph;
 import cu.edu.cujae.ceis.graph.edge.Edge;
 import cu.edu.cujae.ceis.graph.edge.WeightedEdge;
+import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeDirectedGraph;
 import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeNotDirectedGraph;
 import cu.edu.cujae.ceis.graph.vertex.Vertex;
 import cu.edu.cujae.ceis.tree.binary.BinaryTreeNode;
@@ -31,6 +32,8 @@ public class University {
 	private GeneralTree<Object> tree;
 	private ILinkedWeightedEdgeNotDirectedGraph map;
 
+	// private File mapFile;
+	// private FIle treeFile;
 	public ILinkedWeightedEdgeNotDirectedGraph getMap() {
 		return map;
 	}
@@ -308,10 +311,11 @@ public class University {
 					}
 				} else if (current instanceof Bus) {
 					Bus aux = (Bus) current;
-					AuxClassBusTable info = new AuxClassBusTable();
-					info.setLocation(currentLocation);
-					info.setTerminal(currentTerminal);
-					info.setBus(aux);
+					AuxClassBusTable info = new AuxClassBusTable(currentLocation, currentTerminal, aux,
+							aux.getSeating());
+					// info.setLocation(currentLocation);
+					// info.setTerminal(currentTerminal);
+					// info.setBus(aux);
 
 					list.add(info);
 				}
@@ -381,10 +385,10 @@ public class University {
 	 *         el camino mas corto entre los dos nodos que se pasaron por parametros
 	 *         y un valor real que contiene el peso de dicho camino.
 	 */
-	public AuxClassPath shortestPath(Object a, Object b) {
+	public AuxClassPath shortestPath(Object a, Object b, ILinkedWeightedEdgeNotDirectedGraph graph) {
 		AuxClassPath data = new AuxClassPath();
 
-		int posNodoFinal = map.getVerticesList().indexOf(b);
+		int posNodoFinal = graph.getVerticesList().indexOf(b);
 		ArrayList<Label<Double, Object>> dist = dijkstra(a, b);
 		Deque<Object> path = new ArrayDeque<Object>();
 		dijkstraPath(a, b, dist, path);
@@ -484,7 +488,7 @@ public class University {
 			Vertex aux = it.next();
 			AuxClassPath auxClass = null;
 			if (aux.getInfo() instanceof StopBus) {
-				auxClass = shortestPath(v, aux);
+				// auxClass = shortestPath(v, aux);
 				if (comp == -1) {
 					list.add(auxClass);
 					comp = auxClass.getWeigth();
@@ -512,4 +516,49 @@ public class University {
 		}
 		return list;
 	}
+
+	public void insertUbication(double posX, double posY, String corner1, String corner2) {
+		Corner cUbication = new Corner(posX, posY, "yourUbication");
+		ILinkedWeightedEdgeNotDirectedGraph grapAux = map;
+		Vertex v1 = findVertex(corner1);
+		Vertex v2 = findVertex(corner2);
+		int posCorner1 = map.getVerticesList().indexOf(findVertex(corner1));
+		int posCorner2 = map.getVerticesList().indexOf(findVertex(corner2));
+		double weight = getEdgeWeigth(v1, v2);
+
+		map.insertVertex(cUbication);
+		map.insertWEdgeNDG(posCorner1, map.getVerticesList().indexOf(findVertex(cUbication.getId())),
+				new EdgeAux(weight, posX, posY, corner2));
+		map.insertWEdgeNDG(0, 0, grapAux);
+	}
+
+	public Vertex findVertex(String id) {
+		Vertex aux = null;
+		boolean value = false;
+		ListIterator<Vertex> it = map.getVerticesList().listIterator();
+		while (it.hasNext() && !value) {
+			aux = it.next();
+			if (aux.getInfo() instanceof Corner) {
+				if (((Corner) aux.getInfo()).getId().equals(id))
+					value = true;
+			} else if (aux.getInfo() instanceof StopBus) {
+				if (((StopBus) aux.getInfo()).getId().equals(id))
+					value = true;
+			}
+		}
+		return value ? null : aux;
+	}
+
+	public LinkedList<Bus> getTreeBus() {
+		LinkedList<Bus> list = new LinkedList<Bus>();
+		InDepthIterator<Object> it = tree.inDepthIterator();
+		while (it.hasNext()) {
+			Object o = it.next();
+			if (o instanceof Bus)
+				list.add((Bus) o);
+
+		}
+		return list;
+	}
+
 }

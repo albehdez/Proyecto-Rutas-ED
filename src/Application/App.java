@@ -15,7 +15,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        // Init.data();
+        Init.data();
         Parent root = FXMLLoader.load(getClass().getResource("Scene1.fxml"));
         Scene scene = new Scene(root);
         String css = "style.css";
@@ -24,6 +24,5 @@ public class App extends Application {
         stage.setTitle("CUJAE-Rutas");
         stage.setScene(scene);
         stage.show();
-        Init.datosReales();
     }
 }

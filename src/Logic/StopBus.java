@@ -1,8 +1,9 @@
 package Logic;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class StopBus {
+public class StopBus implements Serializable {
 
 	private String id;
 	private double x;

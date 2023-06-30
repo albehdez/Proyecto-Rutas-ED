@@ -1,18 +1,11 @@
 package Application;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
-import Logic.Bus;
 import Logic.University;
-import javafx.application.Application;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -22,8 +15,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
-import javafx.scene.control.TreeView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -32,7 +23,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.transform.Scale;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -150,7 +140,7 @@ public class Controller {
     private double zoomLevel = 1.0;
 
     public void zoom(ScrollEvent event) {
-        if (event.isControlDown() && event.getDeltaY() != 0) {
+        if (event.isControlDown()) {
             double zoomFactor = Math.exp(event.getDeltaY() / 100.0);
 
             zoomLevel *= zoomFactor;

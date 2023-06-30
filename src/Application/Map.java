@@ -1,6 +1,8 @@
 package Application;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
@@ -9,17 +11,21 @@ import javax.swing.text.html.HTMLDocument.Iterator;
 
 import Logic.Corner;
 import Logic.University;
+import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeNotDirectedGraph;
 import cu.edu.cujae.ceis.graph.vertex.Vertex;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.CubicCurve;
 import javafx.scene.shape.Line;
 import util.AuxClassPath;
 import util.LinePosAux;
@@ -31,6 +37,8 @@ public class Map {
 
     @FXML
     private Pane panelMapa;
+    @FXML
+    private AnchorPane scenePane1;
     // public void pintar(MouseEvent event) {
     // Object nodo = event.getTarget();
     // if (nodo instanceof Line) {
@@ -132,44 +140,67 @@ public class Map {
             double x, y;
             x = c.getLayoutX();
             y = c.getLayoutY();
+            ILinkedWeightedEdgeNotDirectedGraph auxGraph = University.getInstance().getMap();
+            // auxGraph.insertVertex(n)
             Vertex aux = University.getInstance().searchVertex(x, y);
             AuxClassPath a = University.getInstance().shortestPath(aux,
-                    University.getInstance().searchVertex(909, 821));
-            for (Object o : a.getList()) {
-
-                System.out.println(((Corner) ((Vertex) o).getInfo()).getId());
-            }
-            Image imagen = new Image("file:src/images/location-icon.png");
-            ImageView imagenView = new ImageView(imagen);
-            imagenView.setFitHeight(50);
-            imagenView.setFitWidth(50);
-            imagenView.setX(event.getX() - 25);
-            imagenView.setY(event.getY() - 54);
-            panelMapa.getChildren().add(imagenView);
-            drowPath(a.getList());
+                    University.getInstance().searchVertex(97, 127), auxGraph);
+            drowPath(a.getList(), event);
+            Scene1.getInstance().getPanelRecorrido().setVisible(true);
+            // Scene1.getInstance().getPathValueLabel().setVisible(false);
+            DecimalFormat df = new DecimalFormat("#.##");
+            Scene1.getInstance().setLablePathValue(String.format("%.3f", a.getWeigth()) + " Km");
         }
     }
 
-    public void drowPath(LinkedList<Object> list) {
+    public void drowPath(LinkedList<Object> list, MouseEvent event) {
         clean();
+        Image imagen = new Image("file:src/images/location-icon.png");
+        ImageView imagenView = new ImageView(imagen);
+        imagenView.setFitHeight(50);
+        imagenView.setFitWidth(50);
+        imagenView.setX(event.getX() - 25);
+        imagenView.setY(event.getY() - 54);
+        panelMapa.getChildren().add(imagenView);
         LinkedList<LinePosAux> lineList = University.getInstance().findWay(list);
         ListIterator<LinePosAux> it = lineList.listIterator();
+        LinePosAux aux = null;
+
         while (it.hasNext()) {
-            LinePosAux aux = it.next();
+            aux = it.next();
             for (Node n : panelMapa.getChildren()) {
                 if (n instanceof Line) {
-                    if (((Line) n).getLayoutX() == aux.getPosx() && ((Line) n).getLayoutY() == aux.getPosy())
-                        ((Line) n).setStroke(Color.BLUE);
+                    if (((Line) n).getLayoutX() == aux.getPosx() && ((Line) n).getLayoutY() == aux.getPosy()) {
+                        ((Line) n).setStroke(Color.RED);
+                        // n.toFront();
+                    }
                 }
+                // } else if (n instanceof CubicCurve)
+                // if (((CubicCurve) n).getLayoutX() == aux.getPosx()
+                // && ((CubicCurve) n).getLayoutY() == aux.getPosy()) {
+                // ((CubicCurve) n).setStroke(Color.Red);
+                // }
             }
         }
+        // Image imagenFinal = new Image("file:src/images/parada-icon.png");
+        // ImageView imagenViewFinal = new ImageView(imagenFinal);
+        // imagenViewFinal.setFitHeight(50);
+        // imagenViewFinal.setFitWidth(50);
+        // imagenViewFinal.setX(aux.getPosx());
+        // imagenViewFinal.setY(aux.getPosy());
+        // panelMapa.getChildren().add(imagenViewFinal);
     }
 
     public void clean() {
         for (Node n : panelMapa.getChildren()) {
             if (n instanceof Line) {
-                ((Line) n).setStroke(Color.WHITE);
-            }
+                if (!((Line) n).getId().equals("no"))
+                    ((Line) n).setStroke(Color.WHITE);
+            } else if (n instanceof ImageView)
+                n.setVisible(false);
+            // else if (n instanceof Line)
+            // if (!((Line) n).getId().equals("no"))
+            // ((Line) n).setStroke(Color.WHITE);
         }
     }
 }

@@ -16,4 +16,8 @@ public class Terminal {
 		this.id = id;
 	}
 
+	public String toString() {
+		return id;
+	}
+
 }

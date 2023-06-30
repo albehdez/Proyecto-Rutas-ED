@@ -13,14 +13,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="scenePane1" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="670.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Scene1">
+<AnchorPane fx:id="scenePane1" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Scene1">
    <children>
-      <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutY="-1.0" maxWidth="-Infinity" onScroll="#zoom" pannable="true" prefHeight="670.0" prefWidth="1350.0" scaleShape="false" vbarPolicy="NEVER">
+      <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutY="-1.0" maxWidth="-Infinity" onScroll="#zoom" pannable="true" prefHeight="688.0" prefWidth="1350.0" scaleShape="false" vbarPolicy="NEVER">
          <content>
          <fx:include fx:id="panelMapa" source="Map.fxml" />
             <!-- <Pane fx:id="scrollpanepane" prefHeight="353.0" prefWidth="1147.0" /> -->
          </content></ScrollPane>
-      <Pane fx:id="OpcionesPanel" layoutX="15.0" layoutY="563.0" maxWidth="-Infinity" prefHeight="97.0" prefWidth="1318.0" stylesheets="@style.css">
+      <Pane fx:id="OpcionesPanel" layoutX="15.0" layoutY="580.0" maxWidth="-Infinity" prefHeight="97.0" prefWidth="1318.0" stylesheets="@style.css">
          <children>
             <Button fx:id="GestionarButton1" layoutX="345.0" layoutY="21.0" mnemonicParsing="false" onAction="#loadScene2" style="-fx-background-color: white;" stylesheets="@style.css" text="Gestionar omnibus" textAlignment="CENTER" visible="false">
                <font>
@@ -98,6 +98,20 @@
                   </VBox>
                </children>
             </GridPane>
+         </children>
+      </Pane>
+      <Pane fx:id="panelRecorrido" layoutX="1163.0" layoutY="11.0" prefHeight="61.0" prefWidth="170.0" stylesheets="@style.css" visible="false">
+         <children>
+            <Label fx:id="pathValueLabel" layoutX="16.0" layoutY="21.0" prefHeight="26.0" prefWidth="95.0" text="00.00 Km" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="iconPathValue" fitHeight="61.0" fitWidth="71.0" layoutX="94.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/pedestrian%20(2).png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

@@ -2,16 +2,21 @@ package Application;
 
 import java.io.IOException;
 
+import Logic.University;
+import cu.edu.cujae.ceis.graph.LinkedGraph;
+import cu.edu.cujae.ceis.tree.general.GeneralTree;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
@@ -21,48 +26,106 @@ import javafx.stage.StageStyle;
 
 public class Scene1 {
     @FXML
-    private Stage stage;
+    private Pane OpcionesPanel;
+    @FXML
+    static private Stage stage;
     @FXML
     private ScrollPane scrollPane;
     @FXML
     private AnchorPane scenePane1;
     @FXML
     private AnchorPane scenePane2;
+    @FXML
+    private Label pathValueLabel;
+    @FXML
+    private Pane panelRecorrido;
+
+    private static Scene1 ventana;
+    private boolean value = true;
+
+    public void initialize() {
+        ventana = this;
+        // try {
+        // // Parent padre = FXMLLoader.load(getClass().getResource("Map.fxml"));
+        // // scenePane1.getChildren().add(padre);
+        // // scenePane1.toFront();
+        // // padre.toBack();
+        // // pathValueLabel.toFront();
+        // // OpcionesPanel.toFront();
+
+        // } catch (IOException e) {
+        // // TODO Auto-generated catch block
+        // e.printStackTrace();
+        // }
+    }
+
+    public static Scene1 getInstance() {
+        return ventana;
+    }
+
+    public AnchorPane getAnchorPane() {
+        return scenePane1;
+    }
+
+    public void setLablePathValue(String cant) {
+        pathValueLabel.setText(cant);
+        // pathValueLabel.setOn();
+    }
+
+    public Pane getPanelRecorrido() {
+        return panelRecorrido;
+    }
+
+    public Label getPathValueLabel() {
+        return pathValueLabel;
+    }
 
     public void loadScene2(MouseEvent e) throws IOException {
-        Stage secondStage = new Stage();
+        // Stage secondStage = new Stage();
+        // Parent root = FXMLLoader.load(getClass().getResource("Scene2.fxml"));
+        // secondStage.initModality(Modality.APPLICATION_MODAL);
+        // secondStage.initStyle(StageStyle.TRANSPARENT);
+        // Scene scene = new Scene(root);
+        // String css = "style.css";
+        // scene.getStylesheets().add(css);
+        // scene.setFill(Color.rgb(243, 243, 243, 0.0));
+        // secondStage.setAlwaysOnTop(true);
+        // secondStage.setScene(scene);
+        // secondStage.show();
         Parent root = FXMLLoader.load(getClass().getResource("Scene2.fxml"));
-        secondStage.initModality(Modality.APPLICATION_MODAL);
-        secondStage.initStyle(StageStyle.TRANSPARENT);
-        Scene scene = new Scene(root);
-        String css = "style.css";
-        scene.getStylesheets().add(css);
-        scene.setFill(Color.rgb(243, 243, 243, 0.0));
-        secondStage.setAlwaysOnTop(true);
-        secondStage.setScene(scene);
-        secondStage.show();
+
+        scenePane1.getChildren().add(root);
 
     }
 
     public void loadScene3(MouseEvent e) throws IOException {
-        Stage thirdStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("Scene3.fxml"));
-        // thirdStage.initModality(Modality.APPLICATION_MODAL);
-        thirdStage.initStyle(StageStyle.TRANSPARENT);
-        Scene scene = new Scene(root);
-        String css = "style.css";
-        scene.getStylesheets().add(css);
-        scene.setFill(Color.rgb(243, 243, 243, 0.0));
-        thirdStage.setAlwaysOnTop(true);
-        thirdStage.setScene(scene);
-        thirdStage.setY(100);
-        thirdStage.setX(25);
-        thirdStage.show();
+        // Stage thirdStage = new Stage();
+        // Parent root = FXMLLoader.load(getClass().getResource("Scene3.fxml"));
+        // // thirdStage.initModality(Modality.APPLICATION_MODAL);
+        // thirdStage.initStyle(StageStyle.TRANSPARENT);
+        // Scene scene = new Scene(root);
+        // String css = "style.css";
+        // scene.getStylesheets().add(css);
+        // scene.setFill(Color.rgb(243, 243, 243, 0.0));
+        // thirdStage.setAlwaysOnTop(true);
+        // thirdStage.setScene(scene);
+        // thirdStage.setY(100);
+        // thirdStage.setX(25);
+        // thirdStage.show();
+        if (value) {
+            Parent root = FXMLLoader.load(getClass().getResource("Scene3.fxml"));
+            scenePane1.getChildren().add(root);
+            value = false;
+        } else {
+            value = true;
+            scenePane1.getChildren().remove(Scene3.getInstance().getAnchorPane());
+        }
     }
 
     public void closeWindow2(ActionEvent e) {
-        stage = (Stage) scenePane2.getScene().getWindow();
-        stage.close();
+        // scenePane1.getChildren().remove(scenePane1.lookup("scenePane2"));
+        // stage = (Stage) scenePane2.getScene().getWindow();
+        // stage.close();
     }
 
     public void closeWindow1(MouseEvent e) {
