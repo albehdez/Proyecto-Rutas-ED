@@ -1,6 +1,8 @@
 package Logic;
 
-public class Terminal {
+import java.io.Serializable;
+
+public class Terminal implements Serializable{
 
 	private String id;
 

@@ -1,8 +1,9 @@
 package Logic;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class Bus {
+public class Bus implements Serializable{
 
 	private String tuition;
 	private LinkedList<StopBus> route;

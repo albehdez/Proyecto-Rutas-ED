@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.CubicCurve?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+
+<Pane fx:id="panelMapa" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#pintar" prefHeight="1025.0" prefWidth="2218.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Map">
+   <children>
+      <Line endX="207.0" endY="279.0" layoutX="1921.0" layoutY="343.0" startX="207.0" startY="83.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="-312.5" endY="-86.5" layoutX="2163.0" layoutY="709.0" startX="-36.0" startY="-86.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="-412.0" endY="-118.5" layoutX="2080.0" layoutY="741.0" startX="-230.0" startY="-118.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="-202.5" endY="-287.0" layoutX="2053.0" layoutY="713.0" startX="-202.5" startY="-96.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="18.5" endY="50.0" layoutX="1650.0" layoutY="376.0" startX="18.5" startY="247.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="16.0" endY="-18.0" layoutX="1658.0" layoutY="444.0" startX="188.0" startY="-18.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="147.5" endY="118.0" layoutX="1521.0" layoutY="308.0" startX="-31.0" startY="118.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="-312.5" endY="-86.5" layoutX="2163.0" layoutY="513.0" startX="-36.0" startY="-86.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="18.5" endY="50.0" layoutX="1471.0" layoutY="376.0" startX="18.5" startY="200.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="147.5" endY="118.0" layoutX="1522.0" layoutY="701.0" startX="-31.0" startY="118.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="18.5" endY="50.0" layoutX="1650.0" layoutY="572.0" startX="18.5" startY="247.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <CubicCurve fx:id="si" controlX1="235.0" controlX2="235.0" controlY1="2.0" controlY2="-40.0" endX="242.0" endY="-162.5" fill="#e3e1d2" layoutX="1886.0" layoutY="790.0" startX="-211.0" startY="29.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="18.5" endY="331.0" layoutX="1471.0" layoutY="-26.0" startX="18.5" startY="450.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="18.5" endY="262.0" layoutX="1650.0" layoutY="-17.0" startX="18.5" startY="443.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="147.5" endY="118.0" layoutX="1521.0" layoutY="127.0" startX="-31.0" startY="118.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="18.5" endY="262.0" layoutX="1832.0" layoutY="-16.0" startX="18.5" startY="443.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="147.5" endY="118.0" layoutX="1702.0" layoutY="127.0" startX="-31.0" startY="118.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="18.5" endY="262.0" layoutX="1832.0" layoutY="-199.0" startX="18.5" startY="443.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="18.5" endY="262.0" layoutX="1651.0" layoutY="-199.0" startX="18.5" startY="443.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="18.5" endY="262.0" layoutX="1471.0" layoutY="-199.0" startX="18.5" startY="443.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="147.5" endY="118.0" layoutX="1521.0" layoutY="-55.0" startX="-31.0" startY="118.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="147.5" endY="118.0" layoutX="1701.0" layoutY="-55.0" startX="-31.0" startY="118.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="19.5" endY="81.0" layoutX="2110.0" layoutY="-18.0" startX="18.5" startY="443.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="246.0" endY="118.0" layoutX="1883.0" layoutY="-55.0" startX="-31.0" startY="118.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="147.5" endY="118.0" layoutX="1342.0" layoutY="-55.0" startX="-31.0" startY="118.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="18.5" endY="50.0" layoutX="1291.0" layoutY="15.0" startX="18.5" startY="288.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="147.5" endY="118.0" layoutX="1342.0" layoutY="458.0" startX="-224.0" startY="118.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="18.5" endY="45.0" layoutX="1471.0" layoutY="531.0" startX="18.5" startY="287.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="147.5" endY="118.0" layoutX="1342.0" layoutY="701.0" startX="-224.0" startY="118.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="18.5" endY="-40.0" layoutX="1099.0" layoutY="619.0" startX="18.5" startY="200.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="147.5" endY="118.0" layoutX="1163.0" layoutY="-55.0" startX="4.0" startY="237.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="-218.0" endY="257.5" layoutX="1226.0" layoutY="-195.0" startX="84.0" startY="257.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="18.5" endY="200.0" layoutX="990.0" layoutY="-138.0" startX="18.5" startY="321.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="129.0" endY="118.0" layoutX="1039.0" layoutY="63.0" startX="-31.0" startY="118.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="147.5" endY="118.0" layoutX="1020.0" layoutY="64.0" startX="-11.5" startY="241.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="18.5" endY="200.0" layoutX="990.0" layoutY="-21.0" startX="18.5" startY="324.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="-217.0" endY="257.5" layoutX="1226.0" layoutY="47.0" startX="84.0" startY="257.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="147.5" endY="118.0" layoutX="1342.0" layoutY="186.0" startX="-31.0" startY="118.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line endX="18.5" endY="317.0" layoutX="1471.0" layoutY="-72.0" startX="18.5" startY="375.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Circle fill="DODGERBLUE" layoutX="2129.0" layoutY="64.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="2128.0" layoutY="426.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="2128.0" layoutY="623.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1669.0" layoutY="819.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1850.0" layoutY="622.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1670.0" layoutY="623.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1850.0" layoutY="426.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1669.0" layoutY="426.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1850.0" layoutY="245.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1669.0" layoutY="245.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1850.0" layoutY="64.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1669.0" layoutY="64.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1490.0" layoutY="244.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1490.0" layoutY="64.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1490.0" layoutY="427.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1489.0" layoutY="576.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1490.0" layoutY="819.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1118.0" layoutY="576.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1118.0" layoutY="819.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1310.0" layoutY="304.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1013.0" layoutY="301.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1162.0" layoutY="184.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1010.0" layoutY="63.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1009.0" layoutY="181.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1305.0" layoutY="64.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="1489.0" layoutY="305.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Rectangle fx:id="rectangleField" arcHeight="5.0" arcWidth="5.0" fill="#47ad32" height="715.0" layoutY="311.0" stroke="#47ad32" strokeType="INSIDE" width="1111.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#47ad32" height="260.0" layoutX="1111.0" layoutY="311.0" stroke="#47ad32" strokeType="INSIDE" width="373.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#47ad32" height="311.0" stroke="#47ad32" strokeType="INSIDE" width="1003.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#47ad32" height="56.0" layoutX="1003.0" stroke="#47ad32" strokeType="INSIDE" width="1215.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#47ad32" height="969.0" layoutX="2136.0" layoutY="56.0" stroke="#47ad32" strokeType="INSIDE" width="82.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#47ad32" height="202.0" layoutX="1111.0" layoutY="825.0" stroke="#47ad32" strokeType="INSIDE" width="1026.0" />
+      <CubicCurve fx:id="no" controlX1="-232.0" controlX2="139.0" controlY1="77.0" controlY2="147.0" endX="259.0" endY="-51.0" fill="#47ad32" layoutX="1895.0" layoutY="834.0" startX="-194.0" startY="-10.0" stroke="#47ad32" />
+      <CubicCurve fx:id="no" controlX1="-232.0" controlX2="232.0" controlY1="77.0" controlY2="-23.0" endX="185.0" endY="-218.0" fill="#47ad32" layoutX="1948.0" layoutY="836.0" startX="212.0" startY="121.0" stroke="#47ad32" />
+      <CubicCurve fx:id="no" controlX1="-12.0" controlX2="225.0" controlY1="-78.0" controlY2="8.0" endX="325.0" endY="-120.0" fill="#47ad32" layoutX="1809.0" layoutY="836.0" startX="284.0" startY="30.0" stroke="#47ad32" />
+   </children>
+</Pane>

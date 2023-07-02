@@ -1,14 +1,17 @@
 package Logic;
 
+import java.io.File;
+import java.io.RandomAccessFile;
 import java.lang.module.ResolutionException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.ListIterator;
 import java.util.PriorityQueue;
+import java.util.Iterator;
 
-import javax.swing.text.html.HTMLDocument.Iterator;
 
 import cu.edu.cujae.ceis.graph.LinkedGraph;
 import cu.edu.cujae.ceis.graph.edge.Edge;
@@ -18,19 +21,23 @@ import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeNotDirectedGraph;
 import cu.edu.cujae.ceis.graph.vertex.Vertex;
 import cu.edu.cujae.ceis.tree.binary.BinaryTreeNode;
 import cu.edu.cujae.ceis.tree.general.GeneralTree;
+import cu.edu.cujae.ceis.tree.iterators.general.InBreadthIterator;
 import cu.edu.cujae.ceis.tree.iterators.general.InDepthIterator;
 import util.AuxClassBusTable;
 import util.AuxClassPath;
+import util.Convert;
 import util.EdgeAux;
 import util.Label;
 import util.LinePosAux;
 import util.MyComparator;
-
+import util.AuxClassFiles;
 public class University {
 
 	private static University instance;
 	private GeneralTree<Object> tree;
 	private ILinkedWeightedEdgeNotDirectedGraph map;
+	private File file;
+	
 
 	// private File mapFile;
 	// private FIle treeFile;
@@ -52,7 +59,13 @@ public class University {
 	public GeneralTree<Object> getTree() {
 		return tree;
 	}
+	public File getFile() {
+		return file;
+	}
 
+	public void setFile(File file) {
+		this.file = file;
+	}
 	private InDepthIterator<Object> inDepthIterator() {
 		return new InDepthIterator<Object>(this.tree);
 	}
@@ -561,4 +574,124 @@ public class University {
 		return list;
 	}
 
+	public void writeTree(){
+		try (RandomAccessFile file = new RandomAccessFile(this.file, "rw")) {
+			
+			int totalNodes = tree.totalNodes();			
+			file.writeInt(totalNodes);			
+			InDepthIterator<Object> it = tree.inDepthIterator();			
+			List<BinaryTreeNode<Object>> list = new ArrayList<>();
+			
+			while (it.hasNext()) {
+				list.add(it.nextNode());
+			}
+			
+			it = tree.inDepthIterator();			
+
+			
+			while (it.hasNext()) {				
+				BinaryTreeNode<Object> node = it.nextNode();				
+				byte[] byteNode = Convert.toBytes(node.getInfo());				
+				int tamNode = byteNode.length;
+				
+				file.writeInt(tamNode);				
+				file.write(byteNode);
+				
+				BinaryTreeNode<Object> rightNode = node.getRight();
+				
+				int posFirstChild = -1;
+				if (rightNode != null) {
+					posFirstChild = list.indexOf(rightNode);
+				}
+				
+				file.writeInt(posFirstChild);				
+				file.writeBoolean(node.getLeft() == null);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+
+	public  ArrayList<AuxClassFiles<Object>> readFile() {
+        ArrayList<AuxClassFiles<Object>> res = new ArrayList<>();
+        try (RandomAccessFile file = new RandomAccessFile(this.file, "r")) {
+           
+            int totalNodes = file.readInt();
+            
+            for (int i = 0; i < totalNodes; i++) {
+               
+                int tamInfo = file.readInt();            
+                byte[] infoBytes = new byte[tamInfo];
+                file.read(infoBytes);
+                Object info = (Object) Convert.toObject(infoBytes);
+                 int rightSon = file.readInt();
+                boolean isLeaf = file.readBoolean();
+                res.add(new AuxClassFiles<Object>(info, rightSon, isLeaf));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+	
+    public GeneralTree<Object> chargeTree() {
+        tree = new GeneralTree<>();
+        ArrayList<AuxClassFiles<Object>> list = readFile();
+        BinaryTreeNode<Object> padre = null;
+
+       
+        for (AuxClassFiles<Object> infoReaded : list) {
+            Object info = infoReaded.getInfo();
+            BinaryTreeNode<Object> node = getNode(info);
+
+            
+            if (node == null) {
+                node = new BinaryTreeNode<Object>(info);
+            }
+
+            
+            if (padre != null) {
+                tree.insertNode(node, padre);
+            }
+
+            int rightSon = infoReaded.getRightSon();
+
+           
+            if (rightSon >= 0) {
+                node.setRight(new BinaryTreeNode<Object>(list.get(rightSon).getInfo()));
+            }
+
+            
+            if (infoReaded.isLeaf()) {
+                padre = null;
+            } else {
+                padre = node;
+            }
+
+           
+            if (tree.isEmpty()) {
+                tree.setRoot(node);
+            }
+        }
+
+        return tree;
+    }
+
+    
+    private BinaryTreeNode<Object> getNode(Object info) {
+        BinaryTreeNode<Object> res = null;
+        InBreadthIterator<Object> it = tree.inBreadthIterator();
+        
+        while (res == null && it.hasNext()) {
+            BinaryTreeNode<Object> node = it.nextNode();
+            if (node.getInfo().equals(info)) {
+                res = node;
+            }
+        }
+        return res;
+    }
+
+    
 }

@@ -1,11 +1,14 @@
 package Logic;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 import cu.edu.cujae.ceis.graph.vertex.Vertex;
 import util.AuxClassBusTable;
 import util.AuxClassPath;
+import util.AuxClassFiles;
 import util.Init;
 
 public class Main {
@@ -66,6 +69,21 @@ public class Main {
 		// University.getInstance().getMap().insertVertex("D");
 		// University.getInstance().getMap().insertVertex(3);
 		Init.data();
+		University.getInstance().setFile(new File("D:/Fichero.txt"));
+		University.getInstance().chargeTree();
+		//University.getInstance().writeTree();
+		ArrayList<AuxClassFiles<Object>> listica = University.getInstance().readFile();
+		for(AuxClassFiles<Object> i: listica){
+			if(i.getInfo() instanceof Location){
+				System.out.println(((Location)i.getInfo()).getName());
+			}
+			else if(i.getInfo() instanceof Terminal){
+				System.out.println(((Terminal)i.getInfo()).getId());
+			}
+			else if(i.getInfo() instanceof Bus){
+				System.out.println(((Bus)i.getInfo()).getTuition());
+			}
+		}
 		// Conner a = new Conner(513, -324, "A");
 		// Conner h = new Conner(-208, 346, "H");
 		// University.getInstance().getMap().insertVertex("A");
