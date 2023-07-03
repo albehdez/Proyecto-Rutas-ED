@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 
 public class Bus implements Serializable{
-
+	
 	private String tuition;
 	private LinkedList<StopBus> route;
 	private int seating;

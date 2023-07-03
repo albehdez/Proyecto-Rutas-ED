@@ -8,11 +8,11 @@ public class Init {
 
     public static void data() {
 
-        University.getInstance().insertBus("Boyeros", "Santiago de la Vegas", "B753268", 17);
-        University.getInstance().insertBus("Arroyo Naranjo", "Poey", "B783229", 19);
-        University.getInstance().insertBus("Diez de Octubre", "Lawton", "B355270", 15);
-        University.getInstance().insertBus("Playa", "Nautico", "B759849", 25);
-        University.getInstance().insertBus("Boyeros", "Santiago de la Vegas", "B787356", 20);
+        // University.getInstance().insertBus("Boyeros", "Santiago de la Vegas", "B753268", 17);
+        // University.getInstance().insertBus("Arroyo Naranjo", "Poey", "B783229", 19);
+        // University.getInstance().insertBus("Diez de Octubre", "Lawton", "B355270", 15);
+        // University.getInstance().insertBus("Playa", "Nautico", "B759849", 25);
+        // University.getInstance().insertBus("Boyeros", "Santiago de la Vegas", "B787356", 20);
 
         Corner a = new Corner(97, 127, "A");
         Corner b = new Corner(271, 130, "B");

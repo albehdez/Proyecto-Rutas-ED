@@ -2,9 +2,12 @@ package util;
 
 import Logic.Location;
 import Logic.Terminal;
+
+import java.io.Serializable;
+
 import Logic.Bus;
 
-public class AuxClassBusTable {
+public class AuxClassBusTable implements Serializable{
     Location location;
     Terminal terminal;
     Bus bus;

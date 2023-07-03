@@ -6,10 +6,14 @@ import java.lang.module.ResolutionException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.PriorityQueue;
+
+import java.util.Map;
+
 import java.util.Iterator;
 
 
@@ -577,121 +581,86 @@ public class University {
 	public void writeTree(){
 		try (RandomAccessFile file = new RandomAccessFile(this.file, "rw")) {
 			
-			int totalNodes = tree.totalNodes();			
-			file.writeInt(totalNodes);			
-			InDepthIterator<Object> it = tree.inDepthIterator();			
-			List<BinaryTreeNode<Object>> list = new ArrayList<>();
-			
-			while (it.hasNext()) {
-				list.add(it.nextNode());
-			}
-			
-			it = tree.inDepthIterator();			
+					
+						
+			LinkedList<AuxClassBusTable> list = this.getTreeInfo();
+			Iterator<AuxClassBusTable> it = list.iterator();			
+			int totalNodes = 0;						
+			file.writeInt(totalNodes);	
 
-			
 			while (it.hasNext()) {				
-				BinaryTreeNode<Object> node = it.nextNode();				
-				byte[] byteNode = Convert.toBytes(node.getInfo());				
-				int tamNode = byteNode.length;
-				
-				file.writeInt(tamNode);				
-				file.write(byteNode);
-				
-				BinaryTreeNode<Object> rightNode = node.getRight();
-				
-				int posFirstChild = -1;
-				if (rightNode != null) {
-					posFirstChild = list.indexOf(rightNode);
-				}
-				
-				file.writeInt(posFirstChild);				
-				file.writeBoolean(node.getLeft() == null);
+				AuxClassBusTable node = it.next();		
+
+				byte[] byteNodeL = Convert.toBytes(node.getLocation());				
+				int tamNodeL = byteNodeL.length;
+				file.writeInt(tamNodeL);				
+				file.write(byteNodeL);
+				byte[] byteNodeT = Convert.toBytes(node.getTerminal());				
+				int tamNodeT = byteNodeT.length;
+				file.writeInt(tamNodeT);				
+				file.write(byteNodeT);
+				byte[] byteNodeB = Convert.toBytes(node.getBus());				
+				int tamNodeB = byteNodeB.length;
+				file.writeInt(tamNodeB);				
+				file.write(byteNodeB);
+				totalNodes++;
 			}
+			file.seek(0);
+			file.writeInt(totalNodes);
+			file.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 
-	public  ArrayList<AuxClassFiles<Object>> readFile() {
-        ArrayList<AuxClassFiles<Object>> res = new ArrayList<>();
-        try (RandomAccessFile file = new RandomAccessFile(this.file, "r")) {
+	public  LinkedList<AuxClassBusTable> readFile() {
+        LinkedList<AuxClassBusTable> lista = new LinkedList<AuxClassBusTable>();
+        try (
+			RandomAccessFile file = new RandomAccessFile(this.file, "r")) {
            
             int totalNodes = file.readInt();
             
             for (int i = 0; i < totalNodes; i++) {
                
-                int tamInfo = file.readInt();            
-                byte[] infoBytes = new byte[tamInfo];
-                file.read(infoBytes);
-                Object info = (Object) Convert.toObject(infoBytes);
-                 int rightSon = file.readInt();
-                boolean isLeaf = file.readBoolean();
-                res.add(new AuxClassFiles<Object>(info, rightSon, isLeaf));
+                int tamInfoL = file.readInt();            
+                byte[] infoBytesL = new byte[tamInfoL];
+                file.read(infoBytesL);                
+				Location infoL = (Location) Convert.toObject(infoBytesL);
+
+				int tamInfoT = file.readInt();            
+                byte[] infoBytesT = new byte[tamInfoT];
+                file.read(infoBytesT);                
+				Terminal infoT = (Terminal) Convert.toObject(infoBytesT);
+
+				int tamInfoB = file.readInt();            
+                byte[] infoBytesB = new byte[tamInfoB];
+                file.read(infoBytesB);                
+				Bus infoB = (Bus) Convert.toObject(infoBytesB);
+
+                AuxClassBusTable n = new AuxClassBusTable(infoL, infoT, infoB, infoB.getSeating());
+				lista.add(n);
+                
+               
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return res;
+		
+        return lista;
     }
-
+	public void createTree(){
+		LinkedList<AuxClassBusTable> lista = this.readFile();
+		
+		Iterator<AuxClassBusTable> iter = lista.iterator();
+		while(iter.hasNext()){
+			AuxClassBusTable current = iter.next();
+			this.insertBus(current.getLocation().getName(), current.getTerminal().getId(), current.getBus().getTuition(), current.getBus().getSeating());
+			
+		}
+	}
 	
-    public GeneralTree<Object> chargeTree() {
-        tree = new GeneralTree<>();
-        ArrayList<AuxClassFiles<Object>> list = readFile();
-        BinaryTreeNode<Object> padre = null;
-
-       
-        for (AuxClassFiles<Object> infoReaded : list) {
-            Object info = infoReaded.getInfo();
-            BinaryTreeNode<Object> node = getNode(info);
-
-            
-            if (node == null) {
-                node = new BinaryTreeNode<Object>(info);
-            }
-
-            
-            if (padre != null) {
-                tree.insertNode(node, padre);
-            }
-
-            int rightSon = infoReaded.getRightSon();
-
-           
-            if (rightSon >= 0) {
-                node.setRight(new BinaryTreeNode<Object>(list.get(rightSon).getInfo()));
-            }
-
-            
-            if (infoReaded.isLeaf()) {
-                padre = null;
-            } else {
-                padre = node;
-            }
-
-           
-            if (tree.isEmpty()) {
-                tree.setRoot(node);
-            }
-        }
-
-        return tree;
-    }
-
     
-    private BinaryTreeNode<Object> getNode(Object info) {
-        BinaryTreeNode<Object> res = null;
-        InBreadthIterator<Object> it = tree.inBreadthIterator();
-        
-        while (res == null && it.hasNext()) {
-            BinaryTreeNode<Object> node = it.nextNode();
-            if (node.getInfo().equals(info)) {
-                res = node;
-            }
-        }
-        return res;
-    }
 
     
 }

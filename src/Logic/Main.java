@@ -6,9 +6,10 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 import cu.edu.cujae.ceis.graph.vertex.Vertex;
+import cu.edu.cujae.ceis.tree.general.GeneralTree;
 import util.AuxClassBusTable;
 import util.AuxClassPath;
-import util.AuxClassFiles;
+
 import util.Init;
 
 public class Main {
@@ -37,17 +38,7 @@ public class Main {
 		// University.getInstance().deleteBus("L3", "T4", "b4");
 		// University.getInstance().deleteBus("L3", "T5", "b5");
 
-		// Iterator<Object> it = University.getInstance().getTree().inDepthIterator();
-
-		// while (it.hasNext()) {
-		// Object nod = it.next();
-		// if (nod instanceof Terminal)
-		// System.out.println(((Terminal) nod).getId());
-		// else if (nod instanceof Location)
-		// System.out.println(((Location) nod).getName());
-		// else
-		// System.out.println(((Bus) nod).getTuition());
-		// }
+		
 
 		// University.getInstance().deleteBus("L3", "T5", "b5");
 		// University.getInstance().deleteBus("L3", "T4", "b4");
@@ -70,20 +61,23 @@ public class Main {
 		// University.getInstance().getMap().insertVertex(3);
 		Init.data();
 		University.getInstance().setFile(new File("D:/Fichero.txt"));
-		University.getInstance().chargeTree();
 		//University.getInstance().writeTree();
-		ArrayList<AuxClassFiles<Object>> listica = University.getInstance().readFile();
-		for(AuxClassFiles<Object> i: listica){
-			if(i.getInfo() instanceof Location){
-				System.out.println(((Location)i.getInfo()).getName());
-			}
-			else if(i.getInfo() instanceof Terminal){
-				System.out.println(((Terminal)i.getInfo()).getId());
-			}
-			else if(i.getInfo() instanceof Bus){
-				System.out.println(((Bus)i.getInfo()).getTuition());
-			}
+		University.getInstance().createTree();
+		GeneralTree<Object> u= University.getInstance().getTree();
+		Iterator<Object> it = University.getInstance().getTree().inDepthIterator();
+
+		while (it.hasNext()) {
+		Object nod = it.next();
+		if (nod instanceof Terminal)
+		System.out.println(((Terminal) nod).getId());
+		else if (nod instanceof Location)
+		System.out.println(((Location) nod).getName());
+		else
+		System.out.println(((Bus) nod).getTuition());
 		}
+		// University.getInstance().writeTree();
+  		
+		
 		// Conner a = new Conner(513, -324, "A");
 		// Conner h = new Conner(-208, 346, "H");
 		// University.getInstance().getMap().insertVertex("A");
@@ -96,10 +90,10 @@ public class Main {
 		AuxClassPath aux = University.getInstance().shortestPath(
 				University.getInstance().getMap().getVerticesList().get(0),
 				University.getInstance().getMap().getVerticesList().get(6), University.getInstance().getMap());
-		Iterator<Object> it = aux.getList().iterator();
+		Iterator<Object> iter = aux.getList().iterator();
 		System.out.println("Peso: " + aux.getWeigth());
-		while (it.hasNext()) {
-			Vertex o = (Vertex) it.next();
+		while (iter.hasNext()) {
+			Vertex o = (Vertex) iter.next();
 			System.out.println(((Corner) o.getInfo()).getId());
 		}
 	}
