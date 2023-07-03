@@ -41,6 +41,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "Application.App",
+      "projectName": "Proyecto-Rutas-ED_e44e284c"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "Logic.Main",
+      "projectName": "Proyecto-Rutas-ED_e44e284c"
+    },
+    {
+      "type": "java",
       "name": "Main",
       "request": "launch",
       "mainClass": "Logic.Main",

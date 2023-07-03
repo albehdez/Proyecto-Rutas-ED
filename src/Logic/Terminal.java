@@ -1,9 +1,11 @@
 package Logic;
 
-public class Terminal {
+import java.io.Serializable;
+
+public class Terminal implements Serializable{
 
 	private String id;
-
+	
 	public Terminal(String id) {
 		setId(id);
 	}
