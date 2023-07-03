@@ -58,6 +58,10 @@ public class Scene2 {
     private Button EliminarButton;
     @FXML
     private Button addButton;
+    @FXML
+    private Button buttonDelete;
+    @FXML
+    private Button buttonModificar;
 
     private boolean value = true;
 
@@ -150,17 +154,31 @@ public class Scene2 {
     }
 
     public void buttonDelete(ActionEvent e) {
-        // tableBus.getSelectionModel()
+        AuxClassBusTable aux = tableBus.getSelectionModel().getSelectedItem();
+        University.getInstance().deleteBus(aux.getLocation().getName(), aux.getTerminal().getId(),
+                aux.getBus().getTuition());
+        update();
+        buttonDelete.setDisable(true);
     }
 
-    public void buttonModificar() {
+    public void buttonModificar(ActionEvent e) {
         String terminal = null;
         String localidad = null;
         String matricula = null;
         asientosSpinner.setDisable(false);
         EliminarButton.setDisable(false);
+        AuxClassBusTable aux = tableBus.getSelectionModel().getSelectedItem();
+        LocalidadTextField.setText(aux.getLocation().getName());
+        TermianlTextField.setText(aux.getTerminal().getId());
+        MatriculaTextField.setText(aux.getBus().getTuition());
         if (value)
             value = false;
+    }
+
+    public void ActivateButtonDelete() {
+        // if (localidadColumn != null)
+        buttonDelete.setDisable(false);
+        buttonModificar.setDisable(false);
     }
 
     public Button getAddButton() {
@@ -173,6 +191,9 @@ public class Scene2 {
         MatriculaTextField.setDisable(true);
         asientosSpinner.setDisable(true);
         EliminarButton.setDisable(true);
+        LocalidadTextField.setText("");
+        TermianlTextField.setText("");
+        MatriculaTextField.setText("");
         // Scene2.getInstance().getAddButton().setDisable(false);
         // addButton.setDisable(false);
     }

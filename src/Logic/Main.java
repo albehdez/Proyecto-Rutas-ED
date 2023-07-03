@@ -7,6 +7,7 @@ import cu.edu.cujae.ceis.graph.vertex.Vertex;
 import util.AuxClassBusTable;
 import util.AuxClassPath;
 import util.Init;
+import util.Util;
 
 public class Main {
 
@@ -65,7 +66,7 @@ public class Main {
 
 		// University.getInstance().getMap().insertVertex("D");
 		// University.getInstance().getMap().insertVertex(3);
-		Init.data();
+		// Init.data();
 		// Conner a = new Conner(513, -324, "A");
 		// Conner h = new Conner(-208, 346, "H");
 		// University.getInstance().getMap().insertVertex("A");
@@ -75,14 +76,17 @@ public class Main {
 		// University.getInstance().getMap().insertWEdgeNDG(1, 2, 6.0);
 		// University.getInstance().getMap().insertWEdgeNDG(0, 2, 1.0);
 
-		AuxClassPath aux = University.getInstance().shortestPath(
-				University.getInstance().getMap().getVerticesList().get(0),
-				University.getInstance().getMap().getVerticesList().get(6), University.getInstance().getMap());
-		Iterator<Object> it = aux.getList().iterator();
-		System.out.println("Peso: " + aux.getWeigth());
-		while (it.hasNext()) {
-			Vertex o = (Vertex) it.next();
-			System.out.println(((Corner) o.getInfo()).getId());
-		}
+		// AuxClassPath aux = University.getInstance().shortestPath(
+		// University.getInstance().getMap().getVerticesList().get(0),
+		// University.getInstance().getMap().getVerticesList().get(6),
+		// University.getInstance().getMap());
+		// Iterator<Object> it = aux.getList().iterator();
+		// System.out.println("Peso: " + aux.getWeigth());
+		// while (it.hasNext()) {
+		// Vertex o = (Vertex) it.next();
+		// System.out.println(((Corner) o.getInfo()).getId());
+		// }
+
+		// System.out.println(Util.getVertexsId("A3B"));
 	}
 }

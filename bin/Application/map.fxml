@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -12,129 +11,129 @@
 
 <Pane fx:id="panelMapa" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#pintar" prefHeight="716.0" prefWidth="1350.0" style="-fx-background-color: green;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Map">
    <children>
-      <Rectangle fx:id="puente" arcHeight="5.0" arcWidth="5.0" fill="#dddac6" height="604.0" layoutX="48.0" layoutY="55.0" stroke="BLACK" strokeType="INSIDE" width="1267.0" />
+      <Rectangle fx:id="puente" arcHeight="5.0" arcWidth="5.0" fill="#dddac6" height="604.0" layoutX="48.0" layoutY="61.0" stroke="#dddac6" strokeType="INSIDE" width="1267.0" />
       <Line fx:id="no" endX="-103.0" endY="134.5" fill="#c5cadb" layoutX="585.0" layoutY="587.0" startX="95.0" startY="-291.0" stroke="#3b8ac6" strokeWidth="15.0" />
-      <Line fx:id="street" endX="-322.0" endY="-111.0" layoutX="1091.0" layoutY="510.0" startX="-207.0" startY="73.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="10.0" />
-      <Line fx:id="street1" endX="-151.0" endY="-64.0" layoutX="1171.0" layoutY="350.0" startX="-151.0" startY="-220.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street2" endX="-300.0" endY="-227.0" layoutX="1154.0" layoutY="511.0" startX="-286.0" startY="-85.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street11" endX="-310.0" endY="19.5" layoutX="1157.0" layoutY="110.0" startX="-137.0" startY="19.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street12" endX="264.0" endY="127.5" layoutX="412.0" layoutY="215.0" startX="207.0" startY="264.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street21" endX="-308.0" endY="-337.0" layoutX="1010.0" layoutY="467.0" startX="-163.0" startY="-337.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street121" endX="131.0" endY="22.0" layoutX="721.0" layoutY="263.0" startX="126.0" startY="-133.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street3" endX="-45.0" endY="5.0" layoutX="723.0" layoutY="336.0" startY="86.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street31" endX="21.0" endY="93.0" layoutX="599.0" layoutY="385.0" startX="-23.0" startY="186.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street311" endX="135.0" endY="31.0" layoutX="885.0" layoutY="551.0" startX="-2.0" startY="31.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street111" endX="-24.0" endY="219.0" layoutX="747.0" layoutY="202.0" startX="16.0" startY="281.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street1111" endX="87.0" endY="143.5" layoutX="489.0" layoutY="428.0" startX="323.0" startY="143.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="L13P1" endX="-322.0" endY="-114.0" layoutX="1091.0" layoutY="510.0" startX="-207.0" startY="69.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="10.0" />
+      <Line fx:id="C13H1" endX="-151.0" endY="-66.0" layoutX="1171.0" layoutY="350.0" startX="-151.0" startY="-220.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="G13M1" endX="-301.0" endY="-222.0" layoutX="1154.0" layoutY="511.0" startX="-285.0" startY="-85.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="B13C1" endX="-310.0" endY="19.5" layoutX="1157.0" layoutY="110.0" startX="-137.0" startY="19.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="C23A2" endX="264.0" endY="127.5" layoutX="412.0" layoutY="215.0" startX="207.0" startY="264.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="A13B1" endX="-307.0" endY="-337.0" layoutX="1010.0" layoutY="467.0" startX="-163.0" startY="-337.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="B13G1" endX="132.0" endY="26.0" layoutX="721.0" layoutY="263.0" startX="126.0" startY="-133.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="A23B2" endX="-45.0" endY="5.0" layoutX="723.0" layoutY="336.0" startY="86.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="E23C2" endX="21.0" endY="93.0" layoutX="599.0" layoutY="385.0" startX="-23.0" startY="186.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="P13Q1" endX="136.0" endY="28.0" layoutX="885.0" layoutY="551.0" startX="-1.0" startY="28.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="B23D2" endX="-24.0" endY="219.0" layoutX="747.0" layoutY="202.0" startX="16.0" startY="281.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="F23E2" endX="87.0" endY="143.5" layoutX="489.0" layoutY="428.0" startX="323.0" startY="143.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
       <Line fx:id="no" endX="22.0" endY="94.0" fill="#c5cadb" layoutX="660.0" layoutY="204.0" startX="22.0" startY="-341.5" stroke="#3b8ac6" strokeWidth="15.0" />
       <Line fx:id="no" endX="246.0" endY="192.8934326171875" fill="#c5cadb" layoutX="708.0" layoutY="553.0" startX="-26.0" startY="-256.0" stroke="#3b8ac6" strokeWidth="15.0" />
-      <Line fx:id="street4" endX="11.0" endY="-60.0" layoutX="756.0" layoutY="457.0" startX="-52.5" startY="-156.60659790039062" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="10.0" />
-      <Line fx:id="street41" endX="-87.0" endY="73.5" layoutX="790.0" layoutY="226.0" startX="-87.0" startY="-95.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="10.0" />
-      <Line fx:id="puente" endX="92.0" endY="-14.0" layoutX="677.0" layoutY="410.0" startX="46.0" startY="11.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="puente" endX="89.0" endY="-9.0" layoutX="529.0" layoutY="487.0" startX="42.0" startY="-29.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="puente" endX="89.0" endY="-9.0" layoutX="613.0" layoutY="139.0" startX="44.0" startY="-9.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="F13L1" endX="13.0" endY="-61.0" layoutX="756.0" layoutY="457.0" startX="-53.5" startY="-160.60659790039062" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="10.0" />
+      <Line fx:id="A13F1" endX="-87.0" endY="69.5" layoutX="790.0" layoutY="226.0" startX="-87.0" startY="-96.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="10.0" />
+      <Line fx:id="B23L1" endX="92.0" endY="-14.0" layoutX="677.0" layoutY="410.0" startX="46.0" startY="11.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="S3C2" endX="89.0" endY="-9.0" layoutX="529.0" layoutY="487.0" startX="42.0" startY="-29.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="E3A1" endX="90.0" endY="-9.0" layoutX="613.0" layoutY="139.0" startX="44.0" startY="-9.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
       <Polygon fill="#8bc34a" layoutX="691.0" layoutY="500.0" points="-71.0, 40.0, 77.0, 40.0, -10.0, -96.0" stroke="#8bc34a" strokeType="INSIDE" />
-      <Line fx:id="street112" endX="-305.0" endY="19.5" layoutX="1157.0" layoutY="265.0" startX="-137.0" startY="19.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street211" endX="-378.0" endY="-287.0" layoutX="1145.0" layoutY="687.0" startX="-293.0" startY="-403.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street113" endX="-310.0" endY="19.5" layoutX="929.0" layoutY="458.0" startX="-165.0" startY="27.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="3.0" />
-      <Line fx:id="street2111" endX="-419.0" endY="-184.0" layoutX="1231.0" layoutY="755.0" startX="-465.5" startY="-268.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street13" endX="-151.0" endY="-166.0" layoutX="1171.0" layoutY="516.0" startX="-151.0" startY="-232.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street1131" endX="-310.0" endY="21.5" layoutX="1178.0" layoutY="404.0" startX="-158.5" startY="27.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="3.0" />
-      <Line fx:id="street22" endX="-300.0" endY="-238.0" layoutX="1169.0" layoutY="664.0" startX="-283.0" startY="-83.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street131" endX="-151.0" endY="-82.0" layoutX="1171.0" layoutY="663.0" startX="-151.0" startY="-232.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street114" endX="-310.0" endY="19.5" layoutX="1331.0" layoutY="110.0" startX="-188.0" startY="19.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street1141" endX="-310.0" endY="19.5" layoutX="1454.0" layoutY="110.0" startX="-188.0" startY="19.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street14" endX="-153.0" endY="-67.0" layoutX="1421.0" layoutY="350.0" startX="-153.0" startY="-220.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street141" endX="-151.0" endY="1.0" layoutX="1296.0" layoutY="350.0" startX="-151.0" startY="-220.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street1142" endX="-309.0" endY="19.5" layoutX="1329.0" layoutY="330.0" startX="-184.0" startY="19.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street132" endX="-151.0" endY="-146.0" layoutX="1171.0" layoutY="573.0" startX="-151.0" startY="-225.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street1311" endX="-143.0" endY="-210.0" layoutX="1255.0" layoutY="645.0" startX="-110.0" startY="-294.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street115" endX="-310.0" endY="19.5" layoutX="1333.0" layoutY="562.0" startX="-64.0" startY="19.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street142" endX="-151.0" endY="49.0" layoutX="1419.0" layoutY="531.0" startX="-151.0" startY="-97.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street11411" endX="-310.0" endY="19.5" layoutX="1422.0" layoutY="414.0" startX="-153.0" startY="19.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street13111" endX="-201.0" endY="-147.0" layoutX="1223.0" layoutY="728.0" startX="-111.0" startY="-294.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street11311" endX="-308.0" endY="22.0" layoutX="1452.0" layoutY="330.0" startX="-184.0" startY="-43.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="3.0" />
-      <Line fx:id="street143" endX="-153.0" endY="-67.0" layoutX="1421.0" layoutY="501.0" startX="-153.0" startY="-220.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street212" endX="-158.0" endY="-300.0" layoutX="815.0" layoutY="571.0" startX="-158.0" startY="-441.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street2121" endX="-158.0" endY="-300.0" layoutX="729.0" layoutY="760.0" startX="-72.0" startY="-490.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street213" endX="-308.0" endY="-337.0" layoutX="820.0" layoutY="606.0" startX="-163.0" startY="-337.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street2131" endX="-241.0" endY="-416.0" layoutX="753.0" layoutY="545.0" startX="-241.0" startY="-276.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street21311" endX="-241.0" endY="-416.0" layoutX="753.0" layoutY="544.0" startX="-362.0" startY="-416.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street213111" endX="-241.0" endY="-416.0" layoutX="633.0" layoutY="544.0" startX="-362.0" startY="-416.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street21312" endX="-241.0" endY="-416.0" layoutX="634.0" layoutY="544.0" startX="-241.0" startY="-280.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street213112" endX="-241.0" endY="-416.0" layoutX="753.0" layoutY="685.0" startX="-360.0" startY="-416.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="G13H1" endX="-304.0" endY="23.5" layoutX="1157.0" layoutY="265.0" startX="-137.0" startY="18.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="G13L1" endX="-376.0" endY="-291.0" layoutX="1145.0" layoutY="687.0" startX="-292.0" startY="-398.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="C23D2" endX="-310.0" endY="19.5" layoutX="929.0" layoutY="458.0" startX="-165.0" startY="27.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="3.0" />
+      <Line fx:id="D23F2" endX="-419.0" endY="-184.0" layoutX="1231.0" layoutY="755.0" startX="-465.5" startY="-268.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="H13J1" endX="-150.0" endY="-167.0" layoutX="1171.0" layoutY="516.0" startX="-151.0" startY="-232.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="M13N1" endX="-309.0" endY="21.5" layoutX="1178.0" layoutY="404.0" startX="-158.5" startY="28.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="3.0" />
+      <Line fx:id="M13P1" endX="-300.0" endY="-238.0" layoutX="1169.0" layoutY="664.0" startX="-285.0" startY="-85.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="N13Q1" endX="-150.0" endY="-84.0" layoutX="1171.0" layoutY="663.0" startX="-151.0" startY="-231.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="C13D1" endX="-311.0" endY="19.5" layoutX="1331.0" layoutY="110.0" startX="-186.0" startY="19.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="D13E1" endX="-309.0" endY="19.5" layoutX="1454.0" layoutY="110.0" startX="-187.0" startY="19.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="E13I1" endX="-153.0" endY="-61.0" layoutX="1421.0" layoutY="350.0" startX="-154.0" startY="-220.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="D13K1" endX="-153.0" layoutX="1296.0" layoutY="350.0" startX="-151.0" startY="-220.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="J13K1" endX="-308.0" endY="18.5" layoutX="1329.0" layoutY="330.0" startX="-186.0" startY="19.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="J13N1" endX="-151.0" endY="-141.0" layoutX="1171.0" layoutY="573.0" startX="-150.0" startY="-224.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="K13Ñ1" endX="-141.0" endY="-213.0" layoutX="1255.0" layoutY="645.0" startX="-112.0" startY="-295.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="Q13R1" endX="-312.0" endY="16.5" layoutX="1333.0" layoutY="562.0" startX="-65.0" startY="18.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="O13R1" endX="-151.0" endY="50.0" layoutX="1419.0" layoutY="531.0" startX="-151.0" startY="-97.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="Ñ13O1" endX="-308.0" endY="17.5" layoutX="1422.0" layoutY="414.0" startX="-154.0" startY="19.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="Ñ13Q1" endX="-202.0" endY="-149.0" layoutX="1223.0" layoutY="728.0" startX="-109.0" startY="-296.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="I13K1" endX="-309.0" endY="20.0" layoutX="1452.0" layoutY="330.0" startX="-184.0" startY="-41.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="3.0" />
+      <Line fx:id="I13O1" endX="-153.0" endY="-67.0" layoutX="1421.0" layoutY="501.0" startX="-153.0" startY="-212.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="E3J" endX="-158.0" endY="-300.0" layoutX="815.0" layoutY="571.0" startX="-158.0" startY="-441.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="J3S" endX="-158.0" endY="-300.0" layoutX="729.0" layoutY="760.0" startX="-72.0" startY="-490.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="I3J" endX="-308.0" endY="-337.0" layoutX="820.0" layoutY="606.0" startX="-163.0" startY="-337.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="D3I" endX="-241.0" endY="-416.0" layoutX="753.0" layoutY="545.0" startX="-241.0" startY="-276.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="C3D" endX="-241.0" endY="-416.0" layoutX="753.0" layoutY="544.0" startX="-362.0" startY="-416.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="B3C" endX="-241.0" endY="-416.0" layoutX="633.0" layoutY="544.0" startX="-362.0" startY="-416.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="C3H" endX="-241.0" endY="-416.0" layoutX="634.0" layoutY="544.0" startX="-241.0" startY="-280.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="H3I" endX="-241.0" endY="-416.0" layoutX="753.0" layoutY="685.0" startX="-360.0" startY="-416.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8bc34a" height="153.0" layoutX="125.0" layoutY="289.0" stroke="#8bc34a" strokeType="INSIDE" width="366.0" />
-      <Line fx:id="street113211" endX="-140.0" endY="69.0" layoutX="392.0" layoutY="388.0" startX="-85.0" startY="23.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="3.0" />
-      <Line fx:id="street213113" endX="-241.0" endY="-416.0" layoutX="633.0" layoutY="685.0" startX="-361.0" startY="-416.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street213121" endX="-241.0" endY="-416.0" layoutX="512.0" layoutY="544.0" startX="-241.0" startY="-276.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street213114" endX="-260.0" endY="-466.0" layoutX="772.0" layoutY="735.0" startX="-260.0" startY="-383.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street2131121" endX="-241.0" endY="-416.0" layoutX="812.0" layoutY="874.0" startX="-301.0" startY="-416.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street2131131" endX="-499.0" endY="-416.0" layoutX="751.0" layoutY="874.0" startX="-648.0" startY="-416.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street2131211" endX="-241.0" endY="-461.0" layoutX="344.0" layoutY="732.0" startX="-241.0" startY="-364.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street2131132" endX="-241.0" endY="-416.0" layoutX="511.0" layoutY="685.0" startX="-408.0" startY="-416.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street2131111" endX="-241.0" endY="-416.0" layoutX="514.0" layoutY="544.0" startX="-419.0" startY="-416.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street2131212" endX="-241.0" endY="-416.0" layoutX="344.0" layoutY="874.0" startX="-241.0" startY="-276.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street2131213" endX="-241.0" endY="-416.0" layoutX="492.0" layoutY="874.0" startX="-241.0" startY="-276.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street21312131" endX="-241.0" endY="-416.0" layoutX="642.0" layoutY="874.0" startX="-241.0" startY="-276.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street21311311" endX="-499.0" endY="-416.0" layoutX="899.0" layoutY="874.0" startX="-648.0" startY="-416.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street213113111" endX="-494.0" endY="-416.0" layoutX="1005.0" layoutY="874.0" startX="-605.0" startY="-416.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Line fx:id="street21312111" endX="-241.0" endY="-455.0" layoutX="344.0" layoutY="823.0" startX="-241.0" startY="-364.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Circle fill="DODGERBLUE" layoutX="97.0" layoutY="127.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="271.0" layoutY="130.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="393.0" layoutY="130.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="511.0" layoutY="130.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="393.0" layoutY="269.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="511.0" layoutY="269.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="104.0" layoutY="270.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="401.0" layoutY="458.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="104.0" layoutY="458.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="251.0" layoutY="596.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="103.0" layoutY="597.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="401.0" layoutY="596.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="571.0" layoutY="458.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="657.0" layoutY="270.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="658.0" layoutY="132.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="703.0" layoutY="130.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="703.0" layoutY="296.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="769.0" layoutY="396.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="725.0" layoutY="421.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="678.0" layoutY="345.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="810.0" layoutY="570.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="618.0" layoutY="478.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="580.0" layoutY="570.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="764.0" layoutY="485.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="884.0" layoutY="579.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="853.0" layoutY="289.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="1020.0" layoutY="284.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="1020.0" layoutY="132.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="847.0" layoutY="132.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="1020.0" layoutY="432.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="869.0" layoutY="426.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="1021.0" layoutY="579.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="1114.0" layoutY="432.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="1143.0" layoutY="350.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="1021.0" layoutY="349.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="1268.0" layoutY="289.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="1268.0" layoutY="132.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="1145.0" layoutY="132.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="1268.0" layoutY="434.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="1268.0" layoutY="581.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line fx:id="ÑP" endX="-140.0" endY="69.0" layoutX="392.0" layoutY="388.0" startX="-85.0" startY="23.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="3.0" />
+      <Line fx:id="G3H" endX="-241.0" endY="-416.0" layoutX="633.0" layoutY="685.0" startX="-361.0" startY="-416.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="B3G" endX="-241.0" endY="-416.0" layoutX="512.0" layoutY="544.0" startX="-241.0" startY="-276.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="I3N" endX="-260.0" endY="-466.0" layoutX="772.0" layoutY="735.0" startX="-260.0" startY="-383.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="R3S" endX="-241.0" endY="-416.0" layoutX="812.0" layoutY="874.0" startX="-301.0" startY="-416.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="O3P" endX="-499.0" endY="-416.0" layoutX="751.0" layoutY="874.0" startX="-648.0" startY="-416.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="F3K" endX="-241.0" endY="-461.0" layoutX="344.0" layoutY="732.0" startX="-241.0" startY="-364.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="F3G" endX="-241.0" endY="-416.0" layoutX="511.0" layoutY="685.0" startX="-408.0" startY="-416.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="A3B" endX="-241.0" endY="-416.0" layoutX="511.0" layoutY="544.0" startX="-414.0" startY="-416.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="O3T" endX="-241.0" endY="-416.0" layoutX="344.0" layoutY="874.0" startX="-241.0" startY="-276.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="P3U" endX="-241.0" endY="-416.0" layoutX="492.0" layoutY="874.0" startX="-241.0" startY="-276.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="Q3V" endX="-241.0" endY="-416.0" layoutX="642.0" layoutY="874.0" startX="-241.0" startY="-276.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="P3Q" endX="-499.0" endY="-416.0" layoutX="899.0" layoutY="874.0" startX="-648.0" startY="-416.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="Q3R" endX="-494.0" endY="-416.0" layoutX="1005.0" layoutY="874.0" startX="-605.0" startY="-416.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Line fx:id="K3O" endX="-241.0" endY="-455.0" layoutX="344.0" layoutY="823.0" startX="-241.0" startY="-364.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="97.0" layoutY="127.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="271.0" layoutY="130.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="393.0" layoutY="130.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="511.0" layoutY="130.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="393.0" layoutY="269.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="511.0" layoutY="269.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="104.0" layoutY="270.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="401.0" layoutY="458.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="#3d73d0" layoutX="104.0" layoutY="458.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="251.0" layoutY="596.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="103.0" layoutY="597.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="401.0" layoutY="596.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="571.0" layoutY="458.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="657.0" layoutY="270.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="658.0" layoutY="132.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="703.0" layoutY="130.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="703.0" layoutY="296.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="769.0" layoutY="396.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="725.0" layoutY="421.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="678.0" layoutY="345.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="810.0" layoutY="570.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="618.0" layoutY="478.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="580.0" layoutY="570.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="764.0" layoutY="485.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="884.0" layoutY="579.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="853.0" layoutY="289.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="1020.0" layoutY="284.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="1020.0" layoutY="130.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="847.0" layoutY="130.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="1020.0" layoutY="432.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="869.0" layoutY="426.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="1021.0" layoutY="579.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="1114.0" layoutY="432.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="1143.0" layoutY="350.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="1021.0" layoutY="349.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="1268.0" layoutY="289.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="1267.0" layoutY="130.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="1145.0" layoutY="130.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="1268.0" layoutY="434.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Circle fx:id="circle" fill="DODGERBLUE" layoutX="1268.0" layoutY="581.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8bc34a" height="111.0" layoutX="1130.0" layoutY="452.0" stroke="#8bc34a" strokeType="INSIDE" width="122.0" />
       <Polygon fill="#8bc34a" layoutX="1052.0" layoutY="505.0" points="1.0, 58.0, 78.0, 58.0, 78.0, -53.0" stroke="#8bc34a" strokeType="INSIDE" />
-      <Line fx:id="street1132" endX="-206.0" endY="19.5" layoutX="590.0" layoutY="333.0" startX="-78.0" startY="19.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="3.0" />
-      <Line fx:id="street11321" endX="-74.0" endY="34.0" layoutX="382.0" layoutY="377.0" startX="2.0" startY="-24.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="3.0" />
-      <Line fx:id="street11322" endX="-201.0" endY="58.0" layoutX="393.0" layoutY="298.0" startX="-85.0" startY="113.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="3.0" />
-      <Line fx:id="street113221" endX="-206.0" endY="106.0" layoutX="398.0" layoutY="250.0" startX="-128.0" startY="20.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="3.0" />
-      <Line fx:id="street1132211" endX="-217.5" endY="94.5" layoutX="408.0" layoutY="261.0" startX="-304.0" startY="106.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="3.0" />
-      <Circle fill="DODGERBLUE" layoutX="251.0" layoutY="458.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="308.0" layoutY="411.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="386.0" layoutY="353.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Line fx:id="street2131141" endX="-260.0" endY="-466.0" layoutX="772.0" layoutY="820.0" startX="-260.0" startY="-363.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
-      <Circle fill="DODGERBLUE" layoutX="512.0" layoutY="459.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="512.0" layoutY="353.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="192.0" layoutY="354.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="103.0" layoutY="368.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fill="DODGERBLUE" layoutX="271.0" layoutY="270.0" radius="5.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line fx:id="M3N" endX="-206.0" endY="19.5" layoutX="590.0" layoutY="333.0" startX="-78.0" startY="19.5" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="3.0" />
+      <Line fx:id="M3Ñ" endX="-74.0" endY="34.0" layoutX="382.0" layoutY="377.0" startX="2.0" startY="-24.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="3.0" />
+      <Line fx:id="L3Ñ" endX="-201.0" endY="58.0" layoutX="393.0" layoutY="298.0" startX="-85.0" startY="113.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="3.0" />
+      <Line fx:id="G3L" endX="-206.0" endY="106.0" layoutX="398.0" layoutY="250.0" startX="-128.0" startY="20.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="3.0" />
+      <Line fx:id="K3L" endX="-217.5" endY="94.5" layoutX="408.0" layoutY="261.0" startX="-304.0" startY="106.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="3.0" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="251.0" layoutY="458.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="308.0" layoutY="411.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="386.0" layoutY="353.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Line fx:id="N3R" endX="-260.0" endY="-466.0" layoutX="772.0" layoutY="820.0" startX="-260.0" startY="-363.0" stroke="WHITE" strokeLineCap="ROUND" strokeWidth="11.0" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="512.0" layoutY="459.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fill="WHITE" layoutX="512.0" layoutY="353.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="192.0" layoutY="354.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fill="WHITE" layoutX="103.0" layoutY="368.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
+      <Circle fx:id="circle" fill="WHITE" layoutX="271.0" layoutY="270.0" radius="5.0" stroke="WHITE" strokeType="INSIDE" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c2c3b5" height="38.0" layoutX="104.0" layoutY="137.0" stroke="#adb0b2" strokeType="INSIDE" width="28.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c2c3b5" height="28.0" layoutX="140.0" layoutY="137.0" stroke="#adb0b2" strokeType="INSIDE" width="25.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c2c3b5" height="38.0" layoutX="175.0" layoutY="137.0" stroke="#adb0b2" strokeType="INSIDE" width="15.0" />
@@ -191,37 +190,9 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c2c3b5" height="15.0" layoutX="450.0" layoutY="103.0" stroke="#adb0b2" strokeType="INSIDE" width="44.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c2c3b5" height="38.0" layoutX="500.0" layoutY="80.0" stroke="#adb0b2" strokeType="INSIDE" width="16.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c2c3b5" height="15.0" layoutX="459.0" layoutY="92.0" stroke="#adb0b2" strokeType="INSIDE" width="25.0" />
-      <Label layoutX="171.0" layoutY="119.0" text="1" />
-      <Label layoutX="97.0" layoutY="327.0" rotate="-90.0" text="2" />
-      <Label layoutX="318.0" layoutY="261.0" text="3" />
-      <Label layoutX="507.0" layoutY="309.0" rotate="-90.0" text="8" />
-      <Label layoutX="309.0" layoutY="449.0" text="5" />
-      <Label layoutX="241.0" layoutY="516.0" rotate="-90.0" text="2A" />
-      <Label layoutX="607.0" layoutY="348.0" rotate="-71.6" text="8A" />
-      <Label layoutX="397.0" layoutY="519.0" rotate="-90.0" text="6" />
-      <Label layoutX="642.0" layoutY="392.0" rotate="-67.6" text="10" />
-      <Label layoutX="770.0" layoutY="502.0" rotate="63.4" text="12" />
-      <Label layoutX="770.0" layoutY="121.0" text="7" />
-      <Label layoutX="917.0" layoutY="275.0" text="9" />
-      <Label layoutX="1180.0" layoutY="423.0" text="13" />
-      <Label layoutX="1187.0" layoutY="309.0" text="11A" />
-      <Label layoutX="917.0" layoutY="419.0" text="9A" />
-      <Label layoutX="1064.0" layoutY="339.0" text="11" />
-      <Label layoutX="864.0" layoutY="449.0" rotate="87.0" text="16" />
-      <Label layoutX="935.0" layoutY="573.0" text="15" />
-      <Label layoutX="1079.0" layoutY="457.0" rotate="-52.7" text="20A" />
-      <Label layoutX="1258.0" layoutY="207.0" rotate="90.0" text="22" />
-      <Label layoutX="1011.0" layoutY="202.0" rotate="90.0" text="18" />
-      <Label layoutX="791.0" layoutY="343.0" rotate="-51.3" text="9B" />
-      <Label layoutX="1136.0" layoutY="221.0" rotate="90.0" text="20" />
-      <Label layoutX="716.0" layoutY="325.0" rotate="59.0" text="14" />
-      <Label layoutX="663.0" layoutY="564.0" text="5A" />
-      <Label layoutX="266.0" layoutY="182.0" rotate="-90.0" text="4" />
-      <Label layoutX="388.0" layoutY="179.0" rotate="-90.0" text="6" />
-      <Label layoutX="648.0" layoutY="185.0" rotate="-90.0" text="8B" />
       <CubicCurve controlX1="7.0" controlX2="65.0" controlY1="7.0" controlY2="-24.0" endX="-18.0" endY="45.0" fill="DODGERBLUE" layoutX="1202.0" layoutY="487.0" rotate="-42.2" startX="-47.0" startY="-25.40613555908203" stroke="#3b8ac6" />
       <CubicCurve controlX1="-75.0" controlX2="-127.0" controlY1="-72.0" controlY2="-28.0" endX="-9.0" endY="11.0" fill="DODGERBLUE" layoutX="1204.0" layoutY="550.0" rotate="-42.2" startX="-35.0" startY="-57.0" stroke="#3b8ac6" />
-      <ImageView fitHeight="23.0" fitWidth="27.0" focusTraversable="true" layoutX="593.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="no" fitHeight="23.0" fitWidth="27.0" focusTraversable="true" layoutX="593.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/red-cross.png" />
          </image>

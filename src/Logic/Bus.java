@@ -6,6 +6,11 @@ public class Bus {
 
 	private String tuition;
 	private LinkedList<StopBus> route;
+
+	public LinkedList<StopBus> getRoute() {
+		return route;
+	}
+
 	private int seating;
 
 	public int getSeating() {

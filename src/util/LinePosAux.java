@@ -1,12 +1,22 @@
 package util;
 
 public class LinePosAux {
-    double posx;
-    double posy;
+    private double posx;
+    private double posy;
+    private String address;
 
-    public LinePosAux(double posx, double posy) {
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public LinePosAux(double posx, double posy, String address) {
         this.posx = posx;
         this.posy = posy;
+        this.address = address;
     }
 
     public double getPosx() {

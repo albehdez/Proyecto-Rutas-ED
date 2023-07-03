@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -48,7 +48,7 @@
         </rowConstraints>
          <children>
             <Label text="Omnibus" />
-            <ComboBox prefWidth="150.0" GridPane.columnIndex="1" />
+            <ChoiceBox fx:id="choiceBoxBus" prefWidth="150.0" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </children>

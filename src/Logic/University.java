@@ -1,5 +1,8 @@
 package Logic;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.lang.module.ResolutionException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -10,10 +13,10 @@ import java.util.PriorityQueue;
 
 import javax.swing.text.html.HTMLDocument.Iterator;
 
+import Application.Scene3;
 import cu.edu.cujae.ceis.graph.LinkedGraph;
 import cu.edu.cujae.ceis.graph.edge.Edge;
 import cu.edu.cujae.ceis.graph.edge.WeightedEdge;
-import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeDirectedGraph;
 import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeNotDirectedGraph;
 import cu.edu.cujae.ceis.graph.vertex.Vertex;
 import cu.edu.cujae.ceis.tree.binary.BinaryTreeNode;
@@ -21,6 +24,7 @@ import cu.edu.cujae.ceis.tree.general.GeneralTree;
 import cu.edu.cujae.ceis.tree.iterators.general.InDepthIterator;
 import util.AuxClassBusTable;
 import util.AuxClassPath;
+import util.Convert;
 import util.EdgeAux;
 import util.Label;
 import util.LinePosAux;
@@ -31,9 +35,9 @@ public class University {
 	private static University instance;
 	private GeneralTree<Object> tree;
 	private ILinkedWeightedEdgeNotDirectedGraph map;
+	private File mapFile;
+	private File treeFile;
 
-	// private File mapFile;
-	// private FIle treeFile;
 	public ILinkedWeightedEdgeNotDirectedGraph getMap() {
 		return map;
 	}
@@ -443,23 +447,41 @@ public class University {
 	 * @param name   nombre de la parada
 	 * @param x      coordenada x de la parada
 	 * @param y      coordenada y de la parada
-	 * @param inicio vertice inicial de la calle donde se piensa introducir un
+	 * @param inicio id vertice inicial de la calle donde se piensa introducir un
 	 *               parada
-	 * @param fin    vertice final de la calle donde se piensa introducir un parada
+	 * @param fin    id vertice final de la calle donde se piensa introducir un
+	 *               parada
 	 */
-	public void insertStopBus(String name, double x, double y, Vertex inicio, Vertex fin) {
+	public void insertStopBus(String name, double x, double y, String inicio, String fin) {
 		StopBus route = new StopBus(name, x, y);
-		int posInicio = map.getVerticesList().indexOf(inicio);
-		int posFin = map.getVerticesList().indexOf(fin);
-		double valueEdge = getEdgeWeigth(inicio, fin);
+		Vertex ini = findVertex(inicio);
+		Vertex finl = findVertex(fin);
+		int posInicio = map.getVerticesList().indexOf(ini);
+		int posFin = map.getVerticesList().indexOf(finl);
+		double valueEdge = getEdgeWeigth(ini, finl);
 		map.insertVertex(route);
 		int newNode = map.getVerticesList().indexOf(route);
 		map.deleteEdgeND(posInicio, posFin);
-		map.insertEdgeNDG(posInicio, posFin);
-		map.insertEdgeNDG(posInicio, newNode);
-		map.insertWEdgeNDG(posInicio, newNode, valueEdge / 2);
-		map.insertEdgeNDG(newNode, posFin);
-		map.insertWEdgeNDG(newNode, posFin, valueEdge / 2);
+		map.insertWEdgeNDG(posInicio, newNode, new EdgeAux(valueEdge / 2, 0, 0,
+				((Corner) ini.getInfo()).getId() + "3" + ((Corner) finl.getInfo()).getId(), posFin, newNode));
+		map.insertWEdgeNDG(posInicio, newNode, new EdgeAux(valueEdge / 2, 0, 0,
+				((Corner) ini.getInfo()).getId() + "3" + ((Corner) finl.getInfo()).getId(), newNode, posFin));
+		saveParada(route);
+	}
+
+	public void saveParada(StopBus stopBus) {
+		InDepthIterator<Object> it = tree.inDepthIterator();
+		boolean value = false;
+		while (it.hasNext() && !value) {
+			Object o = it.next();
+			if (o instanceof Bus) {
+				String tuition = (String) Scene3.getInstance().getChoiceBox().getSelectionModel().getSelectedItem();
+				if (((Bus) o).getTuition().equals(tuition)) {
+					value = true;
+					((Bus) o).getRoute().add(stopBus);
+				}
+			}
+		}
 	}
 
 	public Vertex searchVertex(double x, double y) {
@@ -510,26 +532,44 @@ public class University {
 		while (it.hasNext()) {
 			Vertex aux2 = (Vertex) it.next();
 			EdgeAux eaux = getEdgeObject(aux1, aux2);
-			list.add(new LinePosAux(eaux.getPosX(), eaux.getPosY()));
+			list.add(new LinePosAux(eaux.getPosX(), eaux.getPosY(), eaux.getAddress()));
 			aux1 = aux2;
-			// aux2 = (Vertex) it.next();
 		}
 		return list;
 	}
 
-	public void insertUbication(double posX, double posY, String corner1, String corner2) {
+	public ILinkedWeightedEdgeNotDirectedGraph insertUbication(double posX, double posY, String corner1,
+			String corner2) {
+
 		Corner cUbication = new Corner(posX, posY, "yourUbication");
-		ILinkedWeightedEdgeNotDirectedGraph grapAux = map;
+		ILinkedWeightedEdgeNotDirectedGraph grapAux = getMap();
 		Vertex v1 = findVertex(corner1);
 		Vertex v2 = findVertex(corner2);
+		int posCorner1 = grapAux.getVerticesList().indexOf(findVertex(corner1));
+		int posCorner2 = grapAux.getVerticesList().indexOf(findVertex(corner2));
+		double weight = getEdgeWeigth(v1, v2);
+		grapAux.deleteEdgeND(posCorner1, posCorner2);
+		grapAux.insertVertex(cUbication);
+		int posUbication = grapAux.getVerticesList().indexOf(findVertex(cUbication.getId()));
+		grapAux.insertWEdgeNDG(posCorner1, posUbication,
+				new EdgeAux(weight / 2, posX, posY, null, posCorner1, posCorner2));
+		grapAux.insertWEdgeNDG(posUbication, posCorner2,
+				new EdgeAux(weight / 2, posX, posY, null, posCorner1, posCorner2));
+		return grapAux;
+	}
+
+	public void deleteUbication(double posx, double posy, String corner1, String corner2) {
 		int posCorner1 = map.getVerticesList().indexOf(findVertex(corner1));
 		int posCorner2 = map.getVerticesList().indexOf(findVertex(corner2));
-		double weight = getEdgeWeigth(v1, v2);
-
-		map.insertVertex(cUbication);
-		map.insertWEdgeNDG(posCorner1, map.getVerticesList().indexOf(findVertex(cUbication.getId())),
-				new EdgeAux(weight, posX, posY, corner2));
-		map.insertWEdgeNDG(0, 0, grapAux);
+		int posUbication = map.getVerticesList().indexOf(findVertex("yourUbication"));
+		Vertex v1 = findVertex(corner1);
+		Vertex v2 = findVertex("yourUbication");
+		double weight = getEdgeWeigth(v1, v2) * 2;
+		map.deleteEdgeND(posCorner1, posUbication);
+		map.deleteEdgeND(posCorner2, posUbication);
+		map.insertWEdgeNDG(posCorner2, posCorner1,
+				new EdgeAux(weight, posx, posy, corner1 + "3" + corner2, posCorner1, posCorner2));
+		map.deleteVertex(posUbication);
 	}
 
 	public Vertex findVertex(String id) {
@@ -546,7 +586,7 @@ public class University {
 					value = true;
 			}
 		}
-		return value ? null : aux;
+		return value ? aux : null;
 	}
 
 	public LinkedList<Bus> getTreeBus() {
@@ -559,6 +599,26 @@ public class University {
 
 		}
 		return list;
+	}
+
+	public AuxClassPath findStopBusShort(ILinkedWeightedEdgeNotDirectedGraph grapAux) {
+		ListIterator<Vertex> it = grapAux.getVerticesList().listIterator();
+		double comp = Double.MAX_VALUE;
+		AuxClassPath a = null;
+		AuxClassPath aux = null;
+		while (it.hasNext()) {
+			Vertex v = it.next();
+			if (v.getInfo() instanceof StopBus) {
+				a = University.getInstance().shortestPath(
+						University.getInstance().findVertex("yourUbication"),
+						University.getInstance().searchVertex((((StopBus) v.getInfo()).getX()),
+								(((StopBus) v.getInfo()).getY())),
+						grapAux);
+				if (a.getWeigth() < comp)
+					aux = a;
+			}
+		}
+		return aux;
 	}
 
 }

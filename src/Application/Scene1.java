@@ -2,27 +2,17 @@ package Application;
 
 import java.io.IOException;
 
-import Logic.University;
-import cu.edu.cujae.ceis.graph.LinkedGraph;
-import cu.edu.cujae.ceis.tree.general.GeneralTree;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
-import javafx.scene.paint.Color;
-import javafx.stage.Modality;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class Scene1 {
     @FXML
@@ -45,18 +35,6 @@ public class Scene1 {
 
     public void initialize() {
         ventana = this;
-        // try {
-        // // Parent padre = FXMLLoader.load(getClass().getResource("Map.fxml"));
-        // // scenePane1.getChildren().add(padre);
-        // // scenePane1.toFront();
-        // // padre.toBack();
-        // // pathValueLabel.toFront();
-        // // OpcionesPanel.toFront();
-
-        // } catch (IOException e) {
-        // // TODO Auto-generated catch block
-        // e.printStackTrace();
-        // }
     }
 
     public static Scene1 getInstance() {
@@ -69,7 +47,6 @@ public class Scene1 {
 
     public void setLablePathValue(String cant) {
         pathValueLabel.setText(cant);
-        // pathValueLabel.setOn();
     }
 
     public Pane getPanelRecorrido() {
@@ -116,16 +93,12 @@ public class Scene1 {
             Parent root = FXMLLoader.load(getClass().getResource("Scene3.fxml"));
             scenePane1.getChildren().add(root);
             value = false;
+            Map.getInstance().clean();
         } else {
             value = true;
             scenePane1.getChildren().remove(Scene3.getInstance().getAnchorPane());
+            Map.getInstance().clean();
         }
-    }
-
-    public void closeWindow2(ActionEvent e) {
-        // scenePane1.getChildren().remove(scenePane1.lookup("scenePane2"));
-        // stage = (Stage) scenePane2.getScene().getWindow();
-        // stage.close();
     }
 
     public void closeWindow1(MouseEvent e) {
@@ -154,5 +127,9 @@ public class Scene1 {
 
             event.consume();
         }
+    }
+
+    public boolean getValue() {
+        return value;
     }
 }
