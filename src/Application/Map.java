@@ -1,34 +1,30 @@
 package Application;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Currency;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.ListIterator;
+import java.util.Scanner;
 
-import javax.swing.text.html.HTMLDocument.Iterator;
+import javax.swing.JOptionPane;
 
 import Logic.Corner;
+import Logic.StopBus;
 import Logic.University;
 import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeNotDirectedGraph;
 import cu.edu.cujae.ceis.graph.vertex.Vertex;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.geometry.Point2D;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.CubicCurve;
+import javafx.scene.paint.Stop;
 import javafx.scene.shape.Line;
+import javafx.scene.shape.StrokeLineCap;
 import util.AuxClassPath;
-import util.LinePosAux;
+import util.Util;
 
 /**
  * MapController
@@ -39,6 +35,17 @@ public class Map {
     private Pane panelMapa;
     @FXML
     private AnchorPane scenePane1;
+
+    private static Map ventana;
+
+    public void initialize() {
+        ventana = this;
+    }
+
+    public static Map getInstance() {
+        return ventana;
+    }
+
     // public void pintar(MouseEvent event) {
     // Object nodo = event.getTarget();
     // if (nodo instanceof Line) {
@@ -134,54 +141,164 @@ public class Map {
     // }
 
     public void pintar(MouseEvent event) {
-        Object nodo = event.getTarget();
-        if (nodo instanceof Circle) {
-            Circle c = (Circle) nodo;
-            double x, y;
-            x = c.getLayoutX();
-            y = c.getLayoutY();
-            ILinkedWeightedEdgeNotDirectedGraph auxGraph = University.getInstance().getMap();
-            // auxGraph.insertVertex(n)
-            Vertex aux = University.getInstance().searchVertex(x, y);
-            AuxClassPath a = University.getInstance().shortestPath(aux,
-                    University.getInstance().searchVertex(97, 127), auxGraph);
-            drowPath(a.getList(), event);
-            Scene1.getInstance().getPanelRecorrido().setVisible(true);
-            // Scene1.getInstance().getPathValueLabel().setVisible(false);
-            DecimalFormat df = new DecimalFormat("#.##");
-            Scene1.getInstance().setLablePathValue(String.format("%.3f", a.getWeigth()) + " Km");
+        if (Scene1.getInstance().getValue()) {
+            Object nodo = event.getTarget();
+            if (nodo instanceof Line) {
+                Line l = (Line) nodo;
+                ArrayList<String> corners = Util.getVertexsId(l.getId());
+                ILinkedWeightedEdgeNotDirectedGraph grapAux = University.getInstance().insertUbication(event.getX(),
+                        event.getY(), corners.get(0), corners.get(1));
+                // AuxClassPath a = University.getInstance().shortestPath(
+                // University.getInstance().findVertex("yourUbication"),
+                // University.getInstance().searchVertex(810, 570), grapAux);
+                mostrarNodos();
+                AuxClassPath a = University.getInstance().findStopBusShort(grapAux);
+                if (a != null) {
+                    drowPath(a.getList(), event);
+                    // mostrar el panel con el peso total del camino
+                    Scene1.getInstance().getPanelRecorrido().setVisible(true);
+                    Scene1.getInstance().setLablePathValue(String.format("%.3f", a.getWeigth()) + " Km");
+                    mostrarNodos();
+                    System.out.println();
+                    // eliminar ubicacion proporcionada por el usuario
+                    University.getInstance().deleteUbication(0, 0, corners.get(0), corners.get(1));
+                } else {
+                    System.out.println("No hay paradas");
+                }
+            }
+        } else {
+            Object nodo = event.getTarget();
+            if (Scene3.getInstance().getChoiceBox().getSelectionModel().getSelectedIndex() != 0)
+                if (nodo instanceof Line) {
+                    Line l = (Line) nodo;
+                    ArrayList<String> corners = Util.getVertexsId(l.getId());
+                    Scanner s = new Scanner(System.in);
+                    String texto = s.next();
+                    double x = event.getX();
+                    double y = event.getY();
+                    University.getInstance().insertStopBus(texto, x, y, corners.get(0), corners.get(1));
+                    mostrarNodos();
+                }
         }
     }
 
+    // public LinkedList<Line> getLineList(LinkedList<Object> lsit) {
+    // LinkedList<Line> list = new LinkedList<Line>();
+    // LinkedList<LinePosAux> lineList = University.getInstance().findWay(lsit);
+    // // ListIterator<Object> it = lineList.listIterator();
+    // while (it.hasNext()) {
+    // for (Node n : Scene1.getInstance().getAnchorPane().getChildren()) {
+    // if (n instanceof Line)
+    // if (((Line) n).getId() == ((LinePosAux) it.next()).getAddress())
+    // list.add((Line) n);
+    // }
+    // }
+
+    // return list;
+    // }
+
+    // public void drowPath(LinkedList<Object> list, MouseEvent event) {
+    // LinkedList<LinePosAux> lineList = University.getInstance().findWay(list);
+    // LinkedList<Line> line = getLineList(list);
+    // ListIterator<LinePosAux> it = lineList.listIterator();
+    // }
+
     public void drowPath(LinkedList<Object> list, MouseEvent event) {
         clean();
+
+        // LinkedList<LinePosAux> lineList = University.getInstance().findWay(list);
+        // ListIterator<LinePosAux> it = lineList.listIterator();
+        ListIterator<Object> it = list.listIterator();
+        double coIniX, coIniY;
+        coIniX = coIniY = 0;
+        double coFinX, coFinY;
+        coFinX = coFinY = 0;
+        // LinePosAux aux = null;
+        // aux = it.next();
+        // double x, y;
+        // x = y = 0;
+        // System.out.println(event.getX() + ", " + event.getY());
+        // int i = 0;
+        // Vertex o = (Vertex) list.get(1);
+        // Corner c = ((Corner) (o.getInfo()));
+        Vertex o1 = (Vertex) it.next();
+        Vertex o2 = (Vertex) it.next();
+        while (it.hasNext()) {
+            if (o1.getInfo() instanceof Corner) {
+                coIniX = ((Corner) ((Vertex) o1).getInfo()).getX();
+                coIniY = ((Corner) ((Vertex) o1).getInfo()).getY();
+            } else {
+                coIniX = ((StopBus) ((Vertex) o1).getInfo()).getX();
+                coIniY = ((StopBus) ((Vertex) o1).getInfo()).getY();
+            }
+
+            if (o2.getInfo() instanceof Corner) {
+                coFinX = ((Corner) ((Vertex) o2).getInfo()).getX();
+                coFinY = ((Corner) ((Vertex) o2).getInfo()).getY();
+            } else {
+                coFinX = ((StopBus) ((Vertex) o2).getInfo()).getX();
+                coFinY = ((StopBus) ((Vertex) o2).getInfo()).getY();
+            }
+            Line line = new Line(coIniX, coIniY, coFinX, coFinY);
+            line.setId("remove");
+            line.setStroke(Color.RED);
+            line.setStrokeWidth(11);
+            line.setStrokeLineCap(StrokeLineCap.ROUND);
+            // System.out.println(li.getEndX() + ", " + li.getEndY());
+            Map.getInstance().panelMapa.getChildren().add(line);
+
+            o1 = o2;
+            o2 = (Vertex) it.next();
+            // if (i == 0) {
+            // // System.out.println(aux.getPosx() + ", " + aux.getPosy());
+            // x = aux.getPosx();
+            // y = aux.getPosy();
+            // i++;
+            // }
+            // System.out.println(aux.getPosx() + ", " + aux.getPosy());
+            // for (Node n : panelMapa.getChildren()) {
+            // if (n instanceof Line) {
+            // if (((Line) n).getLayoutX() == aux.getPosx() && ((Line) n).getLayoutY() ==
+            // aux.getPosy()) {
+            // ((Line) n).setStroke(Color.RED);
+
+            // // n.toFront();
+            // }
+            // }
+            // // } else if (n instanceof CubicCurve)
+            // // if (((CubicCurve) n).getLayoutX() == aux.getPosx()
+            // // && ((CubicCurve) n).getLayoutY() == aux.getPosy()) {
+            // // ((CubicCurve) n).setStroke(Color.Red);
+            // // }
+            // }
+
+            // System.out.println(event.getX() + ", " + event.getY());
+            // Line l = (Line) Scene1.getInstance().getAnchorPane().lookup("#" +
+            // aux.getAddress());
+            // l.setStroke(Color.RED);
+            // l.toFront();//
+
+        }
         Image imagen = new Image("file:src/images/location-icon.png");
         ImageView imagenView = new ImageView(imagen);
         imagenView.setFitHeight(50);
         imagenView.setFitWidth(50);
         imagenView.setX(event.getX() - 25);
         imagenView.setY(event.getY() - 54);
+        imagenView.setId("puente");
         panelMapa.getChildren().add(imagenView);
-        LinkedList<LinePosAux> lineList = University.getInstance().findWay(list);
-        ListIterator<LinePosAux> it = lineList.listIterator();
-        LinePosAux aux = null;
-
-        while (it.hasNext()) {
-            aux = it.next();
-            for (Node n : panelMapa.getChildren()) {
-                if (n instanceof Line) {
-                    if (((Line) n).getLayoutX() == aux.getPosx() && ((Line) n).getLayoutY() == aux.getPosy()) {
-                        ((Line) n).setStroke(Color.RED);
-                        // n.toFront();
-                    }
-                }
-                // } else if (n instanceof CubicCurve)
-                // if (((CubicCurve) n).getLayoutX() == aux.getPosx()
-                // && ((CubicCurve) n).getLayoutY() == aux.getPosy()) {
-                // ((CubicCurve) n).setStroke(Color.Red);
-                // }
-            }
-        }
+        // Line li = new Line(event.getX(), event.getY(), c.getX(), c.getY());
+        Image imagen1 = new Image("file:src/images/Bustop_azul-removebg-preview.png");
+        ImageView imagenView1 = new ImageView(imagen1);
+        imagenView1.setFitHeight(50);
+        imagenView1.setFitWidth(50);
+        imagenView1.setX(coFinX - 25);
+        imagenView1.setY(coFinY - 54);
+        // imagenView1.setX(aux.getPosx() - 440);
+        // imagenView1.setY(aux.getPosy() - 480);
+        imagenView1.setId("puente");
+        // Scene1.getInstance().getAnchorPane().getChildren().add(imagenView1);
+        panelMapa.getChildren().add(imagenView1);
         // Image imagenFinal = new Image("file:src/images/parada-icon.png");
         // ImageView imagenViewFinal = new ImageView(imagenFinal);
         // imagenViewFinal.setFitHeight(50);
@@ -192,15 +309,43 @@ public class Map {
     }
 
     public void clean() {
-        for (Node n : panelMapa.getChildren()) {
+        ListIterator<Node> it = panelMapa.getChildren().listIterator();
+        while (it.hasNext()) {
+            Node n = it.next();
             if (n instanceof Line) {
-                if (!((Line) n).getId().equals("no"))
-                    ((Line) n).setStroke(Color.WHITE);
+                if (((Line) n).getId().equals("remove")) {
+                    it.previous();
+                    it.remove();
+                }
             } else if (n instanceof ImageView)
-                n.setVisible(false);
+                if (!((ImageView) n).getId().equals("no")) {
+                    it.previous();
+                    it.remove();
+                }
+            // for (Node n : panelMapa.getChildren()) {
+            // if (n instanceof Line) {
+            // if (((Line) n).getId().equals("remove"))
+            // panelMapa.getChildren().remove(n);
+            // // // n.toBack();
+            // // } else if (((Line) n).getId().equals("remove"))
+
+            // } else if (n instanceof ImageView)
+            // if (!((ImageView) n).getId().equals("no"))
+            // n.setVisible(false);
+            // else if (n instanceof Circle)
+            // n.toFront();
             // else if (n instanceof Line)
             // if (!((Line) n).getId().equals("no"))
             // ((Line) n).setStroke(Color.WHITE);
+        }
+    }
+
+    public void mostrarNodos() {
+        for (Vertex v : University.getInstance().getMap().getVerticesList()) {
+            if (v.getInfo() instanceof Corner)
+                System.out.println(((Corner) v.getInfo()).getId());
+            if (v.getInfo() instanceof StopBus)
+                System.out.println(((StopBus) v.getInfo()).getId());
         }
     }
 }

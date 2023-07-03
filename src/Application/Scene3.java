@@ -1,11 +1,17 @@
 package Application;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+import Logic.Bus;
 import Logic.University;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Line;
 import javafx.stage.Stage;
 
 public class Scene3 {
@@ -14,7 +20,7 @@ public class Scene3 {
     @FXML
     private Stage stage;
     @FXML
-    private ComboBox comboBoxBus;
+    private ChoiceBox<String> choiceBoxBus;
 
     private static Scene3 ventana;
 
@@ -32,14 +38,24 @@ public class Scene3 {
         stage.close();
     }
 
-    String nom[] = { "a", "b", "c" };
-
     public AnchorPane getAnchorPane() {
         return scenePane3;
     }
 
+    private LinkedList<Bus> list = new LinkedList<Bus>();
+
     public void loadComboBox() {
-        // comboBoxBus.getItems().addAll(nom);
-        // comboBoxBus.getItems().addAll(University.getInstance().getTreeBus());
+        LinkedList<String> li = new LinkedList<String>();
+        list = University.getInstance().getTreeBus();
+        for (Bus b : list)
+            li.add(b.getTuition());
+        ObservableList<String> lis = FXCollections.observableArrayList(li);
+        lis.add(0, "todos");
+        choiceBoxBus.setItems(lis);
+        choiceBoxBus.getSelectionModel().selectFirst();
+    }
+
+    public ChoiceBox getChoiceBox() {
+        return choiceBoxBus;
     }
 }

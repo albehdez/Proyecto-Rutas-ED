@@ -10,6 +10,15 @@
     -fx-translate-y: 40;
 }
 
+#ok {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 3);
+}
+
+#circle {
+    -fx-fill: rgba(0, 0, 0, 0.0);
+    -fx-border-color: rgba(0, 0, 0, 0.0);
+}
+
 #puente {
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 3);
 }

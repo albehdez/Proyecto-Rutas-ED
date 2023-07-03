@@ -36,7 +36,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <ImageView fx:id="logoCujae" fitHeight="85.0" fitWidth="106.0" layoutX="18.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" styleClass="style.css">
+            <ImageView fx:id="logoCujae" fitHeight="97.0" fitWidth="111.0" layoutX="16.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" styleClass="style.css">
                <image>
                   <Image url="@../images/logo%200.png" />
                </image>
