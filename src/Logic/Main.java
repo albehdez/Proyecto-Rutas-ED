@@ -60,7 +60,7 @@ public class Main {
 		// University.getInstance().getMap().insertVertex("D");
 		// University.getInstance().getMap().insertVertex(3);
 		Init.data();
-		University.getInstance().setFile(new File("D:/Fichero.txt"));
+		University.getInstance().setFileTree(new File("D:/Fichero.txt"));
 		//University.getInstance().writeTree();
 		University.getInstance().createTree();
 		GeneralTree<Object> u= University.getInstance().getTree();

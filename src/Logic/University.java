@@ -34,14 +34,31 @@ import util.EdgeAux;
 import util.Label;
 import util.LinePosAux;
 import util.MyComparator;
-import util.AuxClassFiles;
+
 public class University {
 
 	private static University instance;
 	private GeneralTree<Object> tree;
 	private ILinkedWeightedEdgeNotDirectedGraph map;
-	private File file;
+	private File fileTree;
+	private File fileGraphVertex;
+	private File fileGraphEdge;
 	
+
+	public File getFileGraphVertex() {
+		return fileGraphVertex;
+	}
+
+	public void setFileGraphVertex(File fileGraph) {
+		this.fileGraphVertex = fileGraph;
+	}
+	public File getFileGraphEdge() {
+		return fileGraphEdge;
+	}
+
+	public void setFileGraphEdge(File fileGraph) {
+		this.fileGraphEdge = fileGraph;
+	}
 
 	// private File mapFile;
 	// private FIle treeFile;
@@ -63,12 +80,12 @@ public class University {
 	public GeneralTree<Object> getTree() {
 		return tree;
 	}
-	public File getFile() {
-		return file;
+	public File getFileTree() {
+		return fileTree;
 	}
 
-	public void setFile(File file) {
-		this.file = file;
+	public void setFileTree(File file) {
+		this.fileTree = file;
 	}
 	private InDepthIterator<Object> inDepthIterator() {
 		return new InDepthIterator<Object>(this.tree);
@@ -579,7 +596,7 @@ public class University {
 	}
 
 	public void writeTree(){
-		try (RandomAccessFile file = new RandomAccessFile(this.file, "rw")) {
+		try (RandomAccessFile file = new RandomAccessFile(this.fileTree, "rw")) {
 			
 					
 						
@@ -614,10 +631,10 @@ public class University {
 	}
 	
 
-	public  LinkedList<AuxClassBusTable> readFile() {
+	public  LinkedList<AuxClassBusTable> readFileTree() {
         LinkedList<AuxClassBusTable> lista = new LinkedList<AuxClassBusTable>();
         try (
-			RandomAccessFile file = new RandomAccessFile(this.file, "r")) {
+			RandomAccessFile file = new RandomAccessFile(this.fileTree, "r")) {
            
             int totalNodes = file.readInt();
             
@@ -643,6 +660,7 @@ public class University {
                 
                
             }
+			file.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -650,14 +668,130 @@ public class University {
         return lista;
     }
 	public void createTree(){
-		LinkedList<AuxClassBusTable> lista = this.readFile();
+		LinkedList<AuxClassBusTable> lista = this.readFileTree();
 		
 		Iterator<AuxClassBusTable> iter = lista.iterator();
 		while(iter.hasNext()){
 			AuxClassBusTable current = iter.next();
 			this.insertBus(current.getLocation().getName(), current.getTerminal().getId(), current.getBus().getTuition(), current.getBus().getSeating());
-			
+
 		}
+	}
+	public void writeGraph(){
+		List<Vertex> listV = this.map.getVerticesList();
+		try (
+			RandomAccessFile file = new RandomAccessFile(this.fileGraphVertex, "rw")) {
+			
+			int cantV = 0;
+			file.writeInt(cantV);
+
+			Iterator<Vertex> iter = listV.iterator();
+			while(iter.hasNext()){
+				Object current = iter.next().getInfo();
+
+				byte[] byteVertex = Convert.toBytes(current);				
+				int tamVertex = byteVertex.length;
+				file.writeInt(tamVertex);				
+				file.write(byteVertex);
+				cantV++;
+			}
+			file.seek(0);
+			file.writeInt(cantV);
+			file.close();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+		try (
+			RandomAccessFile file = new RandomAccessFile(this.fileGraphEdge, "rw")) {
+			LinkedList<Edge> listE;
+			int cantE = 0;
+			file.writeInt(cantE);
+			Iterator<Vertex> iter = listV.iterator();
+			while(iter.hasNext()){
+				Vertex current = iter.next();
+				listE=current.getEdgeList();
+				Iterator<Edge> iterE = listE.iterator();
+				while(iterE.hasNext()){
+					WeightedEdge currentEdge = (WeightedEdge) iterE.next();
+					EdgeAux a = (EdgeAux) currentEdge.getWeight();
+
+					byte[] byteEdge = Convert.toBytes(a);				
+					int tamEdge = byteEdge.length;
+					file.writeInt(tamEdge);				
+					file.write(byteEdge);
+					cantE++;
+					 
+					
+				}
+			}
+			
+			
+			file.seek(0);
+			file.writeInt(cantE);
+			file.close();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+	}
+	public void readGraph(){
+		ArrayList<Vertex> lista = new ArrayList<Vertex>();
+		ArrayList<EdgeAux> listaEdge = new ArrayList<EdgeAux>();
+
+		try (
+			RandomAccessFile file = new RandomAccessFile(this.fileGraphVertex, "r")) {
+			
+			int cantV = file.read();
+			
+			for(int i = 0; i<cantV;i++){
+
+				
+                int tamInfoV = file.readInt();            
+                byte[] infoBytesV = new byte[tamInfoV];
+                file.read(infoBytesV);                
+				Vertex infoV = (Vertex) Convert.toObject(infoBytesV);
+				lista.add(infoV);
+			}
+			
+			file.close();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		try (
+			RandomAccessFile file = new RandomAccessFile(this.fileGraphEdge, "r")) {
+			
+			int cantE = file.read();
+			
+			for(int i = 0; i<cantE;i++){
+
+				
+                int tamInfoE = file.readInt();            
+                byte[] infoBytesE = new byte[tamInfoE];
+                file.read(infoBytesE);                
+				EdgeAux infoE = (EdgeAux) Convert.toObject(infoBytesE);
+				listaEdge.add(infoE);
+			}
+			
+			file.close();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+		Iterator<Vertex> iterC1 = lista.iterator();
+		while(iterC1.hasNext()){
+			Vertex current = iterC1.next();
+			University.getInstance().getMap().insertVertex(current);
+		}
+		Iterator<EdgeAux> iterE1 = listaEdge.iterator();
+		while(iterE1.hasNext()){
+			EdgeAux current = iterE1.next();
+			University.getInstance().getMap().insertWEdgeNDG(current.getPosCorner1(),current.getPosCorner2(),current);
+		}
+
 	}
 	
     
