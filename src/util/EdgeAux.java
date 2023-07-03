@@ -33,11 +33,13 @@ public class EdgeAux implements Serializable{
         this.address = address;
     }
 
-    public EdgeAux(double weigth, double posX, double posY, String address) {
+    public EdgeAux(double weigth, double posX, double posY, String address,int posCorner1, int posCorner2) {
         setWeigth(weigth);
         setPosX(posX);
         setPosY(posY);
         setAddress(address);
+        setPosCorner1(posCorner1);
+        setPosCorner2(posCorner2);
     }
 
     public double getWeigth() {
