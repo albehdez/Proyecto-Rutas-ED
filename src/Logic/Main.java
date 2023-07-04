@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import cu.edu.cujae.ceis.graph.LinkedGraph;
+import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeNotDirectedGraph;
 import cu.edu.cujae.ceis.graph.vertex.Vertex;
 import cu.edu.cujae.ceis.tree.general.GeneralTree;
 import util.AuxClassBusTable;
@@ -59,22 +61,30 @@ public class Main {
 
 		// University.getInstance().getMap().insertVertex("D");
 		// University.getInstance().getMap().insertVertex(3);
-		Init.data();
-		University.getInstance().setFileTree(new File("D:/Fichero.txt"));
+		//Init.data();
+		University.getInstance().setFileTree(new File("D:/FicheroA.txt"));
+		University.getInstance().setFileGraphVertex(new File("D:/FicheroV.txt"));
+		University.getInstance().setFileGraphEdge(new File("D:/FicheroE.txt"));
 		//University.getInstance().writeTree();
-		University.getInstance().createTree();
-		GeneralTree<Object> u= University.getInstance().getTree();
-		Iterator<Object> it = University.getInstance().getTree().inDepthIterator();
+		//University.getInstance().writeGraph();
+		University.getInstance().readGraph();
+		
+		System.out.println(University.getInstance().getMap().getVerticesList());
+		//University.getInstance().createTree();
+		// GeneralTree<Object> u= University.getInstance().getTree();
+		// ILinkedWeightedEdgeNotDirectedGraph a = University.getInstance().getMap();
+		
+		// Iterator<Object> it = University.getInstance().getTree().inDepthIterator();
 
-		while (it.hasNext()) {
-		Object nod = it.next();
-		if (nod instanceof Terminal)
-		System.out.println(((Terminal) nod).getId());
-		else if (nod instanceof Location)
-		System.out.println(((Location) nod).getName());
-		else
-		System.out.println(((Bus) nod).getTuition());
-		}
+		// while (it.hasNext()) {
+		// Object nod = it.next();
+		// if (nod instanceof Terminal)
+		// System.out.println(((Terminal) nod).getId());
+		// else if (nod instanceof Location)
+		// System.out.println(((Location) nod).getName());
+		// else
+		// System.out.println(((Bus) nod).getTuition());
+		// }
 		// University.getInstance().writeTree();
   		
 		
@@ -87,14 +97,14 @@ public class Main {
 		// University.getInstance().getMap().insertWEdgeNDG(1, 2, 6.0);
 		// University.getInstance().getMap().insertWEdgeNDG(0, 2, 1.0);
 
-		AuxClassPath aux = University.getInstance().shortestPath(
-				University.getInstance().getMap().getVerticesList().get(0),
-				University.getInstance().getMap().getVerticesList().get(6), University.getInstance().getMap());
-		Iterator<Object> iter = aux.getList().iterator();
-		System.out.println("Peso: " + aux.getWeigth());
-		while (iter.hasNext()) {
-			Vertex o = (Vertex) iter.next();
-			System.out.println(((Corner) o.getInfo()).getId());
-		}
+		// AuxClassPath aux = University.getInstance().shortestPath(
+		// 		University.getInstance().getMap().getVerticesList().get(0),
+		// 		University.getInstance().getMap().getVerticesList().get(6), University.getInstance().getMap());
+		// Iterator<Object> iter = aux.getList().iterator();
+		// System.out.println("Peso: " + aux.getWeigth());
+		// while (iter.hasNext()) {
+		// 	Vertex o = (Vertex) iter.next();
+		// 	System.out.println(((Corner) o.getInfo()).getId());
+		// }
 	}
 }

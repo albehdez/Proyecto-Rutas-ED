@@ -544,7 +544,7 @@ public class University {
 		while (it.hasNext()) {
 			Vertex aux2 = (Vertex) it.next();
 			EdgeAux eaux = getEdgeObject(aux1, aux2);
-			list.add(new LinePosAux(eaux.getPosX(), eaux.getPosY()));
+			list.add(new LinePosAux(eaux.getPosX(), eaux.getPosY(), eaux.getAddress()));
 			aux1 = aux2;
 			// aux2 = (Vertex) it.next();
 		}
@@ -607,7 +607,6 @@ public class University {
 
 			while (it.hasNext()) {				
 				AuxClassBusTable node = it.next();		
-
 				byte[] byteNodeL = Convert.toBytes(node.getLocation());				
 				int tamNodeL = byteNodeL.length;
 				file.writeInt(tamNodeL);				
@@ -678,24 +677,40 @@ public class University {
 		}
 	}
 	public void writeGraph(){
+
 		List<Vertex> listV = this.map.getVerticesList();
 		try (
 			RandomAccessFile file = new RandomAccessFile(this.fileGraphVertex, "rw")) {
 			
 			int cantV = 0;
+			long pos=file.getFilePointer();
 			file.writeInt(cantV);
 
 			Iterator<Vertex> iter = listV.iterator();
 			while(iter.hasNext()){
-				Object current = iter.next().getInfo();
+				Vertex current = iter.next();
+				Corner auxCorner = null;
+				StopBus auxSBus = null;
 
-				byte[] byteVertex = Convert.toBytes(current);				
+				if(current.getInfo() instanceof Corner){
+					auxCorner=(Corner) current.getInfo();
+					byte[] byteVertex = Convert.toBytes(auxCorner);				
 				int tamVertex = byteVertex.length;
 				file.writeInt(tamVertex);				
 				file.write(byteVertex);
 				cantV++;
+				}else{
+					auxSBus = (StopBus) current.getInfo();
+					byte[] byteVertex = Convert.toBytes(auxSBus);				
+				int tamVertex = byteVertex.length;
+				file.writeInt(tamVertex);				
+				file.write(byteVertex);
+				cantV++;
+				}
+
+				
 			}
-			file.seek(0);
+			file.seek(pos);
 			file.writeInt(cantV);
 			file.close();
             
@@ -706,6 +721,7 @@ public class University {
 		try (
 			RandomAccessFile file = new RandomAccessFile(this.fileGraphEdge, "rw")) {
 			LinkedList<Edge> listE;
+			long pos = file.getFilePointer();
 			int cantE = 0;
 			file.writeInt(cantE);
 			Iterator<Vertex> iter = listV.iterator();
@@ -728,7 +744,7 @@ public class University {
 			}
 			
 			
-			file.seek(0);
+			file.seek(pos);
 			file.writeInt(cantE);
 			file.close();
             
@@ -737,21 +753,24 @@ public class University {
         }
 	}
 	public void readGraph(){
-		ArrayList<Vertex> lista = new ArrayList<Vertex>();
+
+		ArrayList<Object> lista = new ArrayList<Object>();
 		ArrayList<EdgeAux> listaEdge = new ArrayList<EdgeAux>();
 
 		try (
 			RandomAccessFile file = new RandomAccessFile(this.fileGraphVertex, "r")) {
 			
-			int cantV = file.read();
+			int cantV = file.readInt();
+			
 			
 			for(int i = 0; i<cantV;i++){
-
 				
                 int tamInfoV = file.readInt();            
                 byte[] infoBytesV = new byte[tamInfoV];
                 file.read(infoBytesV);                
-				Vertex infoV = (Vertex) Convert.toObject(infoBytesV);
+				Object infoV =  Convert.toObject(infoBytesV);
+				
+
 				lista.add(infoV);
 			}
 			
@@ -763,7 +782,7 @@ public class University {
 		try (
 			RandomAccessFile file = new RandomAccessFile(this.fileGraphEdge, "r")) {
 			
-			int cantE = file.read();
+			int cantE = file.readInt();
 			
 			for(int i = 0; i<cantE;i++){
 
@@ -781,9 +800,9 @@ public class University {
             e.printStackTrace();
         }
 
-		Iterator<Vertex> iterC1 = lista.iterator();
+		Iterator<Object> iterC1 = lista.iterator();
 		while(iterC1.hasNext()){
-			Vertex current = iterC1.next();
+			Object current = iterC1.next();
 			University.getInstance().getMap().insertVertex(current);
 		}
 		Iterator<EdgeAux> iterE1 = listaEdge.iterator();
