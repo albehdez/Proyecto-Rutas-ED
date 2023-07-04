@@ -146,22 +146,24 @@ public class Map {
             if (nodo instanceof Line) {
                 Line l = (Line) nodo;
                 ArrayList<String> corners = Util.getVertexsId(l.getId());
-                ILinkedWeightedEdgeNotDirectedGraph grapAux = University.getInstance().insertUbication(event.getX(),
-                        event.getY(), corners.get(0), corners.get(1));
-                // AuxClassPath a = University.getInstance().shortestPath(
-                // University.getInstance().findVertex("yourUbication"),
-                // University.getInstance().searchVertex(810, 570), grapAux);
+                // ILinkedWeightedEdgeNotDirectedGraph grapAux =
+                // University.getInstance().insertUbication(event.getX(),
+                // event.getY(), corners.get(0), corners.get(1));
+                AuxClassPath a = University.getInstance().shortestPath(
+                        University.getInstance().findVertex("yourUbication"),
+                        University.getInstance().searchVertex(511, 269), University.getInstance().getMap());
                 mostrarNodos();
-                AuxClassPath a = University.getInstance().findStopBusShort(grapAux);
+                // AuxClassPath a = University.getInstance().findStopBusShort(grapAux);
                 if (a != null) {
                     drowPath(a.getList(), event);
                     // mostrar el panel con el peso total del camino
                     Scene1.getInstance().getPanelRecorrido().setVisible(true);
                     Scene1.getInstance().setLablePathValue(String.format("%.3f", a.getWeigth()) + " Km");
                     mostrarNodos();
-                    System.out.println();
+                    // System.out.println();
                     // eliminar ubicacion proporcionada por el usuario
-                    University.getInstance().deleteUbication(0, 0, corners.get(0), corners.get(1));
+                    University.getInstance().deleteUbication(corners.get(0), corners.get(1),
+                            University.getInstance().getMap());
                 } else {
                     System.out.println("No hay paradas");
                 }
@@ -288,9 +290,9 @@ public class Map {
         imagenView.setId("puente");
         panelMapa.getChildren().add(imagenView);
         // Line li = new Line(event.getX(), event.getY(), c.getX(), c.getY());
-        Image imagen1 = new Image("file:src/images/Bustop_azul-removebg-preview.png");
+        Image imagen1 = new Image("file:src/images/azul_bus-preview.png");
         ImageView imagenView1 = new ImageView(imagen1);
-        imagenView1.setFitHeight(50);
+        imagenView1.setFitHeight(60);
         imagenView1.setFitWidth(50);
         imagenView1.setX(coFinX - 25);
         imagenView1.setY(coFinY - 54);

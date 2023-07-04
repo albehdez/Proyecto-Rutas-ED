@@ -2,6 +2,7 @@ package Application;
 
 import java.io.IOException;
 
+import Logic.University;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -103,6 +104,7 @@ public class Scene1 {
 
     public void closeWindow1(MouseEvent e) {
         stage = (Stage) scenePane1.getScene().getWindow();
+        University.getInstance().writeTree();
         stage.close();
     }
 

@@ -16,7 +16,6 @@ import java.util.Map;
 
 import java.util.Iterator;
 
-
 import cu.edu.cujae.ceis.graph.LinkedGraph;
 import cu.edu.cujae.ceis.graph.edge.Edge;
 import cu.edu.cujae.ceis.graph.edge.WeightedEdge;
@@ -34,14 +33,13 @@ import util.EdgeAux;
 import util.Label;
 import util.LinePosAux;
 import util.MyComparator;
-import util.AuxClassFiles;
+
 public class University {
 
 	private static University instance;
 	private GeneralTree<Object> tree;
 	private ILinkedWeightedEdgeNotDirectedGraph map;
 	private File file;
-	
 
 	// private File mapFile;
 	// private FIle treeFile;
@@ -63,6 +61,7 @@ public class University {
 	public GeneralTree<Object> getTree() {
 		return tree;
 	}
+
 	public File getFile() {
 		return file;
 	}
@@ -70,6 +69,7 @@ public class University {
 	public void setFile(File file) {
 		this.file = file;
 	}
+
 	private InDepthIterator<Object> inDepthIterator() {
 		return new InDepthIterator<Object>(this.tree);
 	}
@@ -464,11 +464,11 @@ public class University {
 	 *               parada
 	 * @param fin    vertice final de la calle donde se piensa introducir un parada
 	 */
-	public void insertStopBus(String name, double x, double y, Vertex inicio, Vertex fin) {
+	public void insertStopBus(String name, double x, double y, String inicio, String fin) {
 		StopBus route = new StopBus(name, x, y);
 		int posInicio = map.getVerticesList().indexOf(inicio);
 		int posFin = map.getVerticesList().indexOf(fin);
-		double valueEdge = getEdgeWeigth(inicio, fin);
+		double valueEdge = getEdgeWeigth(map.getVerticesList().get(posInicio), map.getVerticesList().get(posFin));
 		map.insertVertex(route);
 		int newNode = map.getVerticesList().indexOf(route);
 		map.deleteEdgeND(posInicio, posFin);
@@ -527,26 +527,56 @@ public class University {
 		while (it.hasNext()) {
 			Vertex aux2 = (Vertex) it.next();
 			EdgeAux eaux = getEdgeObject(aux1, aux2);
-			list.add(new LinePosAux(eaux.getPosX(), eaux.getPosY()));
 			aux1 = aux2;
 			// aux2 = (Vertex) it.next();
 		}
 		return list;
 	}
 
-	public void insertUbication(double posX, double posY, String corner1, String corner2) {
+	public AuxClassPath findStopBusShort(ILinkedWeightedEdgeNotDirectedGraph auxGraph) {
+		AuxClassPath a = new AuxClassPath();
+		Iterator<Vertex> it = map.getVerticesList().iterator();
+		double comp = Double.MAX_VALUE;
+		AuxClassPath aux = null;
+		Corner ubication = (Corner) findVertex("yourUbication").getInfo();
+		while (it.hasNext()) {
+			Vertex v = it.next();
+			if (v.getInfo() instanceof StopBus) {
+				a = shortestPath(ubication, v.getInfo(), auxGraph);
+				if (a.getWeigth() < comp) {
+					comp = a.getWeigth();
+					aux = a;
+				}
+			}
+		}
+		return aux;
+	}
+
+	public ILinkedWeightedEdgeNotDirectedGraph insertUbication(double posX, double posY, String corner1,
+			String corner2) {
 		Corner cUbication = new Corner(posX, posY, "yourUbication");
 		ILinkedWeightedEdgeNotDirectedGraph grapAux = map;
 		Vertex v1 = findVertex(corner1);
 		Vertex v2 = findVertex(corner2);
+		int posCorner1 = grapAux.getVerticesList().indexOf(findVertex(corner1));
+		int posCorner2 = grapAux.getVerticesList().indexOf(findVertex(corner2));
+		double weight = getEdgeWeigth(v1, v2);
+		int posUbication = grapAux.getVerticesList().indexOf(findVertex(cUbication.getId()));
+		grapAux.insertVertex(cUbication);
+		grapAux.insertWEdgeNDG(posCorner1, posUbication,
+				new EdgeAux(weight, posX, posY, corner2, posCorner2, posCorner2));
+		grapAux.insertWEdgeNDG(posUbication, posCorner2,
+				new EdgeAux(weight, posX, posY, corner2, posCorner2, posCorner2));
+		return grapAux;
+	}
+
+	public void deleteUbication(String corner1, String corner2, ILinkedWeightedEdgeNotDirectedGraph graph) {
+		int posUbication = map.getVerticesList().indexOf(findVertex("yourUbication"));
+		map.deleteVertex(posUbication);
 		int posCorner1 = map.getVerticesList().indexOf(findVertex(corner1));
 		int posCorner2 = map.getVerticesList().indexOf(findVertex(corner2));
-		double weight = getEdgeWeigth(v1, v2);
-
-		map.insertVertex(cUbication);
-		map.insertWEdgeNDG(posCorner1, map.getVerticesList().indexOf(findVertex(cUbication.getId())),
-				new EdgeAux(weight, posX, posY, corner2));
-		map.insertWEdgeNDG(0, 0, grapAux);
+		map.insertWEdgeNDG(posCorner1, posCorner2,
+				new EdgeAux(0, 0, 0, corner1 + "3" + corner2, posCorner1, posCorner2));
 	}
 
 	public Vertex findVertex(String id) {
@@ -578,30 +608,28 @@ public class University {
 		return list;
 	}
 
-	public void writeTree(){
+	public void writeTree() {
 		try (RandomAccessFile file = new RandomAccessFile(this.file, "rw")) {
-			
-					
-						
+
 			LinkedList<AuxClassBusTable> list = this.getTreeInfo();
-			Iterator<AuxClassBusTable> it = list.iterator();			
-			int totalNodes = 0;						
-			file.writeInt(totalNodes);	
+			Iterator<AuxClassBusTable> it = list.iterator();
+			int totalNodes = 0;
+			file.writeInt(totalNodes);
 
-			while (it.hasNext()) {				
-				AuxClassBusTable node = it.next();		
+			while (it.hasNext()) {
+				AuxClassBusTable node = it.next();
 
-				byte[] byteNodeL = Convert.toBytes(node.getLocation());				
+				byte[] byteNodeL = Convert.toBytes(node.getLocation());
 				int tamNodeL = byteNodeL.length;
-				file.writeInt(tamNodeL);				
+				file.writeInt(tamNodeL);
 				file.write(byteNodeL);
-				byte[] byteNodeT = Convert.toBytes(node.getTerminal());				
+				byte[] byteNodeT = Convert.toBytes(node.getTerminal());
 				int tamNodeT = byteNodeT.length;
-				file.writeInt(tamNodeT);				
+				file.writeInt(tamNodeT);
 				file.write(byteNodeT);
-				byte[] byteNodeB = Convert.toBytes(node.getBus());				
+				byte[] byteNodeB = Convert.toBytes(node.getBus());
 				int tamNodeB = byteNodeB.length;
-				file.writeInt(tamNodeB);				
+				file.writeInt(tamNodeB);
 				file.write(byteNodeB);
 				totalNodes++;
 			}
@@ -612,55 +640,52 @@ public class University {
 			e.printStackTrace();
 		}
 	}
-	
 
-	public  LinkedList<AuxClassBusTable> readFile() {
-        LinkedList<AuxClassBusTable> lista = new LinkedList<AuxClassBusTable>();
-        try (
-			RandomAccessFile file = new RandomAccessFile(this.file, "r")) {
-           
-            int totalNodes = file.readInt();
-            
-            for (int i = 0; i < totalNodes; i++) {
-               
-                int tamInfoL = file.readInt();            
-                byte[] infoBytesL = new byte[tamInfoL];
-                file.read(infoBytesL);                
+	public LinkedList<AuxClassBusTable> readFile() {
+		LinkedList<AuxClassBusTable> lista = new LinkedList<AuxClassBusTable>();
+		try (
+				RandomAccessFile file = new RandomAccessFile(this.file, "r")) {
+
+			int totalNodes = file.readInt();
+
+			for (int i = 0; i < totalNodes; i++) {
+
+				int tamInfoL = file.readInt();
+				byte[] infoBytesL = new byte[tamInfoL];
+				file.read(infoBytesL);
 				Location infoL = (Location) Convert.toObject(infoBytesL);
 
-				int tamInfoT = file.readInt();            
-                byte[] infoBytesT = new byte[tamInfoT];
-                file.read(infoBytesT);                
+				int tamInfoT = file.readInt();
+				byte[] infoBytesT = new byte[tamInfoT];
+				file.read(infoBytesT);
 				Terminal infoT = (Terminal) Convert.toObject(infoBytesT);
 
-				int tamInfoB = file.readInt();            
-                byte[] infoBytesB = new byte[tamInfoB];
-                file.read(infoBytesB);                
+				int tamInfoB = file.readInt();
+				byte[] infoBytesB = new byte[tamInfoB];
+				file.read(infoBytesB);
 				Bus infoB = (Bus) Convert.toObject(infoBytesB);
 
-                AuxClassBusTable n = new AuxClassBusTable(infoL, infoT, infoB, infoB.getSeating());
+				AuxClassBusTable n = new AuxClassBusTable(infoL, infoT, infoB, infoB.getSeating());
 				lista.add(n);
-                
-               
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-		
-        return lista;
-    }
-	public void createTree(){
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return lista;
+	}
+
+	public void createTree() {
 		LinkedList<AuxClassBusTable> lista = this.readFile();
-		
+
 		Iterator<AuxClassBusTable> iter = lista.iterator();
-		while(iter.hasNext()){
+		while (iter.hasNext()) {
 			AuxClassBusTable current = iter.next();
-			this.insertBus(current.getLocation().getName(), current.getTerminal().getId(), current.getBus().getTuition(), current.getBus().getSeating());
-			
+			this.insertBus(current.getLocation().getName(), current.getTerminal().getId(),
+					current.getBus().getTuition(), current.getBus().getSeating());
+
 		}
 	}
-	
-    
 
-    
 }
