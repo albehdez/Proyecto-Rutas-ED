@@ -1,11 +1,21 @@
 package util;
 
-public class EdgeAux {
+import java.io.Serializable;
+
+public class EdgeAux implements Serializable{
     private double weigth;
     private double posX;
     private double posY;
     private String address;
     private int posCorner1;
+    private int posCorner2;
+    public int getPosCorner2() {
+        return posCorner2;
+    }
+
+    public void setPosCorner2(int posCorner2) {
+        this.posCorner2 = posCorner2;
+    }
 
     public int getPosCorner1() {
         return posCorner1;
@@ -13,16 +23,6 @@ public class EdgeAux {
 
     public void setPosCorner1(int posCorner1) {
         this.posCorner1 = posCorner1;
-    }
-
-    private int posCorner2;
-
-    public int getPosCorner2() {
-        return posCorner2;
-    }
-
-    public void setPosCorner2(int posCorner2) {
-        this.posCorner2 = posCorner2;
     }
 
     public String getAddress() {
@@ -33,7 +33,7 @@ public class EdgeAux {
         this.address = address;
     }
 
-    public EdgeAux(double weigth, double posX, double posY, String address, int posCorner1, int posCorner2) {
+    public EdgeAux(double weigth, double posX, double posY, String address,int posCorner1, int posCorner2) {
         setWeigth(weigth);
         setPosX(posX);
         setPosY(posY);

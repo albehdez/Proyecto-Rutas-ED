@@ -68,7 +68,6 @@ public class Init {
         // Ala oeste
         // horizontales
         University.getInstance().getMap().insertWEdgeNDG(0, 1, new EdgeAux(0.208, 514, 544, "A3B", 0, 1));
-        // StopBus sb = new StopBus("Parada del hospital", 194, 128);
         University.getInstance().getMap().insertWEdgeNDG(1, 2, new EdgeAux(0.045, 633, 544, "B3C", 1, 2));
         University.getInstance().getMap().insertWEdgeNDG(2, 3, new EdgeAux(0.045, 753, 544, "C3D", 2, 3));
         University.getInstance().getMap().insertWEdgeNDG(5, 6, new EdgeAux(0.208, 511, 685, "F3G", 5, 6));

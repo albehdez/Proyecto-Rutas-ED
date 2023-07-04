@@ -1,5 +1,6 @@
 package Application;
 
+import Logic.University;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +15,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Init.data();
+        // Init.data();
+        University.getInstance().cargar();
         Parent root = FXMLLoader.load(getClass().getResource("Scene1.fxml"));
         Scene scene = new Scene(root);
         String css = "style.css";

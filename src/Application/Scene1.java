@@ -59,21 +59,9 @@ public class Scene1 {
     }
 
     public void loadScene2(MouseEvent e) throws IOException {
-        // Stage secondStage = new Stage();
-        // Parent root = FXMLLoader.load(getClass().getResource("Scene2.fxml"));
-        // secondStage.initModality(Modality.APPLICATION_MODAL);
-        // secondStage.initStyle(StageStyle.TRANSPARENT);
-        // Scene scene = new Scene(root);
-        // String css = "style.css";
-        // scene.getStylesheets().add(css);
-        // scene.setFill(Color.rgb(243, 243, 243, 0.0));
-        // secondStage.setAlwaysOnTop(true);
-        // secondStage.setScene(scene);
-        // secondStage.show();
         Parent root = FXMLLoader.load(getClass().getResource("Scene2.fxml"));
-
         scenePane1.getChildren().add(root);
-
+        Map.getInstance().showStopBus();
     }
 
     public void loadScene3(MouseEvent e) throws IOException {
@@ -104,7 +92,9 @@ public class Scene1 {
 
     public void closeWindow1(MouseEvent e) {
         stage = (Stage) scenePane1.getScene().getWindow();
-        University.getInstance().writeTree();
+        // University.getInstance().writeTree();
+        // University.getInstance().writeGraph();
+        University.getInstance().guardar();
         stage.close();
     }
 
