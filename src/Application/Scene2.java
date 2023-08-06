@@ -115,29 +115,61 @@ public class Scene2 {
 
     public void insertBus() {
         if (value) {
-            String localidad = LocalidadTextField.getText();
-            String terminal = TermianlTextField.getText();
-            String bus = MatriculaTextField.getText();
-            int seatsNum = (int) asientosSpinner.getValue();
+            try {
+                String localidad = LocalidadTextField.getText();
+                String terminal = TermianlTextField.getText();
+                String bus = MatriculaTextField.getText();
+                int seatsNum = (int) asientosSpinner.getValue();
 
-            University.getInstance().insertBus(localidad, terminal, bus, seatsNum);
+                University.getInstance().insert(localidad, terminal, bus, seatsNum);
 
-            LocalidadTextField.setText("");
-            TermianlTextField.setText("");
-            MatriculaTextField.setText("");
-            InsertarButton.setDisable(true);
-            Stage primaryStage = (Stage) InsertarButton.getScene().getWindow();
-            update();
-            // // Crear un diálogo de alerta con la ventana principal como propietario
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.initOwner(primaryStage); // Establecer la ventana principal como el
-            // propietario del diálogo
-            alert.setTitle("Éxito");
-            alert.setHeaderText(null);
-            alert.setContentText("La información se ha enviado correctamente.");
-            alert.showAndWait();
+                LocalidadTextField.setText("");
+                TermianlTextField.setText("");
+                MatriculaTextField.setText("");
+                InsertarButton.setDisable(true);
+                Stage primaryStage = (Stage) InsertarButton.getScene().getWindow();
+                update();
+                // // Crear un diálogo de alerta con la ventana principal como propietario
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.initOwner(primaryStage); // Establecer la ventana principal como el
+                // propietario del diálogo
+                alert.setTitle("Información");
+                alert.setHeaderText(null);
+                alert.setContentText("El omnibus se ha registrado correctamente.");
+                alert.showAndWait();
+            } catch (Exception e) {
+                Alert alert = new Alert(AlertType.INFORMATION);
+                // alert.initOwner(primaryStage); // Establecer la ventana principal como el
+                // propietario del diálogo
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
         } else {
-            update();
+            try {
+                AuxClassBusTable aux = tableBus.getSelectionModel().getSelectedItem();
+
+                University.getInstance().changeBus(aux.getLocation().getName(), aux.getTerminal().getId(),
+                        aux.getBus().getTuition(), aux.getBus().getSeating());
+
+                update();
+                Alert alert = new Alert(AlertType.INFORMATION);
+                // alert.initOwner(primaryStage); // Establecer la ventana principal como el
+                // propietario del diálogo
+                alert.setTitle("Información");
+                alert.setHeaderText(null);
+                alert.setContentText("El omnibus se ha modificado correctamente.");
+                alert.showAndWait();
+            } catch (Exception e) {
+                Alert alert = new Alert(AlertType.INFORMATION);
+                // alert.initOwner(primaryStage); // Establecer la ventana principal como el
+                // propietario del diálogo
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
         }
     }
 
@@ -154,11 +186,28 @@ public class Scene2 {
     }
 
     public void buttonDelete(ActionEvent e) {
-        AuxClassBusTable aux = tableBus.getSelectionModel().getSelectedItem();
-        University.getInstance().deleteBus(aux.getLocation().getName(), aux.getTerminal().getId(),
-                aux.getBus().getTuition());
-        update();
-        buttonDelete.setDisable(true);
+        try {
+            AuxClassBusTable aux = tableBus.getSelectionModel().getSelectedItem();
+            University.getInstance().deleteBus(aux.getLocation().getName(), aux.getTerminal().getId(),
+                    aux.getBus().getTuition());
+            update();
+            Alert alert = new Alert(AlertType.INFORMATION);
+            // alert.initOwner(primaryStage); // Establecer la ventana principal como el
+            // propietario del diálogo
+            alert.setTitle("Información");
+            // alert.setHeaderText("");
+            alert.setContentText("Se ha eliminado el omnibus correctamente");
+            alert.showAndWait();
+            buttonDelete.setDisable(true);
+        } catch (Exception ex) {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            // alert.initOwner(primaryStage); // Establecer la ventana principal como el
+            // propietario del diálogo
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText(ex.getMessage());
+            alert.showAndWait();
+        }
     }
 
     public void buttonModificar(ActionEvent e) {
@@ -238,6 +287,7 @@ public class Scene2 {
         // Asignar los datos a la tabla
 
     }
+    // importante
 
     public void update() {
         bus = FXCollections.observableArrayList(University.getInstance().getTreeInfo());

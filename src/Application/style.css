@@ -10,8 +10,16 @@
     -fx-translate-y: 40;
 }
 
-#ok {
+#scenePane1 {
+    -fx-background-radius: 8px;
+}
+
+#aico {
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 3);
+}
+
+#aico :hover {
+    -fx-effect: dropshadow(gaussian, rgba(212, 24, 24, 0.5), 10, 0, 0, 3);
 }
 
 #circle {

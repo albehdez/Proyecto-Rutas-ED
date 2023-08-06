@@ -9,8 +9,8 @@ public class Init {
 
     public static void data() {
 
-        University.getInstance().insertBus("Boyeros", "Santiago de la Vegas", "B753268", 17);
-        University.getInstance().insertBus("Arroyo Naranjo", "Santa Amalia", "B783229", 19);
+        University.getInstance().insert("Boyeros", "Santiago de la Vegas", "B753268", 17);
+        University.getInstance().insert("Arroyo Naranjo", "Santa Amalia", "B783229", 19);
 
         Corner a = new Corner(97, 127, "A");
 

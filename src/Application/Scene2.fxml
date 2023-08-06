@@ -91,11 +91,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="addButton" mnemonicParsing="false" onAction="#buttonInsertar" text="Agregar">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font></Button>
-            <Button fx:id="buttonModificar" disable="true" mnemonicParsing="false" onAction="#buttonModificar" text="Modificar" GridPane.columnIndex="1">
+            <Button fx:id="addButton" mnemonicParsing="false" onAction="#buttonInsertar" text="Agregar" GridPane.columnIndex="1">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></Button>
@@ -110,5 +106,10 @@
             </Button>
          </children>
       </GridPane>
+      <Button fx:id="buttonModificar" disable="true" layoutX="13.0" layoutY="475.0" mnemonicParsing="false" onAction="#buttonModificar" text="Modificar" visible="false">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

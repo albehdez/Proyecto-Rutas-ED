@@ -15,6 +15,7 @@ import java.util.Iterator;
 import cu.edu.cujae.ceis.graph.LinkedGraph;
 import cu.edu.cujae.ceis.graph.edge.Edge;
 import cu.edu.cujae.ceis.graph.edge.WeightedEdge;
+import cu.edu.cujae.ceis.graph.interfaces.ILinkedNotDirectedGraph;
 import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeDirectedGraph;
 import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeNotDirectedGraph;
 import cu.edu.cujae.ceis.graph.vertex.Vertex;
@@ -41,6 +42,7 @@ public class University {
 
 	private University() {
 		tree = new GeneralTree<Object>();
+		// BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) tree.getRoot();
 		map = new LinkedGraph();
 		this.fileTree = new File("src/Files/FicheroB.data");
 		this.fileGraphVertex = new File("src/Files/FicheroV.data");
@@ -97,123 +99,124 @@ public class University {
 	 * @return un boolean que representa true si la insercion se pudo realizar
 	 *         correctamente y en caso contrario false
 	 */
-	public boolean insertBus(String Location, String Terminal, String Bus, int seating) {
+	// public boolean insertBus(String Location, String Terminal, String Bus, int
+	// seating) {
 
-		boolean retB = false;
-		if (this.tree.isEmpty()) {
+	// boolean retB = false;
+	// if (this.tree.isEmpty()) {
 
-			Location location = new Location(Location);
-			BinaryTreeNode<Object> nodeLocation = new BinaryTreeNode<Object>(location);
-			this.tree.insertNode(nodeLocation, null);
+	// Location location = new Location(Location);
+	// BinaryTreeNode<Object> nodeLocation = new BinaryTreeNode<Object>(location);
+	// this.tree.insertNode(nodeLocation, null);
 
-			Terminal terminal = new Terminal(Terminal);
-			BinaryTreeNode<Object> nodeTerminal = new BinaryTreeNode<Object>(terminal);
-			this.tree.insertNode(nodeTerminal, nodeLocation);
+	// Terminal terminal = new Terminal(Terminal);
+	// BinaryTreeNode<Object> nodeTerminal = new BinaryTreeNode<Object>(terminal);
+	// this.tree.insertNode(nodeTerminal, nodeLocation);
 
-			Bus bus = new Bus(Bus, seating);
-			bus.setSeating(seating);
-			BinaryTreeNode<Object> nodeBus = new BinaryTreeNode<Object>(bus);
-			this.tree.insertNode(nodeBus, nodeTerminal);
-			retB = true;
+	// Bus bus = new Bus(Bus, seating);
+	// bus.setSeating(seating);
+	// BinaryTreeNode<Object> nodeBus = new BinaryTreeNode<Object>(bus);
+	// this.tree.insertNode(nodeBus, nodeTerminal);
+	// retB = true;
 
-		} else {
-			BinaryTreeNode<Object> node1 = searchLocalidad(Location);
-			if (node1 != null) {
-				BinaryTreeNode<Object> node2 = searchTerminal(Location, Terminal);
-				if (node2 != null) {
-					BinaryTreeNode<Object> node3 = searchBus(Location, Terminal, Bus);
-					if (node3 != null) {
-						throw new IllegalArgumentException("El bus ya existe");
-					} else {
-						Bus bus = new Bus(Bus, seating);
-						bus.setSeating(seating);
-						BinaryTreeNode<Object> nodeBus = new BinaryTreeNode<Object>(bus);
-						this.tree.insertNode(nodeBus, node2);
-						retB = true;
-					}
-				} else {
-					Terminal terminal = new Terminal(Terminal);
-					BinaryTreeNode<Object> nodeTerminal = new BinaryTreeNode<Object>(terminal);
-					this.tree.insertNode(nodeTerminal, node1);
-					Bus bus = new Bus(Bus, seating);
-					bus.setSeating(seating);
-					BinaryTreeNode<Object> nodeBus = new BinaryTreeNode<Object>(bus);
-					this.tree.insertNode(nodeBus, nodeTerminal);
-					retB = true;
-				}
-			} else {
-				Location location = new Location(Location);
-				BinaryTreeNode<Object> nodeLocation = new BinaryTreeNode<Object>(location);
-				this.tree.insertNode(nodeLocation, null);
+	// } else {
+	// BinaryTreeNode<Object> node1 = searchLocalidad(Location);
+	// if (node1 != null) {
+	// BinaryTreeNode<Object> node2 = searchTerminal(Location, Terminal);
+	// if (node2 != null) {
+	// BinaryTreeNode<Object> node3 = searchBus(Location, Terminal, Bus);
+	// if (node3 != null) {
+	// throw new IllegalArgumentException("El bus ya existe");
+	// } else {
+	// Bus bus = new Bus(Bus, seating);
+	// bus.setSeating(seating);
+	// BinaryTreeNode<Object> nodeBus = new BinaryTreeNode<Object>(bus);
+	// this.tree.insertNode(nodeBus, node2);
+	// retB = true;
+	// }
+	// } else {
+	// Terminal terminal = new Terminal(Terminal);
+	// BinaryTreeNode<Object> nodeTerminal = new BinaryTreeNode<Object>(terminal);
+	// this.tree.insertNode(nodeTerminal, node1);
+	// Bus bus = new Bus(Bus, seating);
+	// bus.setSeating(seating);
+	// BinaryTreeNode<Object> nodeBus = new BinaryTreeNode<Object>(bus);
+	// this.tree.insertNode(nodeBus, nodeTerminal);
+	// retB = true;
+	// }
+	// } else {
+	// Location location = new Location(Location);
+	// BinaryTreeNode<Object> nodeLocation = new BinaryTreeNode<Object>(location);
+	// this.tree.insertNode(nodeLocation, null);
 
-				Terminal terminal = new Terminal(Terminal);
-				BinaryTreeNode<Object> nodeTerminal = new BinaryTreeNode<Object>(terminal);
-				this.tree.insertNode(nodeTerminal, nodeLocation);
+	// Terminal terminal = new Terminal(Terminal);
+	// BinaryTreeNode<Object> nodeTerminal = new BinaryTreeNode<Object>(terminal);
+	// this.tree.insertNode(nodeTerminal, nodeLocation);
 
-				Bus bus = new Bus(Bus, seating);
-				bus.setSeating(seating);
-				BinaryTreeNode<Object> nodeBus = new BinaryTreeNode<Object>(bus);
-				this.tree.insertNode(nodeBus, nodeTerminal);
-				retB = true;
-			}
-		}
-		return retB;
+	// Bus bus = new Bus(Bus, seating);
+	// bus.setSeating(seating);
+	// BinaryTreeNode<Object> nodeBus = new BinaryTreeNode<Object>(bus);
+	// this.tree.insertNode(nodeBus, nodeTerminal);
+	// retB = true;
+	// }
+	// }
+	// return retB;
 
-	}
+	// }
 
 	/**
 	 * @param name
 	 * @return
 	 */
-	private BinaryTreeNode<Object> searchLocalidad(String name) {
-		BinaryTreeNode<Object> rNode = null;
+	// private BinaryTreeNode<Object> searchLocalidad(String name) {
+	// BinaryTreeNode<Object> rNode = null;
 
-		if (!this.tree.isEmpty()) {
-			BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) this.tree.getRoot();
-			boolean stop = false;
-			while (!stop && aux != null) {
-				if (((Location) aux.getInfo()).getName().equalsIgnoreCase(name)) {
-					rNode = aux;
-					stop = true;
-				}
-				aux = aux.getRight();
-			}
-		}
+	// if (!this.tree.isEmpty()) {
+	// BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) this.tree.getRoot();
+	// boolean stop = false;
+	// while (!stop && aux != null) {
+	// if (((Location) aux.getInfo()).getName().equalsIgnoreCase(name)) {
+	// rNode = aux;
+	// stop = true;
+	// }
+	// aux = aux.getRight();
+	// }
+	// }
 
-		return rNode;
-	}
+	// return rNode;
+	// }
 
 	/**
 	 * @param localidad
 	 * @param ID
 	 * @return
 	 */
-	private BinaryTreeNode<Object> searchTerminal(String localidad, String ID) {
-		BinaryTreeNode<Object> rNode = null;
+	// private BinaryTreeNode<Object> searchTerminal(String localidad, String ID) {
+	// BinaryTreeNode<Object> rNode = null;
 
-		if (!this.tree.isEmpty()) {
-			BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) this.tree.getRoot();
-			boolean stop = false;
-			while (!stop && aux != null) {
-				if (((Location) aux.getInfo()).getName().equalsIgnoreCase(localidad)) {
-					stop = true;
-					boolean stop2 = false;
-					BinaryTreeNode<Object> aux2 = aux.getLeft();
-					while (aux2 != null && !stop2) {
-						if (((Terminal) aux2.getInfo()).getId().equalsIgnoreCase(ID)) {
-							stop2 = true;
-							rNode = aux2;
-						}
-						aux2 = aux2.getRight();
-					}
+	// if (!this.tree.isEmpty()) {
+	// BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) this.tree.getRoot();
+	// boolean stop = false;
+	// while (!stop && aux != null) {
+	// if (((Location) aux.getInfo()).getName().equalsIgnoreCase(localidad)) {
+	// stop = true;
+	// boolean stop2 = false;
+	// BinaryTreeNode<Object> aux2 = aux.getLeft();
+	// while (aux2 != null && !stop2) {
+	// if (((Terminal) aux2.getInfo()).getId().equalsIgnoreCase(ID)) {
+	// stop2 = true;
+	// rNode = aux2;
+	// }
+	// aux2 = aux2.getRight();
+	// }
 
-				}
-				aux = aux.getRight();
-			}
-		}
+	// }
+	// aux = aux.getRight();
+	// }
+	// }
 
-		return rNode;
-	}
+	// return rNode;
+	// }
 
 	/**
 	 * @param localidad localiad donde se encuentra el omnibus
@@ -221,40 +224,41 @@ public class University {
 	 * @param tuition   matricula del omnibus
 	 * @return un objecto de tipo BinaryTreeNode que contiene el omnibus eliminado
 	 */
-	private BinaryTreeNode<Object> searchBus(String localidad, String terminal, String tuition) {
-		BinaryTreeNode<Object> rNode = null;
+	// private BinaryTreeNode<Object> searchBus(String localidad, String terminal,
+	// String tuition) {
+	// BinaryTreeNode<Object> rNode = null;
 
-		if (!this.tree.isEmpty()) {
-			BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) this.tree.getRoot();
-			boolean stop = false;
-			while (!stop && aux != null) {
-				if (((Location) aux.getInfo()).getName().equalsIgnoreCase(localidad)) {
-					stop = true;
-					boolean stop2 = false;
-					BinaryTreeNode<Object> aux2 = aux.getLeft();
-					while (aux2 != null && !stop2) {
-						if (((Terminal) aux2.getInfo()).getId().equalsIgnoreCase(terminal)) {
-							stop2 = true;
-							boolean stop3 = false;
-							BinaryTreeNode<Object> aux3 = aux2.getLeft();
-							while (aux3 != null && !stop3) {
-								if (((Bus) aux3.getInfo()).getTuition().equalsIgnoreCase(tuition)) {
-									stop3 = true;
-									rNode = aux3;
-								}
-								aux3 = aux3.getRight();
-							}
-						}
-						aux2 = aux2.getRight();
-					}
+	// if (!this.tree.isEmpty()) {
+	// BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) this.tree.getRoot();
+	// boolean stop = false;
+	// while (!stop && aux != null) {
+	// if (((Location) aux.getInfo()).getName().equalsIgnoreCase(localidad)) {
+	// stop = true;
+	// boolean stop2 = false;
+	// BinaryTreeNode<Object> aux2 = aux.getLeft();
+	// while (aux2 != null && !stop2) {
+	// if (((Terminal) aux2.getInfo()).getId().equalsIgnoreCase(terminal)) {
+	// stop2 = true;
+	// boolean stop3 = false;
+	// BinaryTreeNode<Object> aux3 = aux2.getLeft();
+	// while (aux3 != null && !stop3) {
+	// if (((Bus) aux3.getInfo()).getTuition().equalsIgnoreCase(tuition)) {
+	// stop3 = true;
+	// rNode = aux3;
+	// }
+	// aux3 = aux3.getRight();
+	// }
+	// }
+	// aux2 = aux2.getRight();
+	// }
 
-				}
-				aux = aux.getRight();
-			}
-		}
+	// }
+	// aux = aux.getRight();
+	// }
+	// }
 
-		return rNode;
-	}
+	// return rNode;
+	// }
 
 	/**
 	 * @param localidad localidad donde se encuantra el omnibus
@@ -262,53 +266,53 @@ public class University {
 	 * @param bus       maticula del omnibus que se desea eliminar
 	 * @return
 	 */
-	public boolean deleteBus(String localidad, String terminal, String bus) {
-		boolean deleted = false;
-		if (!tree.isEmpty()) {
-			BinaryTreeNode<Object> nodeLocalidad = searchLocalidad(localidad);
-			if (nodeLocalidad != null) {
-				BinaryTreeNode<Object> nodeTerminal = searchTerminal(localidad, terminal);
-				if (nodeTerminal != null) {
-					BinaryTreeNode<Object> nodeBus = searchBus(localidad, terminal, bus);
-					if (nodeBus != null) {
-						tree.deleteNode(nodeBus);
-						deleted = true;
-						if (nodeTerminal.getLeft() == null) {
-							tree.deleteNode(nodeTerminal);
-							if (nodeLocalidad.getLeft() == null) {
-								BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) this.tree.getRoot();
-								boolean stop = false;
-								if (((Location) aux.getInfo()).getName()
-										.equalsIgnoreCase(((Location) nodeLocalidad.getInfo()).getName())) {
-									this.tree.setRoot(aux.getRight());
-								} else {
-									while (!stop && aux != null) {
-										if (((Location) aux.getRight().getInfo()).getName()
-												.equalsIgnoreCase(((Location) nodeLocalidad.getInfo()).getName())) {
-											aux.setRight(aux.getRight().getRight());
-											stop = true;
-										}
-										aux = aux.getRight();
-									}
-								}
-							}
-						}
-					} else {
-						throw new IllegalArgumentException("El bus que desea eliminar no existe");
-					}
-				} else {
-					throw new IllegalArgumentException("La terminal insertada no existe");
-				}
-			} else {
-				throw new IllegalArgumentException("La localidad insertada no existe");
-			}
+	// public boolean deleteBus(String localidad, String terminal, String bus) {
+	// boolean deleted = false;
+	// if (!tree.isEmpty()) {
+	// BinaryTreeNode<Object> nodeLocalidad = searchLocalidad(localidad);
+	// if (nodeLocalidad != null) {
+	// BinaryTreeNode<Object> nodeTerminal = searchTerminal(localidad, terminal);
+	// if (nodeTerminal != null) {
+	// BinaryTreeNode<Object> nodeBus = searchBus(localidad, terminal, bus);
+	// if (nodeBus != null) {
+	// tree.deleteNode(nodeBus);
+	// deleted = true;
+	// if (nodeTerminal.getLeft() == null) {
+	// tree.deleteNode(nodeTerminal);
+	// if (nodeLocalidad.getLeft() == null) {
+	// BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) this.tree.getRoot();
+	// boolean stop = false;
+	// if (((Location) aux.getInfo()).getName()
+	// .equalsIgnoreCase(((Location) nodeLocalidad.getInfo()).getName())) {
+	// this.tree.setRoot(aux.getRight());
+	// } else {
+	// while (!stop && aux != null) {
+	// if (((Location) aux.getRight().getInfo()).getName()
+	// .equalsIgnoreCase(((Location) nodeLocalidad.getInfo()).getName())) {
+	// aux.setRight(aux.getRight().getRight());
+	// stop = true;
+	// }
+	// aux = aux.getRight();
+	// }
+	// }
+	// }
+	// }
+	// } else {
+	// throw new IllegalArgumentException("El bus que desea eliminar no existe");
+	// }
+	// } else {
+	// throw new IllegalArgumentException("La terminal insertada no existe");
+	// }
+	// } else {
+	// throw new IllegalArgumentException("La localidad insertada no existe");
+	// }
 
-		} else {
-			throw new IllegalArgumentException("El árbol esta vació");
-		}
+	// } else {
+	// throw new IllegalArgumentException("El árbol esta vació");
+	// }
 
-		return deleted;
-	}
+	// return deleted;
+	// }
 
 	/**
 	 * @return una lista con todos los datos de los omnibus almacenados en el arbol
@@ -444,6 +448,7 @@ public class University {
 		boolean value = false;
 		LinkedList<Edge> list = a.getEdgeList();
 		ListIterator<Edge> it = list.listIterator();
+		it.nextIndex();
 		while (!value && it.hasNext()) {
 			WeightedEdge eaux = (WeightedEdge) it.next();
 			if (b.equals(eaux.getVertex())) {
@@ -479,7 +484,7 @@ public class University {
 	 *               parada
 	 * @param fin    vertice final de la calle donde se piensa introducir un parada
 	 */
-	public void insertStopBus(String name, double x, double y, String inicio, String fin) {
+	public void insertStopBus(String name, double x, double y, String inicio, String fin, String matricula) {
 		StopBus route = new StopBus(name, x, y);
 		// Corner cUbication = new Corner(posX, posY, "yourUbication");
 		// ILinkedWeightedEdgeNotDirectedGraph grapAux = map;
@@ -496,6 +501,7 @@ public class University {
 		map.insertWEdgeNDG(posUbication, posCorner2,
 				new EdgeAux(weight, 0, 0, "P" + name + "3" + ((Corner) v2.getInfo()).getId(), posUbication,
 						posCorner2));
+		assignStopBus(route, matricula);
 	}
 
 	public Vertex searchVertex(double x, double y) {
@@ -518,6 +524,7 @@ public class University {
 
 	public LinkedList<AuxClassPath> findsRoutes(Vertex v) {
 		LinkedList<AuxClassPath> list = new LinkedList<AuxClassPath>();
+
 		ListIterator<Vertex> it = map.getVerticesList().listIterator();
 		while (it.hasNext()) {
 			double comp = -1;
@@ -706,7 +713,7 @@ public class University {
 		Iterator<AuxClassBusTable> iter = lista.iterator();
 		while (iter.hasNext()) {
 			AuxClassBusTable current = iter.next();
-			this.insertBus(current.getLocation().getName(), current.getTerminal().getId(),
+			this.insert(current.getLocation().getName(), current.getTerminal().getId(),
 					current.getBus().getTuition(), current.getBus().getSeating());
 
 		}
@@ -844,6 +851,60 @@ public class University {
 
 	}
 
+	public void assignStopBus(StopBus stopBus, String bus) {
+		Iterator<Object> iter = inDepthIterator();
+		boolean stop = false;
+		while (iter.hasNext() && !stop) {
+			Object current = iter.next();
+			// System.out.println(bus);
+			if (current instanceof Bus) {
+				if (((Bus) current).getTuition().equalsIgnoreCase(bus)) {
+					((Bus) current).getRoute().add(stopBus);
+					stop = true;
+				}
+			}
+		}
+	}
+
+	public void deleteStopBus(String id) {
+
+		Vertex stopBusVertex = findVertex(id);
+		LinkedList<Vertex> adjacents = stopBusVertex.getAdjacents();
+		int posCorner1 = map.getVerticesList().indexOf(adjacents.getFirst());
+		int posCorner2 = map.getVerticesList().indexOf(adjacents.getLast());
+		int posCurrent = map.getVerticesList().indexOf(stopBusVertex);
+		double weight = (getEdgeWeigth(adjacents.getFirst(), stopBusVertex)) * 2;
+
+		map.deleteEdgeND(posCorner1, posCurrent);
+		map.deleteEdgeND(posCurrent, posCorner2);
+		map.deleteVertex(posCurrent);
+		map.insertWEdgeNDG(posCorner1, posCorner2,
+				new EdgeAux(weight, 0, 0, ((Corner) adjacents.getFirst().getInfo()).getId() + "3"
+						+ ((Corner) adjacents.getLast().getInfo()).getId(), posCorner1, posCorner2));
+		deleteAsigment(id);
+	}
+
+	public void deleteAsigment(String id) {
+		Iterator<Object> iter = inDepthIterator();
+		boolean stop = false;
+		while (iter.hasNext() && !stop) {
+			Object current = iter.next();
+			if (current instanceof Bus) {
+				// if (((Bus) current).getTuition().equalsIgnoreCase(tuition)) {
+				ListIterator<StopBus> it = ((Bus) current).getRoute().listIterator();
+				while (it.hasNext() && !stop) {
+					StopBus sb = it.next();
+					if (sb.getId().equals(id)) {
+						stop = true;
+						it.previous();
+						it.remove();
+					}
+				}
+				// }
+			}
+		}
+	}
+
 	public void cargar() {
 
 		this.readGraph();
@@ -856,6 +917,194 @@ public class University {
 		this.fileTree.delete();
 		this.writeGraph();
 		this.writeTree();
+	}
+
+	// Nuevo
+	public boolean insert(String Location, String Terminal, String Bus, int seating) {
+
+		boolean retB = false;
+		if (this.tree.isEmpty()) {
+			Location location = new Location(Location);
+			BinaryTreeNode<Object> nodeLocation = new BinaryTreeNode<Object>(location);
+			this.tree.insertNode(nodeLocation, null);
+
+			Terminal terminal = new Terminal(Terminal);
+			BinaryTreeNode<Object> nodeTerminal = new BinaryTreeNode<Object>(terminal);
+			this.tree.insertNode(nodeTerminal, nodeLocation);
+
+			Bus bus = new Bus(Bus, seating);
+			BinaryTreeNode<Object> nodeBus = new BinaryTreeNode<Object>(bus);
+			this.tree.insertNode(nodeBus, nodeTerminal);
+			// update(bus); // Actualizar
+
+			retB = true;
+		} else {
+			BinaryTreeNode<Object> nodeLocation2 = searchLocalidad(Location);
+			if (nodeLocation2 != null) {
+				BinaryTreeNode<Object> nodeTerminal2 = searchTerminal(nodeLocation2, Terminal);
+				if (nodeTerminal2 != null) {
+					BinaryTreeNode<Object> nodeBus2 = searchBus(nodeTerminal2, Bus);
+					if (nodeBus2 != null) {
+						throw new IllegalArgumentException("El bus ya existe");
+					} else {
+						Bus bus = new Bus(Bus, seating);
+						BinaryTreeNode<Object> nodeBusAux = new BinaryTreeNode<Object>(bus);
+						this.tree.insertNode(nodeBusAux, nodeTerminal2);
+						// update(bus); // Actualizar
+						retB = true;
+					}
+				} else {
+					Terminal terminal = new Terminal(Terminal);
+					BinaryTreeNode<Object> nodeTerminal4 = new BinaryTreeNode<Object>(terminal);
+					this.tree.insertNode(nodeTerminal4, nodeLocation2);
+					Bus bus = new Bus(Bus, seating);
+					BinaryTreeNode<Object> nodeBus4 = new BinaryTreeNode<Object>(bus);
+					this.tree.insertNode(nodeBus4, nodeTerminal4);
+					// update(bus); // Actualizar
+					retB = true;
+				}
+			} else {
+				Location location = new Location(Location);
+				BinaryTreeNode<Object> nodeLocation3 = new BinaryTreeNode<Object>(location);
+				this.tree.insertNode(nodeLocation3, null);
+
+				Terminal terminal = new Terminal(Terminal);
+				BinaryTreeNode<Object> nodeTerminal3 = new BinaryTreeNode<Object>(terminal);
+				this.tree.insertNode(nodeTerminal3, nodeLocation3);
+
+				Bus bus = new Bus(Bus, seating);
+				bus.setSeating(seating);
+				BinaryTreeNode<Object> nodeBus3 = new BinaryTreeNode<Object>(bus);
+				this.tree.insertNode(nodeBus3, nodeTerminal3);
+				// update(bus); // Actualizar
+				retB = true;
+			}
+		}
+		return retB;
+
+	}
+
+	private BinaryTreeNode<Object> searchLocalidad(String name) {
+		BinaryTreeNode<Object> rNode = null;
+		if (!this.tree.isEmpty()) {
+			BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) this.tree.getRoot();
+			boolean stop = false;
+			while (!stop && aux != null) {
+				if (((Location) aux.getInfo()).getName().equalsIgnoreCase(name)) {
+					rNode = aux;
+					stop = true;
+				}
+				aux = aux.getRight();
+			}
+		}
+		return rNode;
+	}
+
+	private BinaryTreeNode<Object> searchTerminal(BinaryTreeNode<Object> localidad, String terminal) {
+		BinaryTreeNode<Object> rNode = null;
+		if (!this.tree.isEmpty()) {
+			if (localidad.getLeft() != null) {
+				BinaryTreeNode<Object> aux = localidad.getLeft();
+				boolean stop = false;
+				while (!stop) {
+					if (((Terminal) aux.getInfo()).getId().equalsIgnoreCase(terminal)) {
+						stop = true;
+						rNode = aux;
+					}
+					if (aux.getRight() != null) {
+						aux = aux.getRight();
+					} else
+						stop = true;
+				}
+			}
+		}
+		return rNode;
+	}
+
+	private BinaryTreeNode<Object> searchBus(BinaryTreeNode<Object> terminal, String tuition) {
+		BinaryTreeNode<Object> rNode = null;
+		if (!this.tree.isEmpty()) {
+			if (terminal.getLeft() != null) {
+				BinaryTreeNode<Object> aux = terminal.getLeft();
+				boolean stop = false;
+				while (!stop) {
+					if (((Bus) aux.getInfo()).getTuition().equalsIgnoreCase(tuition)) {
+						stop = true;
+						rNode = aux;
+					}
+					if (aux.getRight() != null) {
+						aux = aux.getRight();
+					} else
+						stop = true;
+				}
+			}
+		}
+		return rNode;
+	}
+
+	public boolean deleteBus(String localidad, String terminal, String bus) {
+		boolean deleted = false;
+		if (!tree.isEmpty()) {
+			BinaryTreeNode<Object> nodeLocalidad = searchLocalidad(localidad);
+			if (nodeLocalidad != null) {
+				BinaryTreeNode<Object> nodeTerminal = searchTerminal(nodeLocalidad, terminal);
+				if (nodeTerminal != null) {
+					BinaryTreeNode<Object> nodeBus = searchBus(nodeTerminal, bus);
+					if (nodeBus != null) {
+						tree.deleteNode(nodeBus);
+						deleted = true;
+						if (nodeTerminal.getLeft() == null) {
+							tree.deleteNode(nodeTerminal);
+							if (nodeLocalidad.getLeft() == null) {
+								BinaryTreeNode<Object> aux = (BinaryTreeNode<Object>) this.tree.getRoot();
+								boolean stop = false;
+								if (((Location) aux.getInfo()).getName()
+										.equalsIgnoreCase(((Location) nodeLocalidad.getInfo()).getName())) {
+									this.tree.setRoot(aux.getRight());
+								} else {
+									while (!stop && aux != null) {
+										if (((Location) aux.getRight().getInfo()).getName()
+												.equalsIgnoreCase(((Location) nodeLocalidad.getInfo()).getName())) {
+											aux.setRight(aux.getRight().getRight());
+											stop = true;
+										}
+										aux = aux.getRight();
+									}
+								}
+							}
+						}
+					} else {
+						throw new IllegalArgumentException("El bus que desea eliminar no existe");
+					}
+				} else {
+					throw new IllegalArgumentException("La terminal insertada no existe");
+				}
+			} else {
+				throw new IllegalArgumentException("La localidad insertada no existe");
+			}
+
+		} else {
+			throw new IllegalArgumentException("El Ã¡rbol esta vaciÃ³");
+		}
+
+		return deleted;
+	}
+
+	public boolean changeBus(String Location, String Terminal, String Bus, int seating) {
+		boolean value = false;
+		BinaryTreeNode<Object> nodeLocation = searchLocalidad(Location);
+		if (nodeLocation != null) {
+			BinaryTreeNode<Object> nodeTerminal = searchTerminal(nodeLocation, Terminal);
+			if (nodeTerminal != null) {
+				BinaryTreeNode<Object> nodeBus = searchBus(nodeTerminal, Bus);
+				if (nodeBus != null) {
+					((Bus) nodeBus.getInfo()).setSeating(seating);
+					value = true;
+					// update((Bus)nodeBus.getInfo()); // Actualizar
+				}
+			}
+		}
+		return value;
 	}
 
 }

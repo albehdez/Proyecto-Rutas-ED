@@ -48,7 +48,7 @@
         </rowConstraints>
          <children>
             <Label text="Omnibus" />
-            <ChoiceBox fx:id="choiceBoxBus" prefWidth="150.0" GridPane.columnIndex="1" />
+            <ChoiceBox fx:id="choiceBoxBus" onDragDetected="#selectionChoiceBox" prefWidth="150.0" GridPane.columnIndex="1" />
          </children>
       </GridPane>
       <GridPane layoutX="64.0" layoutY="58.0">

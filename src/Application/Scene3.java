@@ -9,7 +9,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
@@ -21,6 +23,10 @@ public class Scene3 {
     private Stage stage;
     @FXML
     private ChoiceBox<String> choiceBoxBus;
+    @FXML
+    private Button inserButton;
+    @FXML
+    private Button eliminarButton;
 
     private static Scene3 ventana;
 
@@ -30,6 +36,7 @@ public class Scene3 {
 
     public void initialize() {
         ventana = this;
+        choiceBoxBus.setOnAction(this::selectionChoiceBox);
         loadComboBox();
     }
 
@@ -57,5 +64,24 @@ public class Scene3 {
 
     public ChoiceBox getChoiceBox() {
         return choiceBoxBus;
+    }
+
+    public void selectionChoiceBox(ActionEvent e) {
+        Map.getInstance().clean();
+        if (choiceBoxBus.getSelectionModel().getSelectedIndex() != 0) {
+
+            String text = choiceBoxBus.getSelectionModel().getSelectedItem();
+            Map.getInstance().showSomeStopBus(text);
+        } else {
+            Map.getInstance().showEveryStopBus();
+        }
+    }
+
+    public Button getDeleteButton() {
+        return eliminarButton;
+    }
+
+    public Button getInsertButton() {
+        return inserButton;
     }
 }

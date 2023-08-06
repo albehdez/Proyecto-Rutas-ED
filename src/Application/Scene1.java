@@ -61,7 +61,7 @@ public class Scene1 {
     public void loadScene2(MouseEvent e) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Scene2.fxml"));
         scenePane1.getChildren().add(root);
-        Map.getInstance().showStopBus();
+
     }
 
     public void loadScene3(MouseEvent e) throws IOException {
@@ -83,6 +83,9 @@ public class Scene1 {
             scenePane1.getChildren().add(root);
             value = false;
             Map.getInstance().clean();
+            Map.getInstance().showEveryStopBus();
+            Scene1.getInstance().getPanelRecorrido().setVisible(false);
+
         } else {
             value = true;
             scenePane1.getChildren().remove(Scene3.getInstance().getAnchorPane());
